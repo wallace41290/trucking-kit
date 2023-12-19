@@ -14,7 +14,11 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@trucking-kit/shared/backend": [
+        "libs/trucking-kit/shared/backend/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
