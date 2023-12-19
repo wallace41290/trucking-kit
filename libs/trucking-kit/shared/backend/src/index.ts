@@ -1,1 +1,2 @@
-export * from './lib/trucking-kit-backend';
+export * from './amplify/auth/resource';
+export * from './amplify/data/resource';
