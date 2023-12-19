@@ -2,7 +2,10 @@
   "name": "@trucking-kit/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "format": "nx format:write",
+    "pr-check": "npx nx format:check && npx nx affected --target=lint --parallel=3 && npx nx affected --target=test --parallel=3 --ci --code-coverage && npx nx affected --target=build --parallel=3"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~17.0.0",
