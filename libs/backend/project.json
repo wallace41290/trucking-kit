@@ -7,6 +7,12 @@
     "lint": {
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"]
+    },
+    "deploy": {
+      "command": "amplify pipeline-deploy",
+      "options": {
+        "cwd": "libs/backend"
+      }
     }
   },
   "tags": []
