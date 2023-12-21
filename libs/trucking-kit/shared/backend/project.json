@@ -13,6 +13,12 @@
       "options": {
         "cwd": "libs/trucking-kit/shared/backend"
       }
+    },
+    "sandbox": {
+      "command": "amplify sandbox",
+      "options": {
+        "cwd": "libs/trucking-kit/shared/backend"
+      }
     }
   },
   "tags": []
