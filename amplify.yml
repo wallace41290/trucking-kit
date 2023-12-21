@@ -5,8 +5,11 @@ applications:
       phases:
         preBuild:
           commands:
+            - echo "preBuild backend"
+            - ls
             - nvm use 20
             - npm ci
+            - ls
         build:
           commands:
             - npx nx deploy backend --branch $AWS_BRANCH --app-id $AWS_APP_ID
@@ -21,11 +24,13 @@ applications:
             - ls
             - nvm use 20
             - npm ci
+            - ls
         build:
           commands:
             - echo "build"
             - ls
             - npx nx build trucking-kit --configuration production
+            - ls
       artifacts:
         baseDirectory: dist/apps/trucking-kit/browser
         files:
