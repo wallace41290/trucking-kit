@@ -15,7 +15,7 @@ applications:
             - npx nx deploy backend --branch $AWS_BRANCH --app-id $AWS_APP_ID
     frontend:
       phases:
-        buildPath: '/'  # run install and build from monorepo project root
+        buildPath: /  # run install and build from monorepo project root
         preBuild:
           commands:
             - echo "preBuild"
