@@ -22,7 +22,7 @@ applications:
           commands:
             - npx nx build trucking-kit --configuration production
       artifacts:
-        baseDirectory: /dist/apps/trucking-kit/browser
+        baseDirectory: ../../dist/apps/trucking-kit/browser
         files:
           - '**/*'
       cache:
