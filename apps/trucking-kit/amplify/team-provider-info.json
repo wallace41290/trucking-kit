@@ -1,0 +1,15 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-truckingkit-staging-190240-authRole",
+      "UnauthRoleArn": "arn:aws:iam::789204160597:role/amplify-truckingkit-staging-190240-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::789204160597:role/amplify-truckingkit-staging-190240-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-truckingkit-staging-190240-deployment",
+      "UnauthRoleName": "amplify-truckingkit-staging-190240-unauthRole",
+      "StackName": "amplify-truckingkit-staging-190240",
+      "StackId": "arn:aws:cloudformation:us-east-1:789204160597:stack/amplify-truckingkit-staging-190240/ae2c5dd0-a0fc-11ee-b7aa-0ab401faefff",
+      "AmplifyAppId": "d36vjz7lx91vac"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "providers": [
+    "awscloudformation"
+  ],
+  "projectName": "truckingkit",
+  "version": "3.1",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "none",
+    "config": {
+      "SourceDir": "src",
+      "DistributionDir": "../../dist/apps/trucking-kit/browser",
+      "BuildCommand": "npx nx deploy trucking-kit-backend --branch $AWS_BRANCH --app-id $AWS_APP_ID",
+      "StartCommand": "npx nx serve trucking-kit"
+    }
+  }
+}
