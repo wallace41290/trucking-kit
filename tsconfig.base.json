@@ -14,11 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@trucking-kit/backend": [
-        "libs/trucking-kit/shared/backend/amplify/index.ts"
-      ]
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }
