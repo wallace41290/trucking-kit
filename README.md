@@ -8,6 +8,15 @@
 4. Invoke: `nvm use` to install and set the correct node version defined in [.nvmrc](./.nvmrc).
 5. Install dependencies by invoking `npm i`.
 
+## Local Sandbox
+It is possible to run a local aws sandbox for the development.
+
+### Pre-reqs
+Set up AWS Account: TODO
+
+1. Run `npx nx sandbox trucking-kit-backend`
+
+
 ## Start the app
 
 To start the development server run `nx serve trucking-kit`. Open your browser and navigate to http://localhost:4200/. Happy coding!
