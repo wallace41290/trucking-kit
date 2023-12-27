@@ -1,7 +1,10 @@
 {
-  "name": "@trucking-kit/shared/models",
+  "name": "@trucking-kit/shared-models",
   "version": "0.0.1",
   "dependencies": {},
+  "peerDependencies": {
+    "@shared/models":"*"
+  },
   "type": "commonjs",
   "main": "./index.cjs"
 }
