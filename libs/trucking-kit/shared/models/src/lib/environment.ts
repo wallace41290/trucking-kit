@@ -1,5 +1,3 @@
-import { Environment as BaseEnvironment, Cognito } from '@shared/models';
+import { Environment as BaseEnvironment, HasCognito } from '@shared/models';
 
-export interface Environment extends BaseEnvironment {
-  cognito: Cognito;
-}
+export interface Environment extends BaseEnvironment, HasCognito {}

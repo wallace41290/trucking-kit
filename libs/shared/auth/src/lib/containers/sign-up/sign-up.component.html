@@ -1,0 +1,51 @@
+<h2>Sign Up</h2>
+<ng-container *ngIf="!isConfirm; else confirm">
+  <div>
+    <label for="email">Enter an Email:</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      #email="ngModel"
+      [(ngModel)]="user.email"
+    />
+  </div>
+  <div>
+    <label for="password">Enter a Password:</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="user.password"
+    />
+  </div>
+  <div>
+    <button type="button" [disabled]="loading" (click)="signUp()">
+      Sign up
+    </button>
+    <span role="status" aria-hidden="true" *ngIf="loading">loading...</span>
+    <span *ngIf="error" role="status" aria-hidden="true" style="color: red">{{
+      error
+    }}</span>
+  </div>
+</ng-container>
+<ng-template #confirm>
+  <div>
+    <label for="code">Code from email:</label>
+    <input
+      type="text"
+      id="code"
+      name="code"
+      [(ngModel)]="user.code"
+    />
+  </div>
+  <div>
+    <button type="button" [disabled]="loading" (click)="confirmSignUp()">
+      Confirm
+    </button>
+    <span *ngIf="loading" role="status" aria-hidden="true">loading...</span>
+    <span *ngIf="error" role="status" aria-hidden="true" style="color: red">{{
+      error
+    }}</span>
+  </div>
+</ng-template>

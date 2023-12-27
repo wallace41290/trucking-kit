@@ -4,6 +4,6 @@ export const environment:Environment = {
   production: false,
   cognito: {
     userPoolId: 'us-east-1_B6YQTFrkQ', // TODO put in CI secrets
-    userPoolWebClientId: '685gs9sjbtao1imad4fcic82m0',
+    userPoolClientId: '685gs9sjbtao1imad4fcic82m0'
   },
 };

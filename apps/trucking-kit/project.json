@@ -20,7 +20,13 @@
           "apps/trucking-kit/src/favicon.ico",
           "apps/trucking-kit/src/assets"
         ],
-        "styles": ["apps/trucking-kit/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/shared/styles/src"]
+        },
+        "styles": [
+          "libs/shared/styles/src/reset.css",
+          "apps/trucking-kit/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {

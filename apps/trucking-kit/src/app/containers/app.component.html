@@ -1,0 +1,22 @@
+<nav>
+  <ul>
+    <ng-container *ngIf="isAuthenticated; else notAuthenticated" >
+      <li>
+        <a routerLink="/profile" routerLinkActive="active">Profile</a>
+      </li>
+      <li>
+        <a routerLink="" (click)="signOut()">Sign out</a>
+      </li>
+    </ng-container>
+    <ng-template #notAuthenticated>
+      <li>
+        <a routerLink="/signUp" routerLinkActive="active">Sign up</a>
+      </li>
+      <li>
+        <a routerLink="/signIn" routerLinkActive="active">Sign in</a>
+      </li>
+    </ng-template>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>
