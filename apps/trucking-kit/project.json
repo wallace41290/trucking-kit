@@ -4,7 +4,7 @@
   "projectType": "application",
   "prefix": "trucking-kit",
   "sourceRoot": "apps/trucking-kit/src",
-  "tags": [],
+  "tags": ["scope:trucking-kit"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -25,6 +25,12 @@
       },
       "configurations": {
         "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/trucking-kit/src/environments/environment.ts",
+              "with": "apps/trucking-kit/src/environments/environment.prod.ts"
+            }
+          ],
           "budgets": [
             {
               "type": "initial",
