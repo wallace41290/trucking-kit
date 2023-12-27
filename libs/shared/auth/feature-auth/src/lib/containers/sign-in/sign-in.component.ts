@@ -8,10 +8,10 @@ import { AuthError } from 'aws-amplify/auth';
 
 @Component({
   selector: 'tk-auth-sign-in',
-  standalone:true,
+  standalone: true,
   templateUrl: './sign-in.component.html',
   styleUrl: './sign-in.component.scss',
-  imports:[FormsModule, NgIf]
+  imports: [FormsModule, NgIf],
 })
 export class SignInComponent {
   loading: boolean;

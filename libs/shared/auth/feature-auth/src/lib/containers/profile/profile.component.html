@@ -1,22 +1,11 @@
 <h2>Profile</h2>
 <div>
   <label for="email">Email:</label>
-  <input
-    type="email"
-    id="email"
-    name="email"
-    [ngModel]="email"
-    disabled
-  />
+  <input type="email" id="email" name="email" [ngModel]="email" disabled />
 </div>
 <div>
   <label for="name">Name:</label>
-  <input
-    type="text"
-    id="name"
-    name="name"
-    [(ngModel)]="name"
-  />
+  <input type="text" id="name" name="name" [(ngModel)]="name" />
 </div>
 <div>
   <button type="button" (click)="update()" [disabled]="loading">Update</button>

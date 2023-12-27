@@ -32,12 +32,7 @@
 <ng-template #confirm>
   <div>
     <label for="code">Code from email:</label>
-    <input
-      type="text"
-      id="code"
-      name="code"
-      [(ngModel)]="user.code"
-    />
+    <input type="text" id="code" name="code" [(ngModel)]="user.code" />
   </div>
   <div>
     <button type="button" [disabled]="loading" (click)="confirmSignUp()">

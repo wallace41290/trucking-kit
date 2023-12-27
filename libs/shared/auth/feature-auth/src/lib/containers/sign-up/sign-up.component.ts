@@ -54,7 +54,7 @@ export class SignUpComponent {
       })
       .catch((error: AuthError) => {
         this.loading = false;
-        this.error=error.message;
+        this.error = error.message;
       });
   }
 }

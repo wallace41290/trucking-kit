@@ -6,10 +6,10 @@ import { AuthError } from 'aws-amplify/auth';
 
 @Component({
   selector: 'tk-auth-profile',
-  standalone:true,
+  standalone: true,
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss',
-  imports:[FormsModule, NgIf]
+  imports: [FormsModule, NgIf],
 })
 export class ProfileComponent implements OnInit {
   loading: boolean;
@@ -24,26 +24,31 @@ export class ProfileComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.authService.getUserAttributes().then((attributes) => {
-      this.email = attributes.email;
-      this.name = attributes.name;
-      this.loading = false;
-    }).catch((error: AuthError) => {
-      this.loading = false;
-      this.error = error.message;
-    });
+    this.authService
+      .getUserAttributes()
+      .then((attributes) => {
+        this.email = attributes.email;
+        this.name = attributes.name;
+        this.loading = false;
+      })
+      .catch((error: AuthError) => {
+        this.loading = false;
+        this.error = error.message;
+      });
   }
 
   public update(): void {
     this.loading = true;
     this.error = undefined;
 
-    this.authService.updateUserAttributes({userAttributes:{name:this.name}})
-    .then(() => {
-      this.loading = false;
-    }).catch((error: AuthError) => {
-      this.loading = false;
-      this.error = error.message;
-    });;
+    this.authService
+      .updateUserAttributes({ userAttributes: { name: this.name } })
+      .then(() => {
+        this.loading = false;
+      })
+      .catch((error: AuthError) => {
+        this.loading = false;
+        this.error = error.message;
+      });
   }
 }

@@ -9,15 +9,18 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'signIn',
-    loadComponent: () => import('@shared/auth').then((m) => m.SignInComponent),
+    loadComponent: () =>
+      import('@shared/auth/feature-auth').then((m) => m.SignInComponent),
   },
   {
     path: 'signUp',
-    loadComponent: () => import('@shared/auth').then((m) => m.SignUpComponent),
+    loadComponent: () =>
+      import('@shared/auth/feature-auth').then((m) => m.SignUpComponent),
   },
   {
     path: 'profile',
-    loadComponent: () => import('@shared/auth').then((m) => m.ProfileComponent),
+    loadComponent: () =>
+      import('@shared/auth/feature-auth').then((m) => m.ProfileComponent),
   },
   {
     path: '**',

@@ -2,7 +2,7 @@ import { NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 // TODO: move to data-access lib
-import { AuthService } from '@shared/auth';
+import { AuthService } from '@shared/auth/feature-auth';
 
 @Component({
   standalone: true,
