@@ -19,7 +19,7 @@
               {
                 "sourceTag": "scope:trucking-kit",
                 "onlyDependOnLibsWithTags": ["scope:shared", "scope:trucking-kit"]
-              },
+              }
             ]
           }
         ]
@@ -42,5 +42,13 @@
       },
       "rules": {}
     }
-  ]
+  ],
+  "rules": {
+    "@nx/dependency-checks": [
+      "error",
+      {
+        "ignoredDependencies": ["tslib"]
+      }
+    ]
+  }
 }
