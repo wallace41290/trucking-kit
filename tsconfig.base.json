@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@shared/models": ["libs/shared/models/src/index.ts"],
+      "@trucking-kit/shared/models": [
+        "libs/trucking-kit/shared/models/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
