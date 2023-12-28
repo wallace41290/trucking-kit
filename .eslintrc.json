@@ -18,7 +18,10 @@
               },
               {
                 "sourceTag": "scope:trucking-kit",
-                "onlyDependOnLibsWithTags": ["scope:shared", "scope:trucking-kit"]
+                "onlyDependOnLibsWithTags": [
+                  "scope:shared",
+                  "scope:trucking-kit"
+                ]
               }
             ]
           }

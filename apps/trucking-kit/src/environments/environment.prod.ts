@@ -1,6 +1,6 @@
-import {Environment} from '@trucking-kit/shared/models';
+import { Environment } from '@trucking-kit/shared/models';
 
-export const environment:Environment = {
+export const environment: Environment = {
   production: true,
   cognito: {
     userPoolId: 'INSERT_SECRET_VAR',

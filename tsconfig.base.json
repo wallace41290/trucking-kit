@@ -23,9 +23,6 @@
       "@shared/forms": ["libs/shared/forms/src/index.ts"],
       "@shared/http-client": ["libs/shared/http-client/src/index.ts"],
       "@shared/models": ["libs/shared/models/src/index.ts"],
-      "@trucking-kit/shared/models": [
-        "libs/trucking-kit/shared/models/src/index.ts"
-      ],
       "@trucking-kit/home/feature-home": [
         "libs/trucking-kit/home/feature-home/src/index.ts"
       ],
@@ -34,6 +31,9 @@
       ],
       "@trucking-kit/profile/feature-profile": [
         "libs/trucking-kit/profile/feature-profile/src/index.ts"
+      ],
+      "@trucking-kit/shared/models": [
+        "libs/trucking-kit/shared/models/src/index.ts"
       ]
     }
   },

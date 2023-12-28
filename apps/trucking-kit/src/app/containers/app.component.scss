@@ -6,7 +6,7 @@ nav {
     padding: 0;
     li {
       padding: 4px 8px;
-      &:not(:first-child){
+      &:not(:first-child) {
         border-left: 1px solid black;
       }
     }
