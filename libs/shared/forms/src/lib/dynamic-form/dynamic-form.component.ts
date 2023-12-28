@@ -7,6 +7,7 @@ import {
   Input,
   OnInit,
   Output,
+  ViewEncapsulation,
   inject,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -25,8 +26,10 @@ import { AsyncPipe } from '@angular/common';
   selector: 'tk-dynamic-form',
   standalone: true,
   templateUrl: './dynamic-form.component.html',
+  styleUrls: ['./dynamic-form.component.scss'],
   imports: [ReactiveFormsModule, DynamicFieldDirective, AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class DynamicFormComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
@@ -72,10 +75,7 @@ export class DynamicFormComponent implements OnInit {
     return this.fb.control('', field.validator);
   };
 
-  private patchValue = ([form, data]: [
-    FormGroup,
-    Record<string, unknown>
-  ]) => {
+  private patchValue = ([form, data]: [FormGroup, Record<string, unknown>]) => {
     data
       ? form.patchValue(data, { emitEvent: false })
       : form.patchValue({}, { emitEvent: false });

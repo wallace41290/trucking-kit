@@ -16,6 +16,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   selector: 'tk-list-errors',
   standalone: true,
   templateUrl: './list-errors.component.html',
+  styleUrls: ['./list-errors.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListErrorsComponent implements OnInit, OnDestroy {
