@@ -1,1 +1,2 @@
-export * from './lib/shared-http-client/shared-http-client.component';
+export * from './lib/api.service';
+export * from './lib/api-url.token';
