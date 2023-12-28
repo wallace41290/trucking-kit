@@ -1,8 +1,8 @@
 {
-  "name": "shared-feature-auth",
+  "name": "shared-auth-feature-auth",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/auth/feature-auth/src",
-  "prefix": "tk-auth",
+  "prefix": "tk",
   "tags": ["scope:shared"],
   "projectType": "library",
   "targets": {

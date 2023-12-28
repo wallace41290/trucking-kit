@@ -1,0 +1,6 @@
+<tk-navbar [isLoggedIn]="$isLoggedIn()" (logout)="logout()"></tk-navbar>
+<router-outlet></router-outlet>
+
+@defer (on idle) {
+<tk-footer></tk-footer>
+}

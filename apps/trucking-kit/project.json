@@ -2,7 +2,7 @@
   "name": "trucking-kit",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "trucking-kit",
+  "prefix": "tk",
   "sourceRoot": "apps/trucking-kit/src",
   "tags": ["scope:trucking-kit"],
   "targets": {

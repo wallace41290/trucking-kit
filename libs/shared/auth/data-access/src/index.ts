@@ -1,1 +1,3 @@
-export * from './lib/shared-auth-data-access/shared-auth-data-access.component';
+export * from './lib/services/auth-guard';
+
+export { AuthStore } from './lib/auth.store';

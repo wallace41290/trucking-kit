@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ngrxFormsQuery } from '../+state/forms.selectors';
-import { formsActions } from '../..';
+import { formsActions } from '../+state/forms.actions';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

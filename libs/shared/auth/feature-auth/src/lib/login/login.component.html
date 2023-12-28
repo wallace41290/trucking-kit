@@ -1,0 +1,14 @@
+<h1>Login</h1>
+<p>
+  <a [routerLink]="['/register']">Need an account?</a>
+</p>
+
+<tk-list-errors></tk-list-errors>
+
+<tk-dynamic-form
+  (updateForm)="updateForm($event)"
+  [data$]="data$"
+  [structure$]="structure$"
+>
+  <button type="submit" (click)="submit()">Login</button>
+</tk-dynamic-form>

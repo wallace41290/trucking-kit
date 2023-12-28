@@ -2,4 +2,5 @@
   @for (field of structure$ | async; track field.name) {
     <ng-container tkDynamicField [field]="field" [group]="form"> </ng-container>
   }
+  <ng-content></ng-content>
 </form>

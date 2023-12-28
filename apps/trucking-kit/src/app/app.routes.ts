@@ -1,26 +1,37 @@
 import { Route } from '@angular/router';
-import { NotFoundPageComponent } from './containers';
+import { NotFoundPageComponent } from './components';
+import { authGuard } from '@shared/auth/data-access';
 
 export const appRoutes: Route[] = [
   {
     path: '',
-    redirectTo: 'signIn',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
-    path: 'signIn',
-    loadComponent: () =>
-      import('@shared/auth/feature-auth').then((m) => m.SignInComponent),
+    path: 'home',
+    loadChildren: () =>
+      import('@trucking-kit/home/feature-home').then((m) => m.HOME_ROUTES),
+    canActivate: [authGuard],
   },
   {
-    path: 'signUp',
+    path: 'login',
     loadComponent: () =>
-      import('@shared/auth/feature-auth').then((m) => m.SignUpComponent),
+      import('@shared/auth/feature-auth').then((m) => m.LoginComponent),
   },
   {
-    path: 'profile',
+    path: 'register',
     loadComponent: () =>
-      import('@shared/auth/feature-auth').then((m) => m.ProfileComponent),
+      import('@shared/auth/feature-auth').then((m) => m.RegisterComponent),
+  },
+
+  {
+    path: 'profile-edit',
+    loadChildren: () =>
+      import('@trucking-kit/profile/feature-profile-edit').then(
+        (m) => m.PROFILE_EDIT_ROUTES
+      ),
+    canActivate: [authGuard],
   },
   {
     path: '**',
