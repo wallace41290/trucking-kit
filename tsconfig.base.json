@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@shared/auth/data-access": ["libs/shared/auth/data-access/src/index.ts"],
       "@shared/auth/feature-auth": [
         "libs/shared/auth/feature-auth/src/index.ts"
       ],
