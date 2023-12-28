@@ -19,6 +19,7 @@
       "@shared/auth/feature-auth": [
         "libs/shared/auth/feature-auth/src/index.ts"
       ],
+      "@shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@shared/error-handler": ["libs/shared/error-handler/src/index.ts"],
       "@shared/forms": ["libs/shared/forms/src/index.ts"],
       "@shared/http-client": ["libs/shared/http-client/src/index.ts"],
