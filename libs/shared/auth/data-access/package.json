@@ -1,5 +1,5 @@
 {
-  "name": "@shared/auth-data-access",
+  "name": "@shared/auth/data-access",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "^17.0.0",

@@ -13,6 +13,7 @@ export const errorHandlingInterceptor = (
 
   return next(request).pipe(
     catchError((error) => {
+      console.log('error interceptor', error);
       if (error instanceof HttpErrorResponse) {
         switch (error.status) {
           case 401:

@@ -3,12 +3,13 @@ import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { AuthState, authInitialState, initialUserValue } from './auth.model';
 import { inject } from '@angular/core';
 import { AuthService } from './services/auth.service';
-import { exhaustMap, pipe, switchMap, tap, withLatestFrom } from 'rxjs';
+import { exhaustMap, pipe, switchMap, tap } from 'rxjs';
 import { concatLatestFrom, tapResponse } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { formsActions, ngrxFormsQuery } from '@shared/forms';
 import { Credentials } from '@shared/models';
+import { AuthError } from 'aws-amplify/auth';
 
 export const AuthStore = signalStore(
   { providedIn: 'root' },
@@ -29,20 +30,20 @@ export const AuthStore = signalStore(
       login: rxMethod<void>(
         pipe(
           concatLatestFrom(() => reduxStore.select(ngrxFormsQuery.selectData)),
-
           exhaustMap(([, data]) =>
             // TODO: Add a typeguard upstream to properly ensure this data is the correct type
             authService.login(data as unknown as Credentials).pipe(
-              withLatestFrom(authService.user()),
               tapResponse({
-                next: ([, user]) => {
+                next: (user) => {
                   patchState(store, { user, loggedIn: true });
                   router.navigateByUrl('/');
                 },
-                error: ({ error }) =>
+                error: (error: AuthError) =>
                   reduxStore.dispatch(
-                    formsActions.setErrors({ errors: error.errors })
-                  ),
+                    formsActions.setErrors({
+                      errors: { [error.name]: error.message },
+                    })
+                  )
               })
             )
           )
@@ -58,19 +59,26 @@ export const AuthStore = signalStore(
                 next: () => {
                   router.navigateByUrl('login');
                 },
-                error: ({ error }) =>
+                error: (error: AuthError) =>
                   reduxStore.dispatch(
-                    formsActions.setErrors({ errors: error.errors })
+                    formsActions.setErrors({
+                      errors: { [error.name]: error.message },
+                    })
                   ),
               })
             )
           )
         )
       ),
-      logout: () => {
-        patchState(store, { user: initialUserValue, loggedIn: false });
-        router.navigateByUrl('login');
-      },
+      logout: rxMethod<void>(
+        pipe(
+          switchMap(() => authService.logout()),
+          tap(() => {
+            patchState(store, { user: initialUserValue, loggedIn: false });
+            router.navigateByUrl('login');
+          })
+        )
+      ),
     })
   )
 );

@@ -24,13 +24,16 @@ export class AuthService {
     return defer(() => Auth.getCurrentUser());
   }
 
-  login(credentials: Credentials): Observable<Auth.SignInOutput> {
-    return defer(() =>
-      Auth.signIn({
-        username: credentials.email,
-        password: credentials.password,
-      })
-    );
+  login(credentials: Credentials): Observable<Auth.AuthUser> {
+    return defer(() => Auth.signIn({
+      username: credentials.email,
+      password: credentials.password,
+    })
+    ) as unknown as Observable<Auth.AuthUser>;
+  }
+
+  logout(): Observable<void> {
+    return defer(() => Auth.signOut());
   }
 
   register(newUser: Credentials): Observable<Auth.SignUpOutput> {
@@ -57,7 +60,11 @@ export class AuthService {
     // TODO: in the future, we should probably base
     // this off the expiration for a JWT token
     return this.user().pipe(
-      map(() => true),
+      map((user) => {
+        // TODO: always returning user?
+        console.log(user);
+        return true;
+      }),
       catchError(() => of(false))
     );
   }
