@@ -1,10 +1,10 @@
 /* eslint-disable */
 export default {
-  displayName: 'trucking-kit-profile-feature-profile',
+  displayName: 'trucking-kit-profile-feature-profile-edit',
   preset: '../../../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
   coverageDirectory:
-    '../../../../coverage/libs/trucking-kit/profile/feature-profile',
+    '../../../../coverage/libs/trucking-kit/profile/feature-profile-edit',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
