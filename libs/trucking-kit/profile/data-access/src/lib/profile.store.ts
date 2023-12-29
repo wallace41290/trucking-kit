@@ -21,6 +21,10 @@ export const ProfileStore = signalStore(
     ) => ({
       getProfile: rxMethod<void>(
         pipe(
+          tap(() => {
+            console.groupCollapsed('ProfileStore[getProfile]');
+            console.log('prev state', store);
+          }),
           tap(() => setLoading('getProfile')),
           switchMap(() =>
             profileService.getUserAttributes().pipe(
@@ -31,11 +35,16 @@ export const ProfileStore = signalStore(
                     ...setLoaded('getProfile'),
                   });
                 },
-                error: () => {
+                error: (error) => {
+                  console.error(error);
                   patchState(store, {
                     userAttributes: profileInitialState.userAttributes,
                     ...setLoaded('getProfile'),
                   });
+                },
+                finalize: () => {
+                  console.log('next state', store);
+                  console.groupEnd();
                 },
               })
             )
@@ -44,6 +53,10 @@ export const ProfileStore = signalStore(
       ),
       updateProfile: rxMethod<void>(
         pipe(
+          tap(() => {
+            console.groupCollapsed('ProfileStore[updateProfile]');
+            console.log('prev state', store);
+          }),
           concatLatestFrom(() => reduxStore.select(ngrxFormsQuery.selectData)),
           switchMap(([, data]) =>
             profileService
@@ -59,9 +72,15 @@ export const ProfileStore = signalStore(
                       userAttributes: { ...store.userAttributes() },
                     }),
                   error: ({ error }) =>
-                    reduxStore.dispatch(
+                    {
+                      console.error(error);
+                      reduxStore.dispatch(
                       formsActions.setErrors({ errors: error.errors })
-                    ),
+                    );},
+                    finalize: () => {
+                      console.log('next state', store);
+                      console.groupEnd();
+                    },
                 })
               )
           )

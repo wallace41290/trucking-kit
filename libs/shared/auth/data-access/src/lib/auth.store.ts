@@ -23,12 +23,30 @@ export const AuthStore = signalStore(
     ) => ({
       getUser: rxMethod<void>(
         pipe(
-          switchMap(() => authService.user()),
-          tap((user) => patchState(store, { user, loggedIn: true }))
+          tap(() => {
+            console.groupCollapsed('AuthStore[getUser]');
+            console.log('prev state', store);
+          }),
+          switchMap(() =>
+            authService.user().pipe(
+              tapResponse({
+                next: (user) => patchState(store, { user, loggedIn: true }),
+                error: (error) => console.error(error),
+                finalize: () => {
+                  console.log('next state', store);
+                  console.groupEnd();
+                },
+              })
+            )
+          )
         )
       ),
       login: rxMethod<void>(
         pipe(
+          tap(() => {
+            console.groupCollapsed('AuthStore[login]');
+            console.log('prev state', store);
+          }),
           concatLatestFrom(() => reduxStore.select(ngrxFormsQuery.selectData)),
           exhaustMap(([, data]) =>
             // TODO: Add a typeguard upstream to properly ensure this data is the correct type
@@ -38,12 +56,18 @@ export const AuthStore = signalStore(
                   patchState(store, { user, loggedIn: true });
                   router.navigateByUrl('/');
                 },
-                error: (error: AuthError) =>
+                error: (error: AuthError) => {
+                  console.error(error);
                   reduxStore.dispatch(
                     formsActions.setErrors({
                       errors: { [error.name]: error.message },
                     })
-                  ),
+                  );
+                },
+                finalize: () => {
+                  console.log('next state', store);
+                  console.groupEnd();
+                },
               })
             )
           )
@@ -51,6 +75,10 @@ export const AuthStore = signalStore(
       ),
       register: rxMethod<void>(
         pipe(
+          tap(() => {
+            console.groupCollapsed('AuthStore[register]');
+            console.log('prev state', store);
+          }),
           concatLatestFrom(() => reduxStore.select(ngrxFormsQuery.selectData)),
           exhaustMap(([, data]) =>
             // TODO: Add a typeguard upstream to properly ensure this data is the correct type
@@ -59,12 +87,18 @@ export const AuthStore = signalStore(
                 next: () => {
                   router.navigateByUrl('login');
                 },
-                error: (error: AuthError) =>
+                error: (error: AuthError) => {
+                  console.error(error);
                   reduxStore.dispatch(
                     formsActions.setErrors({
                       errors: { [error.name]: error.message },
                     })
-                  ),
+                  );
+                },
+                finalize: () => {
+                  console.log('next state', store);
+                  console.groupEnd();
+                },
               })
             )
           )
@@ -72,11 +106,27 @@ export const AuthStore = signalStore(
       ),
       logout: rxMethod<void>(
         pipe(
-          switchMap(() => authService.logout()),
           tap(() => {
-            patchState(store, { user: initialUserValue, loggedIn: false });
-            router.navigateByUrl('login');
-          })
+            console.groupCollapsed('AuthStore[logout]');
+            console.log('prev state', store);
+          }),
+          switchMap(() =>
+            authService.logout().pipe(
+              tapResponse({
+                next: () =>
+                  patchState(store, {
+                    user: initialUserValue,
+                    loggedIn: false,
+                  }),
+                error: (error) => console.error(error),
+                finalize: () => {
+                  router.navigateByUrl('login');
+                  console.log('next state', store);
+                  console.groupEnd();
+                },
+              })
+            )
+          )
         )
       ),
     })
