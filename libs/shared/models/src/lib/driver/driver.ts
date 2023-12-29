@@ -1,8 +1,8 @@
-import { User } from '../user/user';
+import { CompanyUser } from '../company-user';
 
-export interface Driver extends User {
+export interface Driver extends CompanyUser {
   cdlNumber: string;
   dateOfBirth: Date;
-  role: 'Driver';
+  role: 'DRIVER';
   state: string;
 }

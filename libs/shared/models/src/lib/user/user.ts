@@ -9,5 +9,5 @@ export interface User {
   isActive: boolean;
   lastName: string;
   phoneNumber: number;
-  role: 'Administrator' | 'Driver';
+  role: 'ADMIN' | 'COMPANY_ADMIN' | 'DRIVER';
 }
