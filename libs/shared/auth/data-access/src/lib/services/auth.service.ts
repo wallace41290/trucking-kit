@@ -5,7 +5,8 @@ import { CognitoUserPoolConfig } from '@aws-amplify/core';
 import {
   COGNITO_CONFIG,
   Credentials,
-  NewUserConfirmation,
+  NewUserConfirmationRequest,
+  ResendCodeRequest,
 } from '@shared/models';
 import { Amplify } from 'aws-amplify';
 import * as Auth from 'aws-amplify/auth';
@@ -47,13 +48,21 @@ export class AuthService {
   }
 
   confirmRegistration(
-    newUserConfirmation: NewUserConfirmation
+    newUserConfirmation: NewUserConfirmationRequest
   ): Observable<Auth.ConfirmSignUpOutput> {
     return defer(() =>
       Auth.confirmSignUp({
         username: newUserConfirmation.email,
         confirmationCode: newUserConfirmation.code,
       })
+    );
+  }
+
+  resendRegistrationCode(
+    resendCodeRequest: ResendCodeRequest
+  ): Observable<Auth.ResendSignUpCodeOutput> {
+    return defer(() =>
+      Auth.resendSignUpCode({ username: resendCodeRequest.email })
     );
   }
 

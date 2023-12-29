@@ -1,3 +1,6 @@
+<h1>Confirm Registration</h1>
+<button (click)="resend()">Resend Code</button>
+
 <tk-list-errors></tk-list-errors>
 
 <tk-dynamic-form
@@ -5,5 +8,5 @@
   [data$]="data$"
   [structure$]="structure$"
 >
-  <button type="button" (click)="submit()">Update Profile</button>
+  <button type="submit" (click)="submit()">Confirm Registration</button>
 </tk-dynamic-form>

@@ -8,7 +8,7 @@ import { concatLatestFrom, tapResponse } from '@ngrx/operators';
 import { Store } from '@ngrx/store';
 import { formsActions, ngrxFormsQuery } from '@shared/forms';
 import { setLoaded, setLoading, withCallState } from '@shared/data-access';
-import { UpdateUserAttributesInput } from 'aws-amplify/auth';
+import { AmplifyError } from '@aws-amplify/core/internals/utils';
 
 export const ProfileStore = signalStore(
   { providedIn: 'root' },
@@ -21,21 +21,31 @@ export const ProfileStore = signalStore(
     ) => ({
       getProfile: rxMethod<void>(
         pipe(
+          tap(() => {
+            console.groupCollapsed('ProfileStore[getProfile]');
+            console.log('prev state', store);
+          }),
           tap(() => setLoading('getProfile')),
           switchMap(() =>
             profileService.getUserAttributes().pipe(
               tapResponse({
                 next: (userAttributes) => {
+                  console.log('userAttributes', userAttributes);
                   patchState(store, {
                     userAttributes,
                     ...setLoaded('getProfile'),
                   });
                 },
-                error: () => {
+                error: (error) => {
+                  console.error(error);
                   patchState(store, {
                     userAttributes: profileInitialState.userAttributes,
                     ...setLoaded('getProfile'),
                   });
+                },
+                finalize: () => {
+                  console.log('next state', store);
+                  console.groupEnd();
                 },
               })
             )
@@ -44,13 +54,20 @@ export const ProfileStore = signalStore(
       ),
       updateProfile: rxMethod<void>(
         pipe(
+          tap(() => {
+            console.groupCollapsed('ProfileStore[updateProfile]');
+            console.log('prev state', store);
+          }),
           concatLatestFrom(() => reduxStore.select(ngrxFormsQuery.selectData)),
+          tap(([, data]) => console.log('Form Data', data)),
           switchMap(([, data]) =>
             profileService
-              .updateUserAttributes(
-                // TODO: Add a typeguard upstream to properly ensure this data is the correct type
-                data as unknown as UpdateUserAttributesInput
-              )
+              .updateUserAttributes({
+                userAttributes: {
+                  name: data['name'] as string,
+                  address: data['address'] as string,
+                },
+              })
               .pipe(
                 tapResponse({
                   next: () =>
@@ -58,10 +75,18 @@ export const ProfileStore = signalStore(
                       // TODO: how to update values from response?
                       userAttributes: { ...store.userAttributes() },
                     }),
-                  error: ({ error }) =>
+                  error: (error: AmplifyError) => {
+                    console.error(error);
                     reduxStore.dispatch(
-                      formsActions.setErrors({ errors: error.errors })
-                    ),
+                      formsActions.setErrors({
+                        errors: { [error.name]: error.message },
+                      })
+                    );
+                  },
+                  finalize: () => {
+                    console.log('next state', store);
+                    console.groupEnd();
+                  },
                 })
               )
           )

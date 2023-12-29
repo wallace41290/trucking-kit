@@ -24,7 +24,13 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('@shared/auth/feature-auth').then((m) => m.RegisterComponent),
   },
-
+  {
+    path: 'confirm-registration',
+    loadComponent: () =>
+      import('@shared/auth/feature-auth').then(
+        (m) => m.ConfirmRegistrationComponent
+      ),
+  },
   {
     path: 'profile-edit',
     loadChildren: () =>
