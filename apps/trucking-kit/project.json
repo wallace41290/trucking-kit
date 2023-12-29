@@ -25,7 +25,8 @@
         },
         "styles": [
           "libs/shared/styles/src/reset.css",
-          "apps/trucking-kit/src/styles.scss"
+          "apps/trucking-kit/src/styles.scss",
+          "apps/trucking-kit/src/theme.scss"
         ],
         "scripts": []
       },
