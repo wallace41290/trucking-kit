@@ -46,6 +46,7 @@ export const AuthStore = signalStore(
           tap(() => {
             console.groupCollapsed('AuthStore[login]');
             console.log('prev state', store);
+            patchState(store, { loggingIn: true });
           }),
           concatLatestFrom(() => reduxStore.select(ngrxFormsQuery.selectData)),
           exhaustMap(([, data]) =>
@@ -65,6 +66,7 @@ export const AuthStore = signalStore(
                   );
                 },
                 finalize: () => {
+                  patchState(store, { loggingIn: false });
                   console.log('next state', store);
                   console.groupEnd();
                 },
@@ -80,13 +82,17 @@ export const AuthStore = signalStore(
             console.log('prev state', store);
           }),
           concatLatestFrom(() => reduxStore.select(ngrxFormsQuery.selectData)),
+          tap(([, data]) =>
+            patchState(store, {
+              newUserEmail: (data as unknown as Credentials).email,
+              registering: true,
+            })
+          ),
           exhaustMap(([, data]) =>
             // TODO: Add a typeguard upstream to properly ensure this data is the correct type
             authService.register(data as unknown as Credentials).pipe(
               tapResponse({
-                next: () => {
-                  router.navigateByUrl('login');
-                },
+                next: () => router.navigateByUrl('confirm-registration'),
                 error: (error: AuthError) => {
                   console.error(error);
                   reduxStore.dispatch(
@@ -96,11 +102,85 @@ export const AuthStore = signalStore(
                   );
                 },
                 finalize: () => {
+                  patchState(store, { registering: false });
                   console.log('next state', store);
                   console.groupEnd();
                 },
               })
             )
+          )
+        )
+      ),
+      confirmRegistration: rxMethod<void>(
+        pipe(
+          tap(() => {
+            console.groupCollapsed('AuthStore[confirmRegistration]');
+            console.log('prev state', store);
+            patchState(store, { confirmingRegistration: true });
+          }),
+          concatLatestFrom(() => reduxStore.select(ngrxFormsQuery.selectData)),
+          exhaustMap(([, data]) =>
+            authService
+              .confirmRegistration({
+                email: store.newUserEmail() as string,
+                code: data['code'] as string,
+              })
+              .pipe(
+                tapResponse({
+                  next: () => {
+                    router.navigateByUrl('login');
+                    patchState(store, { newUserEmail: undefined });
+                  },
+                  error: (error: AuthError) => {
+                    console.error(error);
+                    reduxStore.dispatch(
+                      formsActions.setErrors({
+                        errors: { [error.name]: error.message },
+                      })
+                    );
+                  },
+                  finalize: () => {
+                    patchState(store, { confirmingRegistration: false });
+                    console.log('next state', store);
+                    console.groupEnd();
+                  },
+                })
+              )
+          )
+        )
+      ),
+      resendCode: rxMethod<void>(
+        pipe(
+          tap(() => {
+            patchState(store, { resendingCode: true });
+            console.groupCollapsed('AuthStore[resendCode]');
+            console.log('prev state', store);
+          }),
+          exhaustMap(() =>
+            authService
+              .resendRegistrationCode({
+                email: store.newUserEmail() as string,
+              })
+              .pipe(
+                tapResponse({
+                  next: () => {
+                    patchState(store, { resendingCode: false });
+                  },
+                  error: (error: AuthError) => {
+                    patchState(store, { resendingCode: false });
+                    console.error(error);
+                    reduxStore.dispatch(
+                      formsActions.setErrors({
+                        errors: { [error.name]: error.message },
+                      })
+                    );
+                  },
+                  finalize: () => {
+                    console.log('next state', store);
+                    console.groupEnd();
+                  },
+                })
+              )
           )
         )
       ),
