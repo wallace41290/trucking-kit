@@ -1,12 +1,8 @@
-import { File } from '../file/index';
+import { User } from '../user/user';
 
-export interface Driver {
+export interface Driver extends User {
   cdlNumber: string;
   dateOfBirth: Date;
-  emailAddress: string;
-  files: File[];
-  isActive: boolean;
-  name: string;
-  phoneNumber: number;
+  role: 'Driver';
   state: string;
 }

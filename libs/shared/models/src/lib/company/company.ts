@@ -4,7 +4,6 @@ export interface Company {
   city: string;
   companyName: string;
   dotNumber: string;
-  emailAddress: string;
   files: File[];
   mcNumber: string;
   phoneNumber: number;
