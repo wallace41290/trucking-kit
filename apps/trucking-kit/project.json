@@ -2,9 +2,9 @@
   "name": "trucking-kit",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "prefix": "trucking-kit",
+  "prefix": "tk",
   "sourceRoot": "apps/trucking-kit/src",
-  "tags": [],
+  "tags": ["scope:trucking-kit"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
@@ -20,11 +20,23 @@
           "apps/trucking-kit/src/favicon.ico",
           "apps/trucking-kit/src/assets"
         ],
-        "styles": ["apps/trucking-kit/src/styles.scss"],
+        "stylePreprocessorOptions": {
+          "includePaths": ["libs/shared/styles/src"]
+        },
+        "styles": [
+          "libs/shared/styles/src/reset.css",
+          "apps/trucking-kit/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
         "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/trucking-kit/src/environments/environment.ts",
+              "with": "apps/trucking-kit/src/environments/environment.prod.ts"
+            }
+          ],
           "budgets": [
             {
               "type": "initial",

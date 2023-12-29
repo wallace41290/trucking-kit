@@ -1,0 +1,10 @@
+<tk-list-errors></tk-list-errors>
+
+<tk-dynamic-form
+  (updateForm)="updateForm($event)"
+  [data$]="data$"
+  [structure$]="structure$"
+>
+</tk-dynamic-form>
+
+<button type="button" (click)="submit()">Update Profile</button>

@@ -1,0 +1,8 @@
+<fieldset [formGroup]="group" class="tk-dynamic-form-group">
+  <input
+    class="tk-dynamic-form-control"
+    [formControlName]="field.name"
+    [attr.placeholder]="field.placeholder"
+    [attr.type]="field.attrs?.['type'] || 'text'"
+  />
+</fieldset>

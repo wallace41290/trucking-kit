@@ -1,0 +1,37 @@
+{
+  "name": "trucking-kit-shared-models",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/trucking-kit/shared/models/src",
+  "prefix": "tk",
+  "tags": ["scope:trucking-kit"],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/trucking-kit/shared/models/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/trucking-kit/shared/models/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/trucking-kit/shared/models/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/trucking-kit/shared/models/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"]
+    }
+  }
+}

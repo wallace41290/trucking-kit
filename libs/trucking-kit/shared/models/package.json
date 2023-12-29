@@ -1,0 +1,11 @@
+{
+  "name": "@trucking-kit/shared-models",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@shared/models": "*"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

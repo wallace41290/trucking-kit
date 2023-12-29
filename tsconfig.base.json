@@ -15,8 +15,26 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@trucking-kit/backend": [
-        "libs/trucking-kit/shared/backend/amplify/index.ts"
+      "@shared/auth/data-access": ["libs/shared/auth/data-access/src/index.ts"],
+      "@shared/auth/feature-auth": [
+        "libs/shared/auth/feature-auth/src/index.ts"
+      ],
+      "@shared/data-access": ["libs/shared/data-access/src/index.ts"],
+      "@shared/error-handler": ["libs/shared/error-handler/src/index.ts"],
+      "@shared/forms": ["libs/shared/forms/src/index.ts"],
+      "@shared/http-client": ["libs/shared/http-client/src/index.ts"],
+      "@shared/models": ["libs/shared/models/src/index.ts"],
+      "@trucking-kit/home/feature-home": [
+        "libs/trucking-kit/home/feature-home/src/index.ts"
+      ],
+      "@trucking-kit/profile/data-access": [
+        "libs/trucking-kit/profile/data-access/src/index.ts"
+      ],
+      "@trucking-kit/profile/feature-profile-edit": [
+        "libs/trucking-kit/profile/feature-profile-edit/src/index.ts"
+      ],
+      "@trucking-kit/shared/models": [
+        "libs/trucking-kit/shared/models/src/index.ts"
       ]
     }
   },

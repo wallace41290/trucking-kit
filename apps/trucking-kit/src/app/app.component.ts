@@ -1,14 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NxWelcomeComponent } from './nx-welcome.component';
+import { NavbarComponent } from './components';
+import { AuthStore } from '@shared/auth/data-access';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule],
-  selector: 'trucking-kit-root',
+  imports: [AsyncPipe, NavbarComponent, RouterModule],
+  selector: 'tk-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent {
-  title = 'trucking-kit';
+export class AppComponent implements OnInit {
+  private readonly authStore = inject(AuthStore);
+
+  $isLoggedIn = this.authStore.loggedIn;
+
+  ngOnInit(): void {
+    this.authStore.getUser();
+  }
+
+  logout() {
+    this.authStore.logout();
+  }
 }
