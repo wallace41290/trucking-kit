@@ -43,7 +43,7 @@ export const AuthStore = signalStore(
                     formsActions.setErrors({
                       errors: { [error.name]: error.message },
                     })
-                  )
+                  ),
               })
             )
           )

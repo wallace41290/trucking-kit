@@ -25,10 +25,11 @@ export class AuthService {
   }
 
   login(credentials: Credentials): Observable<Auth.AuthUser> {
-    return defer(() => Auth.signIn({
-      username: credentials.email,
-      password: credentials.password,
-    })
+    return defer(() =>
+      Auth.signIn({
+        username: credentials.email,
+        password: credentials.password,
+      })
     ) as unknown as Observable<Auth.AuthUser>;
   }
 

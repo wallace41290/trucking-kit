@@ -1,4 +1,9 @@
-import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest } from '@angular/common/http';
+import {
+  HttpErrorResponse,
+  HttpEvent,
+  HttpHandlerFn,
+  HttpRequest,
+} from '@angular/common/http';
 import { inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, throwError } from 'rxjs';
@@ -7,7 +12,7 @@ import { errorHandlerActions } from './+state/error-handler.actions';
 
 export const errorHandlingInterceptor = (
   request: HttpRequest<unknown>,
-  next: HttpHandlerFn,
+  next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> => {
   const store = inject(Store);
 
@@ -23,11 +28,11 @@ export const errorHandlingInterceptor = (
             store.dispatch(errorHandlerActions.throw404Error({ error }));
             break;
           default:
-            throwError(()=>error);
+            throwError(() => error);
             break;
         }
       }
-      return throwError(()=>error);
-    }),
+      return throwError(() => error);
+    })
   );
 };

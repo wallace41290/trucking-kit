@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'tk-not-found-page',
-  standalone:true,
+  standalone: true,
   template: `
     <h1>404: Not Found</h1>
     <p>Hey! It looks like this page doesn't exist.</p>
@@ -17,6 +17,6 @@ import { RouterLink } from '@angular/router';
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports:[RouterLink]
+  imports: [RouterLink],
 })
 export class NotFoundPageComponent {}

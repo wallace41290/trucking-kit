@@ -1,6 +1,6 @@
 <form class="tk-dynamic-form" [formGroup]="form" autocomplete="off">
   @for (field of structure$ | async; track field.name) {
-    <ng-container tkDynamicField [field]="field" [group]="form"> </ng-container>
+  <ng-container tkDynamicField [field]="field" [group]="form"> </ng-container>
   }
   <ng-content></ng-content>
 </form>

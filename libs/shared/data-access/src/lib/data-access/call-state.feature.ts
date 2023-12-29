@@ -1,6 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import { Signal, computed } from '@angular/core';
-import { SignalStoreFeature, signalStoreFeature, withComputed, withState } from '@ngrx/signals';
+import {
+  SignalStoreFeature,
+  signalStoreFeature,
+  withComputed,
+  withState,
+} from '@ngrx/signals';
 
 export type CallState = 'init' | 'loading' | 'loaded' | { error: string };
 
@@ -54,8 +59,11 @@ export function withCallState(): SignalStoreFeature<
     methods: {};
   }
 >;
-export function withCallState<Collection extends string>(config?: { collection: Collection }): SignalStoreFeature {
-  const { callStateKey, errorKey, loadedKey, loadingKey } = getCallStateKeys(config);
+export function withCallState<Collection extends string>(config?: {
+  collection: Collection;
+}): SignalStoreFeature {
+  const { callStateKey, errorKey, loadedKey, loadingKey } =
+    getCallStateKeys(config);
 
   return signalStoreFeature(
     withState({ [callStateKey]: 'init' }),
@@ -70,11 +78,13 @@ export function withCallState<Collection extends string>(config?: { collection: 
           return typeof v === 'object' ? v.error : null;
         }),
       };
-    }),
+    })
   );
 }
 
-export function setLoading<Prop extends string>(prop?: Prop): NamedCallStateSlice<Prop> | CallStateSlice {
+export function setLoading<Prop extends string>(
+  prop?: Prop
+): NamedCallStateSlice<Prop> | CallStateSlice {
   if (prop) {
     return { [`${prop}CallState`]: 'loading' } as NamedCallStateSlice<Prop>;
   }
@@ -82,7 +92,9 @@ export function setLoading<Prop extends string>(prop?: Prop): NamedCallStateSlic
   return { callState: 'loading' };
 }
 
-export function setLoaded<Prop extends string>(prop?: Prop): NamedCallStateSlice<Prop> | CallStateSlice {
+export function setLoaded<Prop extends string>(
+  prop?: Prop
+): NamedCallStateSlice<Prop> | CallStateSlice {
   if (prop) {
     return { [`${prop}CallState`]: 'loaded' } as NamedCallStateSlice<Prop>;
   } else {
@@ -90,7 +102,10 @@ export function setLoaded<Prop extends string>(prop?: Prop): NamedCallStateSlice
   }
 }
 
-export function setError<Prop extends string>(error: string, prop?: Prop): NamedCallStateSlice<Prop> | CallStateSlice {
+export function setError<Prop extends string>(
+  error: string,
+  prop?: Prop
+): NamedCallStateSlice<Prop> | CallStateSlice {
   if (prop) {
     return { [`${prop}CallState`]: { error } } as NamedCallStateSlice<Prop>;
   } else {

@@ -1,5 +1,17 @@
-import { DynamicFormComponent, Field, formsActions, ListErrorsComponent, ngrxFormsQuery } from '@shared/forms';
-import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
+import {
+  DynamicFormComponent,
+  Field,
+  formsActions,
+  ListErrorsComponent,
+  ngrxFormsQuery,
+} from '@shared/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AuthStore } from '@shared/auth/data-access';
@@ -42,7 +54,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.store.dispatch(formsActions.setStructure({ structure }));
   }
 
-  updateForm(changes: Record<string,unknown>) {
+  updateForm(changes: Record<string, unknown>) {
     this.store.dispatch(formsActions.updateData({ data: changes }));
   }
 
