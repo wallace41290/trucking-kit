@@ -3,11 +3,11 @@
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/core": "^17.0.0",
-    "@trucking-kit/shared-forms": "*",
     "@angular/forms": "~17.0.0",
     "@angular/router": "~17.0.0",
     "@shared/auth/data-access": "*",
-    "@ngrx/store": "17.0.1"
+    "@ngrx/store": "17.0.1",
+    "@shared/forms": "*"
   },
   "dependencies": {
     "tslib": "^2.3.0"
