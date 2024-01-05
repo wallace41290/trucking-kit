@@ -27,7 +27,7 @@ jobs:
         ls
         ls apps
         ls apps/trucking-kit
-        ls cat apps/trucking-kit/src
+        ls apps/trucking-kit/src
       parallel-commands: |
         cat apps/trucking-kit/src/amplifyconfiguration.json
         npx nx-cloud record -- npx nx format:check
