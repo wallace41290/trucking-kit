@@ -1,2 +1,13 @@
 <h1>Home</h1>
 <p>Welcome home, old friend.</p>
+
+@if($loadingProfile()){
+<p>Hacking into the database...</p>
+}@else{
+<p style="margin-top: 50vh">
+  I know who you are {{ $name() }}. @if($userAttributes().address; as address){
+  <br />
+  and you live at {{ address }}
+  }
+</p>
+}

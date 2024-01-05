@@ -3,10 +3,14 @@ import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
 import { enableProdMode } from '@angular/core';
+import { Amplify } from 'aws-amplify';
+import amplifyconfig from './amplifyconfiguration.json';
 
 if (environment.production) {
   enableProdMode();
 }
+
+Amplify.configure(amplifyconfig);
 
 bootstrapApplication(AppComponent, appConfig).catch((err) =>
   console.error(err)

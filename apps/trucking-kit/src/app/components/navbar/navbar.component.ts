@@ -16,6 +16,6 @@ import { RouterModule } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {
-  @Input() isLoggedIn: boolean | undefined;
+  @Input() isLoggedIn: boolean | undefined | null;
   @Output() logout = new EventEmitter();
 }

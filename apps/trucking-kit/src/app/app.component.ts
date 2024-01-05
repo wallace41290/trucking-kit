@@ -1,26 +1,28 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NavbarComponent } from './components';
-import { AuthStore } from '@shared/auth/data-access';
 import { AsyncPipe } from '@angular/common';
+import { AmplifyAuthenticatorModule } from '@aws-amplify/ui-angular';
+import { AuthService } from '@shared/auth/data-access';
 
 @Component({
   standalone: true,
-  imports: [AsyncPipe, NavbarComponent, RouterModule],
+  imports: [
+    AsyncPipe,
+    NavbarComponent,
+    RouterModule,
+    AmplifyAuthenticatorModule,
+  ],
   selector: 'tk-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
-  private readonly authStore = inject(AuthStore);
+export class AppComponent {
+  private readonly authService = inject(AuthService);
 
-  $isLoggedIn = this.authStore.loggedIn;
-
-  ngOnInit(): void {
-    this.authStore.getUser();
-  }
+  $isLoggedIn = this.authService.isAuthenticatedState$;
 
   logout() {
-    this.authStore.logout();
+    this.authService.logout();
   }
 }
