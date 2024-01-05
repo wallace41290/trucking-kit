@@ -25,9 +25,17 @@
         },
         "styles": [
           "libs/shared/styles/src/reset.css",
-          "apps/trucking-kit/src/styles.scss"
+          "apps/trucking-kit/src/styles.scss",
+          "node_modules/@aws-amplify/ui-angular/theme.css"
         ],
-        "scripts": []
+        "scripts": [],
+        "allowedCommonJsDependencies": [
+          "style-dictionary",
+          "qrcode",
+          "lodash/kebabCase.js",
+          "lodash/pickBy.js",
+          "lodash/merge.js"
+        ]
       },
       "configurations": {
         "production": {
@@ -40,8 +48,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "1.2mb",
+              "maximumError": "2mb"
             },
             {
               "type": "anyComponentStyle",

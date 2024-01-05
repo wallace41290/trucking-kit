@@ -15,23 +15,6 @@ export const appRoutes: Route[] = [
     canActivate: [authGuard],
   },
   {
-    path: 'login',
-    loadComponent: () =>
-      import('@shared/auth/feature-auth').then((m) => m.LoginComponent),
-  },
-  {
-    path: 'register',
-    loadComponent: () =>
-      import('@shared/auth/feature-auth').then((m) => m.RegisterComponent),
-  },
-  {
-    path: 'confirm-registration',
-    loadComponent: () =>
-      import('@shared/auth/feature-auth').then(
-        (m) => m.ConfirmRegistrationComponent
-      ),
-  },
-  {
     path: 'profile-edit',
     loadChildren: () =>
       import('@trucking-kit/profile/feature-profile-edit').then(

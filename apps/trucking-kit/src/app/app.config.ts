@@ -27,6 +27,7 @@ export const appConfig: ApplicationConfig = {
       appRoutes,
       withViewTransitions(),
       withComponentInputBinding()
+      // withDebugTracing(),
     ),
     provideStore({
       errorHandler: errorHandlerFeature.reducer,
