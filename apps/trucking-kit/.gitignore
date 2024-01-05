@@ -11,7 +11,8 @@ dist/
 node_modules/
 aws-exports.js
 awsconfiguration.json
-amplifyconfiguration.json
+# Temporarily comment out until we can figure out how to get this working in CI
+# amplifyconfiguration.json
 amplifyconfiguration.dart
 amplify-build-config.json
 amplify-gradle-config.json
