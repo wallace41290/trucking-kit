@@ -21,6 +21,7 @@ jobs:
       number-of-agents: 3
       init-commands: |
         npx nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
+        cd apps/trucking-kit
         npx amplify configure project --yes
       parallel-commands: |
         npx nx-cloud record -- npx nx format:check
