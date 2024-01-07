@@ -9,6 +9,7 @@
     "build": {
       "executor": "@angular-devkit/build-angular:application",
       "outputs": ["{options.outputPath}"],
+      "dependsOn": ["prepare-ci"],
       "options": {
         "outputPath": "dist/apps/trucking-kit",
         "index": "apps/trucking-kit/src/index.html",
@@ -94,6 +95,13 @@
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/trucking-kit/jest.config.ts"
+      }
+    },
+    "prepare-ci": {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/trucking-kit",
+        "command": "file=\"./src/amplifyconfiguration.json\"; [ ! -e \"$file\" ] && echo \"{}\" > \"$file\" && echo \"Blank amplifyconfiguration.json file created.\" || echo \"amplifyconfiguration.json already exists.\""
       }
     }
   }
