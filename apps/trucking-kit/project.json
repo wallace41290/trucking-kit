@@ -98,7 +98,6 @@
       }
     },
     "prepare-ci": {
-      "cache": false,
       "executor": "nx:run-commands",
       "options": {
         "cwd": "apps/trucking-kit",
