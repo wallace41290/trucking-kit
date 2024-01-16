@@ -1,5 +1,13 @@
 <h1>Home</h1>
 <p>Welcome home, old friend.</p>
+<div>
+  @for (company of companies; track company?.dotNumber) {
+  <div>{{ company?.companyName }}</div>
+  <div>{{ company?.streetAddress }}</div>
+  } @empty {
+  <div>No companies yet. Add more now.</div>
+  }
+</div>
 
 @if($loadingProfile()){
 <p>Hacking into the database...</p>

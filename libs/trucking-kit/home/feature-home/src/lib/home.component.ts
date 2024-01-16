@@ -7,6 +7,17 @@ import {
 } from '@angular/core';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { ProfileStore } from '@trucking-kit/profile/data-access';
+import { generateClient, GraphQLResult } from 'aws-amplify/api';
+// import * as queries from '../../../../../../apps/trucking-kit/src/graphql/queries.js';
+
+export type Company = {
+  city: string;
+  companyName: string;
+  dotNumber: number;
+  state: string;
+  streetAddress: string;
+  zipCode: string;
+};
 
 @Component({
   selector: 'tk-home',
@@ -17,11 +28,16 @@ import { ProfileStore } from '@trucking-kit/profile/data-access';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
+  graphqlQueries = require('../../../../../../apps/trucking-kit/src/graphql/queries.js');
+  mutations = require('../../../../../../apps/trucking-kit/src/graphql/mutations.js');
   authenticatorService = inject(AuthenticatorService);
   profileStore = inject(ProfileStore);
 
   $loadingProfile = this.profileStore.getProfileLoading;
   $userAttributes = this.profileStore.userAttributes;
+
+  client = generateClient();
+  companies: any;
 
   $name = computed(
     () =>
@@ -29,7 +45,30 @@ export class HomeComponent implements OnInit {
       this.authenticatorService.user.signInDetails?.loginId
   );
 
-  ngOnInit() {
+  public async onCreate(company: Company) {
+    try {
+      await this.client.graphql({
+        query: this.mutations.createCompany,
+        variables: {
+          input: company,
+        },
+      });
+    } catch (e) {
+      console.log('error creating company...', e);
+    }
+  }
+
+  async ngOnInit() {
+    try {
+      const response = await this.client.graphql({
+        query: this.graphqlQueries.listCompanies,
+      });
+      console.log('response', response);
+      // this.companies = response.data.listCompanies.items;
+      console.log('hello im here', this.companies);
+    } catch (e) {
+      console.log('error fetching companies', e);
+    }
     this.profileStore.getProfile();
   }
 }
