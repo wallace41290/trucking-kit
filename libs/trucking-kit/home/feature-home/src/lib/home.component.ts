@@ -19,6 +19,14 @@ export type Company = {
   zipCode: string;
 };
 
+export type ListCompaniesQuery = {
+  listCompanies: ListCompaniesQueryResult;
+};
+
+export type ListCompaniesQueryResult = {
+  items: Company[];
+};
+
 @Component({
   selector: 'tk-home',
   standalone: true,
@@ -60,11 +68,11 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      const response = await this.client.graphql({
+      const response = (await this.client.graphql<GraphQLResult>({
         query: this.graphqlQueries.listCompanies,
-      });
-      console.log('response', response);
-      // this.companies = response.data.listCompanies.items;
+      })) as GraphQLResult<ListCompaniesQuery>;
+      console.log('response', response.data.listCompanies.items);
+      this.companies = response.data.listCompanies.items;
       console.log('hello im here', this.companies);
     } catch (e) {
       console.log('error fetching companies', e);
