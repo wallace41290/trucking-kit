@@ -1,6 +1,6 @@
 type Company 
   @model 
-  @auth(rules: [{ allow: public, operations: [read] }, { allow: owner }]){
+  @auth(rules: [{ allow: public, operations: [read, create] }, { allow: owner }]){
   city: String!
   companyName: String!
   dotNumber: String! @primaryKey
