@@ -55,14 +55,13 @@ export class CompaniesComponent implements OnInit {
         zipCode: 27384,
         dotNumber: company.dotNumber,
       };
-      console.log('newCompany', newCompany);
+
       const response = (await this.client.graphql({
         query: this.mutations.createCompany,
         variables: {
           input: newCompany,
         },
       })) as GraphQLResult;
-      console.log('response', response);
     } catch (e) {
       console.log('error creating company...', e);
     }
