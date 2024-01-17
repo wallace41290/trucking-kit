@@ -1,0 +1,25 @@
+<div>
+  @for (company of companies; track company?.dotNumber) {
+  <div>Company Name: {{ company?.companyName }}</div>
+  <div>DOT Number: {{ company?.dotNumber }}</div>
+  } @empty {
+  <div>No companies yet. Add more now.</div>
+  }
+</div>
+<div class="form-body">
+  <form
+    autocomplete="off"
+    [formGroup]="createForm"
+    (ngSubmit)="onCreate(createForm.value)"
+  >
+    <div>
+      <label>Company Name: </label>
+      <input type="text" formControlName="companyName" autocomplete="off" />
+    </div>
+    <div>
+      <label>DOT Number: </label>
+      <input type="text" formControlName="dotNumber" autocomplete="off" />
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
