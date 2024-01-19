@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { ProfileStore } from '@trucking-kit/profile/data-access';
-import { CompaniesComponent } from '../../../../companies/companies.component';
+import { CompaniesComponent } from '../lib/companies/companies.component';
 
 @Component({
   selector: 'tk-home',
