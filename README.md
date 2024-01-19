@@ -20,19 +20,11 @@
    - For `CLI default client Region [None]:` put `us-east-1`
    - For `CLI default output format [None]:` put `json`
    - For `CLI profile name [Developers-789204160597]:` I changed to `will-dev`
-6. Edit the aws config file via `code ~/.aws/config`, modify your profile to have all the properties like here:
+6. Edit the aws config file via `code ~/.aws/config`, add to the end of your profile block this line as described in the [docs](https://docs.amplify.aws/angular/start/getting-started/installation/#manually-configure-the-amplify-cli):
    ```
    [profile will-dev]
-   sso_start_url = https://d-9067f067ec.awsapps.com/start#
-   sso_region = us-east-1
-   sso_session = truckingkit
-   sso_account_id = 789204160597
-   sso_role_name = Developers
-   region = us-east-1
-   output = json
-   cli_pager=
-   sso_session=truckingkit
-   credential_process=aws sso login --profile will-dev
+   ...
+   credential_process = aws configure export-credentials --profile will-dev
    ```
    save the config
 7. You should now be able to call any of the commands from the amplify cli. Start by:
