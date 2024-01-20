@@ -28,7 +28,7 @@
    ```
    save the config
 7. You should now be able to call any of the commands from the amplify cli. Start by:
-   - `cd apps/trucking-kit` (you have to run amplify commands from here, not the root)
+   - `cd libs/shared/backend` (you have to run amplify commands from here, not the root)
    - `amplify pull`
    - This should pull down some files that don't get checked into git, now you can run the app.
 
@@ -44,7 +44,7 @@ To start the development server run `nx serve trucking-kit`. Open your browser a
 
 Amplify/AWS - [docs](https://docs.amplify.aws/angular/tools/cli/start/key-workflows/)
 
-- For all of these, you'll need to `cd apps/trucking-kit` and run from the app directory.
+- For all of these, you'll need to `cd libs/shared/backend` and run from the shared backend directory.
 - `amplify pull` - command operates similar to a git pull, fetching upstream backend environment definition changes from the cloud\* and update the local environment to match that definition. The command is particularly helpful in team scenarios when multiple team members are editing the same backend, pulling a backend into a new project, or when connecting to multiple frontend projects that share the same Amplify backend environment.
 - `amplify push` - Once you have made your category updates, run the command amplify push to update the cloud resources.
 - `amplify console` - launches the browser directing you to your cloud project in the AWS Amplify Console. The Amplify Console provides a central location for development teams to view and manage their backend environments, status of the backend deployment, deep-links to the backend resources by Amplify category, and instructions on how to pull, clone, update, or delete environments.

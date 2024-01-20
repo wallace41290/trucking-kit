@@ -6,7 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { generateClient, GraphQLResult } from 'aws-amplify/api';
-// import { mutations } from '@tr'
+import * as Queries from '@shared/backend/graphql/queries';
+import * as Mutations from '@shared/backend/graphql/mutations';
 
 export type Company = {
   city: string;
@@ -36,8 +37,6 @@ export class CompaniesComponent implements OnInit {
   client = generateClient();
   companies: Company[] = [];
   public createForm: FormGroup;
-  graphqlQueries = require('../../../../../../../apps/trucking-kit/src/graphql/queries.js');
-  mutations = require('../../../../../../../apps/trucking-kit/src/graphql/mutations.js');
 
   constructor(private fb: FormBuilder) {
     this.createForm = this.fb.group({
@@ -58,7 +57,7 @@ export class CompaniesComponent implements OnInit {
       };
 
       const response = (await this.client.graphql({
-        query: this.mutations.createCompany,
+        query: Mutations.createCompany,
         variables: {
           input: newCompany,
         },
@@ -72,8 +71,8 @@ export class CompaniesComponent implements OnInit {
 
   async ngOnInit() {
     try {
-      const response = (await this.client.graphql<GraphQLResult>({
-        query: this.graphqlQueries.listCompanies,
+      const response = (await this.client.graphql({
+        query: Queries.listCompanies,
       })) as GraphQLResult<ListCompaniesQuery>;
       this.companies = response.data.listCompanies.items;
     } catch (e) {
