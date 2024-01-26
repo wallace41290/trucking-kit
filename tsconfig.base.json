@@ -27,6 +27,9 @@
       "@shared/forms": ["libs/shared/forms/src/index.ts"],
       "@shared/http-client": ["libs/shared/http-client/src/index.ts"],
       "@shared/models": ["libs/shared/models/src/index.ts"],
+      "@trucking-kit/company/feature-company": [
+        "libs/trucking-kit/company/feature-company/src/index.ts"
+      ],
       "@trucking-kit/dashboard/feature-dashboard": [
         "libs/trucking-kit/dashboard/feature-dashboard/src/index.ts"
       ],
