@@ -72,7 +72,8 @@
       ],
       "@trucking-kit/shared/models": [
         "libs/trucking-kit/shared/models/src/index.ts"
-      ]
+      ],
+      "@trucking-kit/shared/ui": ["libs/trucking-kit/shared/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
