@@ -45,6 +45,9 @@
       "@trucking-kit/company/feature-trucks": [
         "libs/trucking-kit/company/feature-trucks/src/index.ts"
       ],
+      "@trucking-kit/dashboard/data-access": [
+        "libs/trucking-kit/dashboard/data-access/src/index.ts"
+      ],
       "@trucking-kit/dashboard/feature-dashboard": [
         "libs/trucking-kit/dashboard/feature-dashboard/src/index.ts"
       ],
