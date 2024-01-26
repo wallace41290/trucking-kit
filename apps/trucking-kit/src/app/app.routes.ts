@@ -4,6 +4,13 @@ import { authGuard } from '@shared/auth/data-access';
 
 export const appRoutes: Route[] = [
   {
+    path: 'feature-dashboard',
+    loadChildren: () =>
+      import('@trucking-kit/dashboard/feature-dashboard').then(
+        (m) => m.featureDashboardRoutes
+      ),
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
