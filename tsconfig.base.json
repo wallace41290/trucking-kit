@@ -30,6 +30,9 @@
       "@trucking-kit/dashboard/feature-dashboard": [
         "libs/trucking-kit/dashboard/feature-dashboard/src/index.ts"
       ],
+      "@trucking-kit/dashboard/feature-products": [
+        "libs/trucking-kit/products/feature-products/src/index.ts"
+      ],
       "@trucking-kit/home/feature-home": [
         "libs/trucking-kit/home/feature-home/src/index.ts"
       ],
