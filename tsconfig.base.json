@@ -60,6 +60,9 @@
       "@trucking-kit/home/feature-home": [
         "libs/trucking-kit/home/feature-home/src/index.ts"
       ],
+      "@trucking-kit/products/data-access": [
+        "libs/trucking-kit/products/data-access/src/index.ts"
+      ],
       "@trucking-kit/profile/data-access": [
         "libs/trucking-kit/profile/data-access/src/index.ts"
       ],
