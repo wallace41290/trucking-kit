@@ -4,6 +4,13 @@ import { authGuard } from '@shared/auth/data-access';
 
 export const appRoutes: Route[] = [
   {
+    path: 'feature-product',
+    loadChildren: () =>
+      import('@trucking-kit/dashboard/feature-product').then(
+        (m) => m.featureProductRoutes
+      ),
+  },
+  {
     path: 'feature-products',
     loadChildren: () =>
       import('@trucking-kit/dashboard/feature-products').then(
