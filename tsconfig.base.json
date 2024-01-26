@@ -36,6 +36,9 @@
       "@trucking-kit/company/feature-drivers": [
         "libs/trucking-kit/company/feature-drivers/src/index.ts"
       ],
+      "@trucking-kit/company/feature-trucks": [
+        "libs/trucking-kit/company/feature-trucks/src/index.ts"
+      ],
       "@trucking-kit/dashboard/feature-dashboard": [
         "libs/trucking-kit/dashboard/feature-dashboard/src/index.ts"
       ],
