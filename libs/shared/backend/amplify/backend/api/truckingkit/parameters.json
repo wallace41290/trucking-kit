@@ -1,0 +1,12 @@
+{
+  "AppSyncApiName": "truckingkit",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authtruckingkit8c753c8d",
+      "Outputs.UserPoolId"
+    ]
+  },
+  "AuthModeLastUpdated": "2024-01-29T19:23:55.769Z"
+}

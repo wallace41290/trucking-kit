@@ -7,13 +7,14 @@ import {
 } from '@angular/core';
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { ProfileStore } from '@trucking-kit/profile/data-access';
+import { CompaniesComponent } from './companies/companies.component';
 
 @Component({
   selector: 'tk-home',
   standalone: true,
   templateUrl: './home.component.html',
+  imports: [CompaniesComponent],
   styleUrls: ['./home.component.css'],
-  imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {

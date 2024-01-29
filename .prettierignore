@@ -3,5 +3,6 @@
 /coverage
 /.nx/cache
 .angular
-/apps/*/amplify/**/*
+/libs/shared/backend/amplify/**/*
+/libs/shared/backend/src/graphql/schema.json
 amplifyconfiguration.json
