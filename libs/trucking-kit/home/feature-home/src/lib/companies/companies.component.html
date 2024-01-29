@@ -1,11 +1,27 @@
-<div>
-  @for (company of companies; track company?.dotNumber) {
-  <div>Company Name: {{ company?.companyName }}</div>
-  <div>DOT Number: {{ company?.dotNumber }}</div>
-  } @empty {
-  <div>No companies yet. Add more now.</div>
-  }
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>DOT Number</th>
+      <th>Company</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (company of companies$(); track company?.dotNumber) {
+    <tr>
+      <td>{{ company.dotNumber }}</td>
+      <td>{{ company.companyName }}</td>
+    </tr>
+    } @empty { @if(loadingCompanies$()){
+    <tr>
+      <td colspan="2">...</td>
+    </tr>
+    }@else {
+    <tr>
+      <td colSpan="2">No companies yet. Add more now.</td>
+    </tr>
+    } }
+  </tbody>
+</table>
 <div class="form-body">
   <form
     autocomplete="off"
@@ -20,6 +36,12 @@
       <label>DOT Number: </label>
       <input type="text" formControlName="dotNumber" autocomplete="off" />
     </div>
-    <button type="submit">Submit</button>
+    <button [disabled]="creatingCompany$()" type="submit">Submit</button>
+    @if(creatingCompany$()){
+    <div>...</div>
+    }
   </form>
 </div>
+@if(error$()){
+<p style="color: red">{{ error$() }}</p>
+}
