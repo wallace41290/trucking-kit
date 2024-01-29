@@ -18,10 +18,10 @@
     "paths": {
       "@shared/auth/data-access": ["libs/shared/auth/data-access/src/index.ts"],
       "@shared/backend": ["libs/shared/backend/src/index.ts"],
-      "@shared/backend/graphql/*": ["libs/shared/backend/src/graphql/*"],
       "@shared/backend/amplifyconfiguration": [
         "libs/shared/backend/src/amplifyconfiguration.json"
       ],
+      "@shared/backend/graphql/*": ["libs/shared/backend/src/graphql/*"],
       "@shared/data-access": ["libs/shared/data-access/src/index.ts"],
       "@shared/error-handler": ["libs/shared/error-handler/src/index.ts"],
       "@shared/forms": ["libs/shared/forms/src/index.ts"],
