@@ -4,70 +4,39 @@ import { authGuard } from '@shared/auth/data-access';
 
 export const appRoutes: Route[] = [
   {
-    path: 'feature-truck',
-    loadChildren: () =>
-      import('@trucking-kit/company/feature-truck').then(
-        (m) => m.featureTruckRoutes
-      ),
-  },
-  {
-    path: 'feature-trucks',
-    loadChildren: () =>
-      import('@trucking-kit/company/feature-trucks').then(
-        (m) => m.featureTrucksRoutes
-      ),
-  },
-  {
-    path: 'feature-driver',
-    loadChildren: () =>
-      import('@trucking-kit/company/feature-driver').then(
-        (m) => m.featureDriverRoutes
-      ),
-  },
-  {
-    path: 'feature-drivers',
-    loadChildren: () =>
-      import('@trucking-kit/company/feature-drivers').then(
-        (m) => m.featureDriversRoutes
-      ),
-  },
-  {
-    path: 'feature-company',
-    loadChildren: () =>
-      import('@trucking-kit/company/feature-company').then(
-        (m) => m.featureCompanyRoutes
-      ),
-  },
-  {
-    path: 'feature-product',
-    loadChildren: () =>
-      import('@trucking-kit/dashboard/feature-product').then(
-        (m) => m.featureProductRoutes
-      ),
-  },
-  {
-    path: 'feature-products',
-    loadChildren: () =>
-      import('@trucking-kit/dashboard/feature-products').then(
-        (m) => m.featureProductsRoutes
-      ),
-  },
-  {
-    path: 'feature-dashboard',
-    loadChildren: () =>
-      import('@trucking-kit/dashboard/feature-dashboard').then(
-        (m) => m.featureDashboardRoutes
-      ),
-  },
-  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
   },
   {
+    // Temporary initial route
     path: 'home',
     loadChildren: () =>
       import('@trucking-kit/home/feature-home').then((m) => m.HOME_ROUTES),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'company',
+    loadChildren: () =>
+      import('@trucking-kit/company/feature-company').then(
+        (m) => m.featureCompanyRoutes
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('@trucking-kit/dashboard/feature-dashboard').then(
+        (m) => m.featureDashboardRoutes
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('@trucking-kit/dashboard/feature-products').then(
+        (m) => m.featureProductsRoutes
+      ),
     canActivate: [authGuard],
   },
   {

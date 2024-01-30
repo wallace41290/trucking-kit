@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,4 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './feature-driver.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FeatureDriverComponent {}
+export class FeatureDriverComponent {
+  @Input() id!: string;
+}

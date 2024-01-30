@@ -7,6 +7,11 @@ import {
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
+interface Route {
+  name: string;
+  path: string;
+}
+
 @Component({
   selector: 'tk-navbar',
   standalone: true,
@@ -18,4 +23,12 @@ import { RouterModule } from '@angular/router';
 export class NavbarComponent {
   @Input() isLoggedIn: boolean | undefined | null;
   @Output() logout = new EventEmitter();
+
+  routes: Route[] = [
+    { name: 'Home', path: '/home' },
+    { name: 'Dashboard', path: '/dashboard' },
+    { name: 'Company', path: '/company' },
+    { name: 'Products', path: '/products' },
+    { name: 'Profile', path: '/profile-edit' },
+  ];
 }

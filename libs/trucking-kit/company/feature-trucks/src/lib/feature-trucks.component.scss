@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  nav {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid purple;
+    padding: 8px;
+  }
+  .content {
+    flex: 1 1 auto;
+    padding: 8px;
+  }
+}
