@@ -9,9 +9,34 @@ export const appRoutes: Route[] = [
     pathMatch: 'full',
   },
   {
+    // Temporary initial route
     path: 'home',
     loadChildren: () =>
       import('@trucking-kit/home/feature-home').then((m) => m.HOME_ROUTES),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'company',
+    loadChildren: () =>
+      import('@trucking-kit/company/feature-company').then(
+        (m) => m.featureCompanyRoutes
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('@trucking-kit/dashboard/feature-dashboard').then(
+        (m) => m.featureDashboardRoutes
+      ),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('@trucking-kit/dashboard/feature-products').then(
+        (m) => m.featureProductsRoutes
+      ),
     canActivate: [authGuard],
   },
   {

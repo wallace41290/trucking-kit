@@ -1,0 +1,11 @@
+nav {
+  display: flex;
+  border: 1px solid black;
+  padding: 8px;
+  a {
+    padding: 4px 8px;
+    &:not(:first-child) {
+      border-left: 1px solid black;
+    }
+  }
+}

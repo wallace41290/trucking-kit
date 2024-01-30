@@ -27,8 +27,45 @@
       "@shared/forms": ["libs/shared/forms/src/index.ts"],
       "@shared/http-client": ["libs/shared/http-client/src/index.ts"],
       "@shared/models": ["libs/shared/models/src/index.ts"],
+      "@shared/ui": ["libs/shared/ui/src/index.ts"],
+      "@trucking-kit/company/data-access": [
+        "libs/trucking-kit/company/data-access/src/index.ts"
+      ],
+      "@trucking-kit/company/feature-company": [
+        "libs/trucking-kit/company/feature-company/src/index.ts"
+      ],
+      "@trucking-kit/company/feature-company-overview": [
+        "libs/trucking-kit/company/feature-company-overview/src/index.ts"
+      ],
+      "@trucking-kit/company/feature-driver": [
+        "libs/trucking-kit/company/feature-driver/src/index.ts"
+      ],
+      "@trucking-kit/company/feature-drivers": [
+        "libs/trucking-kit/company/feature-drivers/src/index.ts"
+      ],
+      "@trucking-kit/company/feature-truck": [
+        "libs/trucking-kit/company/feature-truck/src/index.ts"
+      ],
+      "@trucking-kit/company/feature-trucks": [
+        "libs/trucking-kit/company/feature-trucks/src/index.ts"
+      ],
+      "@trucking-kit/dashboard/data-access": [
+        "libs/trucking-kit/dashboard/data-access/src/index.ts"
+      ],
+      "@trucking-kit/dashboard/feature-dashboard": [
+        "libs/trucking-kit/dashboard/feature-dashboard/src/index.ts"
+      ],
+      "@trucking-kit/dashboard/feature-product": [
+        "libs/trucking-kit/products/feature-product/src/index.ts"
+      ],
+      "@trucking-kit/dashboard/feature-products": [
+        "libs/trucking-kit/products/feature-products/src/index.ts"
+      ],
       "@trucking-kit/home/feature-home": [
         "libs/trucking-kit/home/feature-home/src/index.ts"
+      ],
+      "@trucking-kit/products/data-access": [
+        "libs/trucking-kit/products/data-access/src/index.ts"
       ],
       "@trucking-kit/profile/data-access": [
         "libs/trucking-kit/profile/data-access/src/index.ts"
@@ -38,7 +75,8 @@
       ],
       "@trucking-kit/shared/models": [
         "libs/trucking-kit/shared/models/src/index.ts"
-      ]
+      ],
+      "@trucking-kit/shared/ui": ["libs/trucking-kit/shared/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
