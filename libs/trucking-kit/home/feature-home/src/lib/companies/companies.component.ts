@@ -5,44 +5,17 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { inject } from '@angular/core';
 import { generateClient, GraphQLResult } from 'aws-amplify/api';
-import * as Queries from '@shared/backend/graphql/queries';
+// import * as Queries from '@shared/backend/graphql/queries';
 import * as Mutations from '@shared/backend/graphql/mutations';
-
-export type Company = {
-  city: string;
-  companyName: string;
-  dotNumber: string;
-  state: string;
-  streetAddress: string;
-  zipCode: number;
-};
-
-export type ListCompaniesQuery = {
-  listCompanies: ListCompaniesQueryResult;
-};
-
-export type ListCompaniesQueryResult = {
-  items: Company[];
-};
-
-export type CreateCompanyQuery = {
-  createCompany: Company;
-};
-
-interface RequestError {
-  data: unknown;
-  errors: Error[];
-}
-
-interface Error {
-  data: unknown;
-  errorInfo: string;
-  errorType: string;
-  locations: unknown;
-  message: string;
-  path: unknown;
-}
+import { CompanyService } from '@trucking-kit/company/data-access';
+import {
+  Company,
+  CreateCompanyQuery,
+  // ListCompaniesQuery,
+  RequestError,
+} from '@shared/models';
 
 @Component({
   selector: 'tk-companies',
@@ -59,12 +32,14 @@ export class CompaniesComponent {
   creatingCompany$ = signal(false);
   error$ = signal('');
   loadingCompanies$ = signal(false);
+  companyService = inject(CompanyService);
 
   constructor(private fb: FormBuilder) {
     this.createForm = this.fb.group({
       companyName: ['', Validators.required],
       dotNumber: ['', Validators.required],
     });
+
     this.fetchCompanies();
   }
 
@@ -104,10 +79,9 @@ export class CompaniesComponent {
     this.error$.set('');
     this.loadingCompanies$.set(true);
     try {
-      const response = (await this.client.graphql({
-        query: Queries.listCompanies,
-      })) as GraphQLResult<ListCompaniesQuery>;
-      this.companies$.set(response.data.listCompanies.items);
+      this.companyService.fetchCompanies().subscribe((results) => {
+        this.companies$.set(results.data.listCompanies.items);
+      });
     } catch (e: unknown) {
       console.error('error fetching companies', e);
       if (this.isRequestError(e) && e.errors.length) {

@@ -1,1 +1,1 @@
-export * from './lib/company-data-access.component';
+export * from './lib/services/company.service';
