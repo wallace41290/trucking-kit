@@ -26,13 +26,13 @@ import {
 })
 export class CompaniesComponent {
   client = generateClient();
+  companyService = inject(CompanyService);
   createForm: FormGroup;
 
   companies$ = signal<Company[]>([]);
   creatingCompany$ = signal(false);
   error$ = signal('');
   loadingCompanies$ = signal(false);
-  companyService = inject(CompanyService);
 
   constructor(private fb: FormBuilder) {
     this.createForm = this.fb.group({
@@ -78,18 +78,20 @@ export class CompaniesComponent {
   private async fetchCompanies() {
     this.error$.set('');
     this.loadingCompanies$.set(true);
-    try {
-      this.companyService.fetchCompanies().subscribe((results) => {
+
+    this.companyService.fetchCompanies().subscribe({
+      next: (results) => {
         this.companies$.set(results.data.listCompanies.items);
-      });
-    } catch (e: unknown) {
-      console.error('error fetching companies', e);
-      if (this.isRequestError(e) && e.errors.length) {
-        this.error$.set(e.errors[0].message);
-      }
-    } finally {
-      this.loadingCompanies$.set(false);
-    }
+        this.loadingCompanies$.set(false);
+      },
+      error: (e) => {
+        console.error('error fetching companies', e);
+        if (this.isRequestError(e) && e.errors.length) {
+          this.error$.set(e.errors[0].message);
+        }
+        this.loadingCompanies$.set(false);
+      },
+    });
   }
 
   private isRequestError(something: unknown): something is RequestError {
