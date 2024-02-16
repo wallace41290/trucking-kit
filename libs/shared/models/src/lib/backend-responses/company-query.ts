@@ -11,3 +11,11 @@ export type ListCompaniesQueryResult = {
 export type CreateCompanyQuery = {
   createCompany: Company;
 };
+
+export type DeleteCompanyQuery = {
+  deleteCompany: Company;
+};
+
+export type UpdateCompanyQuery = {
+  updateCompany: Company;
+};
