@@ -7,6 +7,7 @@ import {
   Company,
   CreateCompanyQuery,
   DeleteCompanyQuery,
+  GetCompanyQuery,
   ListCompaniesQuery,
   UpdateCompanyQuery,
 } from '@shared/models';
@@ -23,6 +24,17 @@ export class CompanyService {
         query: Mutations.createCompany,
         variables: {
           input: company,
+        },
+      })
+    );
+  }
+
+  getCompany(dotNumber: string): Observable<GraphQLResult<GetCompanyQuery>> {
+    return defer(() =>
+      this.client.graphql({
+        query: Queries.getCompany,
+        variables: {
+          dotNumber: dotNumber,
         },
       })
     );

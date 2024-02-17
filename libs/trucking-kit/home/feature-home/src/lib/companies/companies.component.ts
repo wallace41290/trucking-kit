@@ -41,17 +41,8 @@ export class CompaniesComponent {
     this.fetchCompanies();
   }
 
-  public onEdit(dotNumber: string) {
-    const someCompany = this.companies$().find(
-      (company) => company.dotNumber === dotNumber
-    );
-    if (someCompany) {
-      this.currentCompany$.set(someCompany);
-      this.updateForm = this.fb.group({
-        companyName: [someCompany.companyName, Validators.required],
-        dotNumber: [someCompany.dotNumber, Validators.required],
-      });
-    }
+  public async onEdit(dotNumber: string) {
+    this.getCompany(dotNumber);
   }
 
   public async onCreate(company: Company) {
@@ -138,6 +129,30 @@ export class CompaniesComponent {
         }
         this.updatingCompany$.set(false);
       },
+    });
+  }
+
+  private async getCompany(dotNumber: string) {
+    this.companyService.getCompany(dotNumber).subscribe({
+      next: (results) => {
+        this.currentCompany$.set(results.data.getCompany);
+        console.log('GetCompany - ', results.data.getCompany);
+        this.patchCompanyForm(results.data.getCompany);
+        this.loadingCompanies$.set(false);
+      },
+      error: (e) => {
+        console.error('error fetching companies', e);
+        if (this.isRequestError(e) && e.errors.length) {
+          this.error$.set(e.errors[0].message);
+        }
+      },
+    });
+  }
+
+  private patchCompanyForm(company: Company) {
+    this.updateForm.patchValue({
+      companyName: company.companyName,
+      dotNumber: company.dotNumber,
     });
   }
 

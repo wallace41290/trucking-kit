@@ -16,6 +16,10 @@ export type DeleteCompanyQuery = {
   deleteCompany: Company;
 };
 
+export type GetCompanyQuery = {
+  getCompany: Company;
+};
+
 export type UpdateCompanyQuery = {
   updateCompany: Company;
 };
