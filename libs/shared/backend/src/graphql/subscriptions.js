@@ -10,6 +10,10 @@ export const onCreateCompany = /* GraphQL */ `
       city
       companyName
       dotNumber
+      driver {
+        nextToken
+        __typename
+      }
       state
       streetAddress
       truck {
@@ -37,6 +41,10 @@ export const onUpdateCompany = /* GraphQL */ `
       city
       companyName
       dotNumber
+      driver {
+        nextToken
+        __typename
+      }
       state
       streetAddress
       truck {
@@ -64,6 +72,10 @@ export const onDeleteCompany = /* GraphQL */ `
       city
       companyName
       dotNumber
+      driver {
+        nextToken
+        __typename
+      }
       state
       streetAddress
       truck {
@@ -77,6 +89,99 @@ export const onDeleteCompany = /* GraphQL */ `
       zipCode
       createdAt
       updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onCreateDriver = /* GraphQL */ `
+  subscription OnCreateDriver(
+    $filter: ModelSubscriptionDriverFilterInput
+    $owner: String
+  ) {
+    onCreateDriver(filter: $filter, owner: $owner) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      firstName
+      lastName
+      email
+      cdlNumber
+      createdAt
+      updatedAt
+      companyDriverDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateDriver = /* GraphQL */ `
+  subscription OnUpdateDriver(
+    $filter: ModelSubscriptionDriverFilterInput
+    $owner: String
+  ) {
+    onUpdateDriver(filter: $filter, owner: $owner) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      firstName
+      lastName
+      email
+      cdlNumber
+      createdAt
+      updatedAt
+      companyDriverDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteDriver = /* GraphQL */ `
+  subscription OnDeleteDriver(
+    $filter: ModelSubscriptionDriverFilterInput
+    $owner: String
+  ) {
+    onDeleteDriver(filter: $filter, owner: $owner) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      firstName
+      lastName
+      email
+      cdlNumber
+      createdAt
+      updatedAt
+      companyDriverDotNumber
       owner
       __typename
     }

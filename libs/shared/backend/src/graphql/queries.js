@@ -7,6 +7,10 @@ export const getCompany = /* GraphQL */ `
       city
       companyName
       dotNumber
+      driver {
+        nextToken
+        __typename
+      }
       state
       streetAddress
       truck {
@@ -49,6 +53,66 @@ export const listCompanies = /* GraphQL */ `
         zipCode
         createdAt
         updatedAt
+        owner
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getDriver = /* GraphQL */ `
+  query GetDriver($id: ID!) {
+    getDriver(id: $id) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      firstName
+      lastName
+      email
+      cdlNumber
+      createdAt
+      updatedAt
+      companyDriverDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const listDrivers = /* GraphQL */ `
+  query ListDrivers(
+    $id: ID
+    $filter: ModelDriverFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listDrivers(
+      id: $id
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        firstName
+        lastName
+        email
+        cdlNumber
+        createdAt
+        updatedAt
+        companyDriverDotNumber
         owner
         __typename
       }
