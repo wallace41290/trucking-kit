@@ -1,0 +1,5 @@
+@use '../logo/logo-theme';
+
+@mixin all-component-typographies($theme) {
+  @include logo-theme.typography($theme);
+}

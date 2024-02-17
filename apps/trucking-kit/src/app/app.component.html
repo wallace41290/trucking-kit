@@ -1,9 +1,11 @@
-<tk-navbar [isLoggedIn]="$isLoggedIn | async" (logout)="logout()"></tk-navbar>
+@if($isLoggedIn | async){
+<tk-navbar (logout)="logout()"></tk-navbar>
+}
 
 <amplify-authenticator>
   <ng-template amplifySlot="header">
     <div style="padding: var(--amplify-space-large); text-align: center">
-      Custom Header
+      <tk-horz-logo></tk-horz-logo>
     </div>
   </ng-template>
   <ng-template
@@ -13,11 +15,14 @@
   >
     <router-outlet></router-outlet>
   </ng-template>
-  <ng-template amplifySlot="footer">
-    <div style="padding: var(--amplify-space-large); text-align: center">
-      <p class="amplify-text" style="color: var(--amplify-colors-neutral-80)">
-        © All Rights Reserved
-      </p>
-    </div>
+  <ng-template amplifySlot="sign-in-footer">
+    <button
+      mat-button
+      color="primary"
+      class="footer-button"
+      (click)="authenticator.toForgotPassword()"
+    >
+      Reset Password
+    </button>
   </ng-template>
 </amplify-authenticator>
