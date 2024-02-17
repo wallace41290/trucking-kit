@@ -1,0 +1,16 @@
+type Company @model @auth(rules: [{ allow: owner }]){
+  city: String!
+  companyName: String!
+  dotNumber: String! @primaryKey
+  state: String!
+  streetAddress: String!
+  users: [User] @hasMany
+  zipCode: Int!
+}
+
+type User @model @auth(rules: [{ allow: owner }]) {
+  company: Company @belongsTo
+  email: String! @primaryKey
+  firstName: String!
+  lastName: String!
+}

@@ -1,0 +1,91 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-truckingkit-dev-115140-authRole",
+      "UnauthRoleArn": "arn:aws:iam::789204160597:role/amplify-truckingkit-dev-115140-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::789204160597:role/amplify-truckingkit-dev-115140-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-truckingkit-dev-115140-deployment",
+      "UnauthRoleName": "amplify-truckingkit-dev-115140-unauthRole",
+      "StackName": "amplify-truckingkit-dev-115140",
+      "StackId": "arn:aws:cloudformation:us-east-1:789204160597:stack/amplify-truckingkit-dev-115140/89999bc0-ab21-11ee-91dd-0e68b550c1ff",
+      "AmplifyAppId": "d3kw77affbp3uj"
+    }
+  },
+  "api": {
+    "truckingkit": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "truckingkit8c753c8d"
+        }
+      ],
+      "output": {
+        "authConfig": {
+          "additionalAuthenticationProviders": [],
+          "defaultAuthentication": {
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authtruckingkit8c753c8d"
+            }
+          }
+        },
+        "GraphQLAPIIdOutput": "m6f5jgbbpjgbzidndg62dycn4m",
+        "GraphQLAPIEndpointOutput": "https://qwso6cc7n5gs3ogny4llzmwioy.appsync-api.us-east-1.amazonaws.com/graphql"
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "AppSync",
+      "lastPushTimeStamp": "2024-01-29T19:28:51.451Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-truckingkit-dev-115140-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "logicalId": "apitruckingkit"
+      },
+      "lastPushDirHash": "RfN9L1BUWix3Yk/yweIEpgWVjuc="
+    }
+  },
+  "auth": {
+    "truckingkit8c753c8d": {
+      "customAuth": false,
+      "dependsOn": [],
+      "frontendAuthConfig": {
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito",
+      "output": {
+        "UserPoolId": "us-east-1_rOHv3efMX",
+        "AppClientIDWeb": "7i6qvkn96lt7dinl6gh26gdtsh",
+        "AppClientID": "4qblk11aec5he6v8udfbg7po9m",
+        "IdentityPoolId": "us-east-1:c167708c-a7aa-4d7d-a43f-5093ff6111d3",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-1:789204160597:userpool/us-east-1_rOHv3efMX",
+        "IdentityPoolName": "truckingkit8c753c8d_identitypool_8c753c8d__dev",
+        "UserPoolName": "truckingkit8c753c8d_userpool_8c753c8d"
+      },
+      "lastPushTimeStamp": "2024-01-29T19:28:42.930Z",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-truckingkit-dev-115140-deployment/amplify-cfn-templates/auth/truckingkit8c753c8d-cloudformation-template.json",
+        "logicalId": "authtruckingkit8c753c8d"
+      }
+    }
+  }
+}
