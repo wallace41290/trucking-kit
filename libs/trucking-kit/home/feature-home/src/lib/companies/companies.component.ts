@@ -42,14 +42,14 @@ export class CompaniesComponent {
   }
 
   public onEdit(dotNumber: string) {
-    const someCompany = this.companies$().find(
+    const editCompany = this.companies$().find(
       (company) => company.dotNumber === dotNumber
     );
-    if (someCompany) {
-      this.currentCompany$.set(someCompany);
-      this.updateForm = this.fb.group({
-        companyName: [someCompany.companyName, Validators.required],
-        dotNumber: [someCompany.dotNumber, Validators.required],
+    if (editCompany) {
+      this.currentCompany$.set(editCompany);
+      this.updateForm.patchValue({
+        companyName: editCompany.companyName,
+        dotNumber: editCompany.dotNumber,
       });
     }
   }
