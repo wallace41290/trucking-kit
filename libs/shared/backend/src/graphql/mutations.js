@@ -12,6 +12,10 @@ export const createCompany = /* GraphQL */ `
       dotNumber
       state
       streetAddress
+      truck {
+        nextToken
+        __typename
+      }
       users {
         nextToken
         __typename
@@ -35,6 +39,10 @@ export const updateCompany = /* GraphQL */ `
       dotNumber
       state
       streetAddress
+      truck {
+        nextToken
+        __typename
+      }
       users {
         nextToken
         __typename
@@ -58,6 +66,10 @@ export const deleteCompany = /* GraphQL */ `
       dotNumber
       state
       streetAddress
+      truck {
+        nextToken
+        __typename
+      }
       users {
         nextToken
         __typename
@@ -65,6 +77,99 @@ export const deleteCompany = /* GraphQL */ `
       zipCode
       createdAt
       updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const createTruck = /* GraphQL */ `
+  mutation CreateTruck(
+    $input: CreateTruckInput!
+    $condition: ModelTruckConditionInput
+  ) {
+    createTruck(input: $input, condition: $condition) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      make
+      tag
+      unitNumber
+      year
+      createdAt
+      updatedAt
+      companyTruckDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const updateTruck = /* GraphQL */ `
+  mutation UpdateTruck(
+    $input: UpdateTruckInput!
+    $condition: ModelTruckConditionInput
+  ) {
+    updateTruck(input: $input, condition: $condition) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      make
+      tag
+      unitNumber
+      year
+      createdAt
+      updatedAt
+      companyTruckDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteTruck = /* GraphQL */ `
+  mutation DeleteTruck(
+    $input: DeleteTruckInput!
+    $condition: ModelTruckConditionInput
+  ) {
+    deleteTruck(input: $input, condition: $condition) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      make
+      tag
+      unitNumber
+      year
+      createdAt
+      updatedAt
+      companyTruckDotNumber
       owner
       __typename
     }

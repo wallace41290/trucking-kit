@@ -4,8 +4,18 @@ type Company @model @auth(rules: [{ allow: owner }]){
   dotNumber: String! @primaryKey
   state: String!
   streetAddress: String!
+  truck: [Truck] @hasMany
   users: [User] @hasMany
   zipCode: Int!
+}
+
+type Truck @model @auth(rules: [{ allow: owner }]) {
+  company: Company @belongsTo
+  id: ID! @primaryKey
+  make: String!
+  tag: String
+  unitNumber: String!
+  year: Int
 }
 
 type User @model @auth(rules: [{ allow: owner }]) {

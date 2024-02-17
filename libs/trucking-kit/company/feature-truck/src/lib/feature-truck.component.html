@@ -1,2 +1,29 @@
-<p>feature-truck works!</p>
+<br />
 <p>Viewing Truck ID: {{ id }}</p>
+<div class="form-body">
+  <form
+    autocomplete="off"
+    [formGroup]="updateForm"
+    (ngSubmit)="onUpdate(updateForm.value)"
+  >
+    <div>
+      <label>Unit Number: </label>
+      <input type="text" formControlName="unitNumber" autocomplete="off" />
+    </div>
+    <div>
+      <label>Make: </label>
+      <input type="text" formControlName="make" autocomplete="off" />
+    </div>
+    <div>
+      <label>Year: </label>
+      <input type="text" formControlName="year" autocomplete="off" />
+    </div>
+    <button [disabled]="updatingTruck$()" type="submit">Submit</button>
+    @if(updatingTruck$()){
+    <div>...</div>
+    }
+  </form>
+</div>
+@if(error$()){
+<p style="color: red">{{ error$() }}</p>
+}
