@@ -73,6 +73,7 @@
       "@trucking-kit/profile/feature-profile-edit": [
         "libs/trucking-kit/profile/feature-profile-edit/src/index.ts"
       ],
+      "@trucking-kit/shared/assets": ["libs/shared/assets/src/index.ts"],
       "@trucking-kit/shared/models": [
         "libs/trucking-kit/shared/models/src/index.ts"
       ],
