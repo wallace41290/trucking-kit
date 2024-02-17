@@ -7,8 +7,8 @@
         <th>Last Name</th>
         <th>Email</th>
         <th>CDL Number</th>
-        <!-- <th>Edit</th>
-        <th>Delete</th> -->
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -19,11 +19,11 @@
         <td>{{ driver.lastName }}</td>
         <td>{{ driver.email }}</td>
         <td>{{ driver.cdlNumber }}</td>
-        <!-- <td>
+        <td>
           <a routerLink="{{ driver.id }}" routerLinkActive="active">Edit</a>
         </td>
 
-        <td><button (click)="onDelete(driver.id)">x</button></td> -->
+        <td><button (click)="onDelete(driver.id)">x</button></td>
       </tr>
       } @empty { @if(loadingDrivers$()){
       <tr>

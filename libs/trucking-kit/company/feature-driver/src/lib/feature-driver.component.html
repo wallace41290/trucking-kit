@@ -1,2 +1,29 @@
-<p>feature-driver works!</p>
+<br />
 <p>Viewing Driver ID: {{ id }}</p>
+<div class="form-body">
+  <form
+    autocomplete="off"
+    [formGroup]="updateForm"
+    (ngSubmit)="onUpdate(updateForm.value)"
+  >
+    <div>
+      <label>First Name: </label>
+      <input type="text" formControlName="firstName" autocomplete="off" />
+    </div>
+    <div>
+      <label>Last Name: </label>
+      <input type="text" formControlName="lastName" autocomplete="off" />
+    </div>
+    <div>
+      <label>Email: </label>
+      <input type="text" formControlName="email" autocomplete="off" />
+    </div>
+    <button [disabled]="updatingDriver$()" type="submit">Submit</button>
+    @if(updatingDriver$()){
+    <div>...</div>
+    }
+  </form>
+</div>
+@if(error$()){
+<p style="color: red">{{ error$() }}</p>
+}
