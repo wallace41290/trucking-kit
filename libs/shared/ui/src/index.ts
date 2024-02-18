@@ -1,1 +1,1 @@
-export * from './lib/shared-ui.component';
+export * from './lib/logo/index';

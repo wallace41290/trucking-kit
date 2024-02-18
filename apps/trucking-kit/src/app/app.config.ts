@@ -1,24 +1,27 @@
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig } from '@angular/core';
 import {
   provideRouter,
   withComponentInputBinding,
   withViewTransitions,
 } from '@angular/router';
-import { appRoutes } from './app.routes';
-import { COGNITO_CONFIG } from '@shared/models';
-import { environment } from '../environments/environment';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
-import { ngrxFormsEffects, ngrxFormsFeature } from '@shared/forms';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+
 import {
   errorHandlerEffects,
   errorHandlerFeature,
   errorHandlingInterceptor,
 } from '@shared/error-handler';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { ngrxFormsEffects, ngrxFormsFeature } from '@shared/forms';
 import { API_URL } from '@shared/http-client';
+import { COGNITO_CONFIG } from '@shared/models';
+
+import { appRoutes } from './app.routes';
+import { environment } from '../environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -45,5 +48,6 @@ export const appConfig: ApplicationConfig = {
       connectInZone: true, // If set to true, the connection is established within the Angular zone
     }),
     { provide: API_URL, useValue: environment.apiUrl },
+    provideAnimationsAsync(),
   ],
 };

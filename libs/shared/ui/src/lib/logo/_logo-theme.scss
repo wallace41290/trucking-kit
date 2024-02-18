@@ -1,0 +1,95 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  $config: mat.get-color-config($theme);
+  $background: map.get($config, background);
+  $foreground: map.get($config, foreground);
+  $primary: map.get($config, primary);
+  $accent: map.get($config, accent);
+
+  tk-logo,
+  tk-icon-logo,
+  tk-horz-logo {
+    &.trucking-kit-onAccent {
+      @include _iconColor(mat.get-color-from-palette($primary, default), #fff);
+      @include _textColor(
+        #fff,
+        mat.get-color-from-palette($primary, default),
+        mat.get-color-from-palette($accent, default)
+      );
+    }
+    &.trucking-kit-onBackground {
+      @include _iconColor(
+        mat.get-color-from-palette($accent, default),
+        mat.get-color-from-palette($primary, default)
+      );
+      @include _textColor(
+        mat.get-color-from-palette($primary, default),
+        mat.get-color-from-palette($primary, default-contrast),
+        mat.get-color-from-palette($accent, default)
+      );
+    }
+    &.trucking-kit-onPrimary {
+      @include _iconColor(mat.get-color-from-palette($accent, default), #fff);
+      @include _textColor(
+        #fff,
+        mat.get-color-from-palette($primary, default),
+        mat.get-color-from-palette($accent, default)
+      );
+    }
+  }
+}
+
+@mixin typography($theme) {
+}
+
+@mixin theme($theme) {
+  $config: mat.get-color-config($theme);
+  @if $config != null {
+    @include color($theme);
+  }
+
+  $typography-config: mat.get-typography-config($theme);
+  @if $typography-config != null {
+    @include typography($theme);
+  }
+}
+
+@mixin _iconColor($barsColor, $tkColor) {
+  .icon {
+    .small-bar,
+    .large-bar {
+      fill: $barsColor;
+    }
+    .k-leg,
+    .tk {
+      fill: $tkColor;
+    }
+  }
+}
+
+@mixin _textColor($containerColor, $truckingColor, $kitColor) {
+  .text {
+    .text-container {
+      fill: $containerColor;
+    }
+    .T,
+    .R,
+    .U,
+    .C,
+    .K,
+    .I,
+    .N,
+    .G {
+      fill: $truckingColor;
+    }
+    .k,
+    .k-leg,
+    .i-body,
+    .i-dot,
+    .t {
+      fill: $kitColor;
+    }
+  }
+}

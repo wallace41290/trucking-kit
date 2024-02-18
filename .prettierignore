@@ -5,4 +5,5 @@
 .angular
 /libs/shared/backend/amplify/**/*
 /libs/shared/backend/src/graphql/schema.json
+/libs/shared/assets/src/lottie-icons/**/*
 amplifyconfiguration.json
