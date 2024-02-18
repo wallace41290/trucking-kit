@@ -1,10 +1,6 @@
 <nav>
   <ul>
-    @if (!isLoggedIn) {
-    <li>
-      <a routerLink="/home">Home</a>
-    </li>
-    } @else { @for (route of routes; track route.name){
+    @for (route of routes; track route.name){
     <li>
       <a [routerLink]="route.path" routerLinkActive="active">{{
         route.name
@@ -14,6 +10,5 @@
     <li>
       <button (click)="logout.emit()">Logout</button>
     </li>
-    }
   </ul>
 </nav>

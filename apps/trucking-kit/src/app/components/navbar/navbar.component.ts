@@ -1,6 +1,5 @@
 import {
   Component,
-  Input,
   ChangeDetectionStrategy,
   EventEmitter,
   Output,
@@ -21,7 +20,6 @@ interface Route {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavbarComponent {
-  @Input() isLoggedIn: boolean | undefined | null;
   @Output() logout = new EventEmitter();
 
   routes: Route[] = [
