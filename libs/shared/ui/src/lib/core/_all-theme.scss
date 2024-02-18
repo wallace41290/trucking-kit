@@ -1,0 +1,5 @@
+@use '../logo/logo-theme';
+
+@mixin all-component-themes($theme) {
+  @include logo-theme.theme($theme);
+}

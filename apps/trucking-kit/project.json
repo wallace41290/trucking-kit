@@ -19,15 +19,31 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/trucking-kit/src/favicon.ico",
-          "apps/trucking-kit/src/assets"
+          "apps/trucking-kit/src/assets",
+          {
+            "input": "libs/shared/assets/src/favicon",
+            "glob": "**/*",
+            "output": "assets/favicon"
+          },
+          {
+            "input": "libs/shared/assets/src/icons",
+            "glob": "**/*",
+            "output": "assets/icons"
+          },
+          {
+            "input": "libs/shared/assets/src/lottie-icons",
+            "glob": "truck-yellow-grey.json",
+            "output": "assets/lottie-icons"
+          }
         ],
         "stylePreprocessorOptions": {
           "includePaths": ["libs/shared/styles/src"]
         },
         "styles": [
           "libs/shared/styles/src/reset.css",
-          "apps/trucking-kit/src/styles.scss",
-          "node_modules/@aws-amplify/ui-angular/theme.css"
+          "node_modules/@aws-amplify/ui-angular/theme.css",
+          "apps/trucking-kit/src/scss/styles.scss",
+          "apps/trucking-kit/src/scss/theme.scss"
         ],
         "scripts": [],
         "allowedCommonJsDependencies": [
@@ -102,7 +118,10 @@
       "options": {
         "cwd": "libs/shared/backend",
         "command": "file=\"./src/amplifyconfiguration.json\"; [ ! -e \"$file\" ] && echo \"{}\" > \"$file\" && echo \"Blank amplifyconfiguration.json file created.\" || echo \"amplifyconfiguration.json already exists.\""
-      }
+      },
+      "outputs": [
+        "{workspaceRoot}/libs/shared/backend/src/amplifyconfiguration.json"
+      ]
     }
   }
 }
