@@ -1,4 +1,6 @@
 {
+  // updated 2023-12-10 09:56
+  // https://github.com/antfu/vscode-file-nesting-config
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
