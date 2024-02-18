@@ -5,44 +5,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { generateClient, GraphQLResult } from 'aws-amplify/api';
-import * as Queries from '@shared/backend/graphql/queries';
-import * as Mutations from '@shared/backend/graphql/mutations';
-
-export type Company = {
-  city: string;
-  companyName: string;
-  dotNumber: string;
-  state: string;
-  streetAddress: string;
-  zipCode: number;
-};
-
-export type ListCompaniesQuery = {
-  listCompanies: ListCompaniesQueryResult;
-};
-
-export type ListCompaniesQueryResult = {
-  items: Company[];
-};
-
-export type CreateCompanyQuery = {
-  createCompany: Company;
-};
-
-interface RequestError {
-  data: unknown;
-  errors: Error[];
-}
-
-interface Error {
-  data: unknown;
-  errorInfo: string;
-  errorType: string;
-  locations: unknown;
-  message: string;
-  path: unknown;
-}
+import { inject } from '@angular/core';
+import { CompanyService } from '@trucking-kit/company/data-access';
+import { Company, RequestError } from '@shared/models';
 
 @Component({
   selector: 'tk-companies',
@@ -52,70 +17,162 @@ interface Error {
   styleUrl: './companies.component.css',
 })
 export class CompaniesComponent {
-  client = generateClient();
+  companyService = inject(CompanyService);
   createForm: FormGroup;
+  updateForm: FormGroup;
 
   companies$ = signal<Company[]>([]);
   creatingCompany$ = signal(false);
+  currentCompany$ = signal<Company | null>(null);
   error$ = signal('');
   loadingCompanies$ = signal(false);
+  updatingCompany$ = signal(false);
 
   constructor(private fb: FormBuilder) {
     this.createForm = this.fb.group({
       companyName: ['', Validators.required],
       dotNumber: ['', Validators.required],
     });
+    this.updateForm = this.fb.group({
+      companyName: ['', Validators.required],
+      dotNumber: ['', Validators.required],
+    });
+
     this.fetchCompanies();
+  }
+
+  public async onEdit(dotNumber: string) {
+    this.getCompany(dotNumber);
   }
 
   public async onCreate(company: Company) {
     this.error$.set('');
     this.creatingCompany$.set(true);
-    try {
-      const newCompany = {
-        companyName: company.companyName,
-        city: 'Knoxville',
-        state: 'TN',
-        streetAddress: '123 First Ave',
-        zipCode: 27384,
-        dotNumber: company.dotNumber,
-      };
 
-      const response = (await this.client.graphql({
-        query: Mutations.createCompany,
-        variables: {
-          input: newCompany,
-        },
-      })) as GraphQLResult<CreateCompanyQuery>;
+    const newCompany = {
+      companyName: company.companyName,
+      city: 'Knoxville',
+      state: 'TN',
+      streetAddress: '123 First Ave',
+      zipCode: 27384,
+      dotNumber: company.dotNumber,
+    };
 
-      console.log('Companies Component - GraphQL response', response);
-      this.companies$.set([...this.companies$(), response.data.createCompany]);
-    } catch (e) {
-      console.error('error creating company...', e);
-      if (this.isRequestError(e) && e.errors.length) {
-        this.error$.set(e.errors[0].message);
-      }
-    } finally {
-      this.creatingCompany$.set(false);
-    }
+    this.companyService.createCompany(newCompany).subscribe({
+      next: (results) => {
+        this.companies$.set([...this.companies$(), results.data.createCompany]);
+        console.log('Companies Component - GraphQL response', results);
+        this.creatingCompany$.set(false);
+      },
+      error: (e) => {
+        console.error('error creating company', e);
+        if (this.isRequestError(e) && e.errors.length) {
+          this.error$.set(e.errors[0].message);
+        }
+        this.creatingCompany$.set(false);
+      },
+    });
+  }
+
+  public async onDelete(companyDot: string) {
+    this.error$.set('');
+
+    this.companyService.deleteCompany(companyDot).subscribe({
+      next: (results) => {
+        this.companies$.set(
+          this.companies$().filter(
+            (company) => company.dotNumber !== companyDot
+          )
+        );
+        console.log('Companies Component - GraphQL response', results);
+      },
+      error: (e) => {
+        console.error('error deleting company', e);
+        if (this.isRequestError(e) && e.errors.length) {
+          this.error$.set(e.errors[0].message);
+        }
+      },
+    });
+  }
+
+  public async onUpdate(company: Company) {
+    this.error$.set('');
+    this.updatingCompany$.set(true);
+
+    const updatedCompany = {
+      companyName: company.companyName,
+      city: 'Knoxville',
+      state: 'TN',
+      streetAddress: '123 First Ave',
+      zipCode: 27384,
+      dotNumber: company.dotNumber,
+    };
+
+    this.companyService.updateCompany(updatedCompany).subscribe({
+      next: (results) => {
+        this.companies$.set(
+          this.companies$().map((company) => {
+            if (company.dotNumber === results.data.updateCompany.dotNumber) {
+              return results.data.updateCompany;
+            } else {
+              return company;
+            }
+          })
+        );
+        console.log('Companies Component - GraphQL response', results);
+        this.updatingCompany$.set(false);
+      },
+      error: (e) => {
+        console.error('error creating company', e);
+        if (this.isRequestError(e) && e.errors.length) {
+          this.error$.set(e.errors[0].message);
+        }
+        this.updatingCompany$.set(false);
+      },
+    });
+  }
+
+  private async getCompany(dotNumber: string) {
+    this.companyService.getCompany(dotNumber).subscribe({
+      next: (results) => {
+        this.currentCompany$.set(results.data.getCompany);
+        console.log('GetCompany - ', results.data.getCompany);
+        this.patchCompanyForm(results.data.getCompany);
+        this.loadingCompanies$.set(false);
+      },
+      error: (e) => {
+        console.error('error fetching companies', e);
+        if (this.isRequestError(e) && e.errors.length) {
+          this.error$.set(e.errors[0].message);
+        }
+      },
+    });
+  }
+
+  private patchCompanyForm(company: Company) {
+    this.updateForm.patchValue({
+      companyName: company.companyName,
+      dotNumber: company.dotNumber,
+    });
   }
 
   private async fetchCompanies() {
     this.error$.set('');
     this.loadingCompanies$.set(true);
-    try {
-      const response = (await this.client.graphql({
-        query: Queries.listCompanies,
-      })) as GraphQLResult<ListCompaniesQuery>;
-      this.companies$.set(response.data.listCompanies.items);
-    } catch (e: unknown) {
-      console.error('error fetching companies', e);
-      if (this.isRequestError(e) && e.errors.length) {
-        this.error$.set(e.errors[0].message);
-      }
-    } finally {
-      this.loadingCompanies$.set(false);
-    }
+
+    this.companyService.fetchCompanies().subscribe({
+      next: (results) => {
+        this.companies$.set(results.data.listCompanies.items);
+        this.loadingCompanies$.set(false);
+      },
+      error: (e) => {
+        console.error('error fetching companies', e);
+        if (this.isRequestError(e) && e.errors.length) {
+          this.error$.set(e.errors[0].message);
+        }
+        this.loadingCompanies$.set(false);
+      },
+    });
   }
 
   private isRequestError(something: unknown): something is RequestError {

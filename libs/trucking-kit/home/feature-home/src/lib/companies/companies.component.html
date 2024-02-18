@@ -3,6 +3,8 @@
     <tr>
       <th>DOT Number</th>
       <th>Company</th>
+      <th>Edit Company</th>
+      <th>Delete Company</th>
     </tr>
   </thead>
   <tbody>
@@ -10,6 +12,8 @@
     <tr>
       <td>{{ company.dotNumber }}</td>
       <td>{{ company.companyName }}</td>
+      <td><button (click)="onEdit(company.dotNumber)">Edit</button></td>
+      <td><button (click)="onDelete(company.dotNumber)">x</button></td>
     </tr>
     } @empty { @if(loadingCompanies$()){
     <tr>
@@ -42,6 +46,24 @@
     }
   </form>
 </div>
-@if(error$()){
+@if(currentCompany$()) {
+
+<div class="form-body">
+  <form
+    autocomplete="off"
+    [formGroup]="updateForm"
+    (ngSubmit)="onUpdate(updateForm.value)"
+  >
+    <div>
+      <label>Company Name: </label>
+      <input type="text" formControlName="companyName" autocomplete="off" />
+    </div>
+    <button [disabled]="updatingCompany$()" type="submit">Submit</button>
+    @if(updatingCompany$()){
+    <div>...</div>
+    }
+  </form>
+</div>
+} @if(error$()){
 <p style="color: red">{{ error$() }}</p>
 }
