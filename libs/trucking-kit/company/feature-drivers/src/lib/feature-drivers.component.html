@@ -1,10 +1,72 @@
-<p>feature-drivers works!</p>
 <div class="container">
-  <nav>
-    <a routerLink="driver-1" routerLinkActive="active">Driver 1</a>
-    <a routerLink="driver-2" routerLinkActive="active">Driver 2</a>
-    <a routerLink="driver-3" routerLinkActive="active">Driver 3</a>
-  </nav>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>CDL Number</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (driver of drivers$(); track driver?.id) {
+      <tr>
+        <td>{{ driver.id }}</td>
+        <td>{{ driver.firstName }}</td>
+        <td>{{ driver.lastName }}</td>
+        <td>{{ driver.email }}</td>
+        <td>{{ driver.cdlNumber }}</td>
+        <td>
+          <a routerLink="{{ driver.id }}" routerLinkActive="active">Edit</a>
+        </td>
+
+        <td><button (click)="onDelete(driver.id)">x</button></td>
+      </tr>
+      } @empty { @if(loadingDrivers$()){
+      <tr>
+        <td colspan="2">...</td>
+      </tr>
+      }@else {
+      <tr>
+        <td colSpan="2">No drivers yet. Add more now.</td>
+      </tr>
+      } }
+    </tbody>
+  </table>
+  <div class="form-body">
+    <form
+      autocomplete="off"
+      [formGroup]="createForm"
+      (ngSubmit)="onCreate(createForm.value)"
+    >
+      <div>
+        <label>First Name: </label>
+        <input type="text" formControlName="firstName" autocomplete="off" />
+      </div>
+      <div>
+        <label>Last Name: </label>
+        <input type="text" formControlName="lastName" autocomplete="off" />
+      </div>
+      <div>
+        <label>Email: </label>
+        <input type="text" formControlName="email" autocomplete="off" />
+      </div>
+      <div>
+        <label>CDL Number: </label>
+        <input type="text" formControlName="cdlNumber" autocomplete="off" />
+      </div>
+      <button [disabled]="creatingDriver$()" type="submit">Submit</button>
+      @if(creatingDriver$()){
+      <div>...</div>
+      }
+    </form>
+  </div>
+  @if(error$()){
+  <p style="color: red">{{ error$() }}</p>
+  }
   <div class="content">
     <router-outlet></router-outlet>
   </div>

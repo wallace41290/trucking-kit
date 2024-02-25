@@ -10,6 +10,10 @@ export const createCompany = /* GraphQL */ `
       city
       companyName
       dotNumber
+      driver {
+        nextToken
+        __typename
+      }
       state
       streetAddress
       truck {
@@ -37,6 +41,10 @@ export const updateCompany = /* GraphQL */ `
       city
       companyName
       dotNumber
+      driver {
+        nextToken
+        __typename
+      }
       state
       streetAddress
       truck {
@@ -64,6 +72,10 @@ export const deleteCompany = /* GraphQL */ `
       city
       companyName
       dotNumber
+      driver {
+        nextToken
+        __typename
+      }
       state
       streetAddress
       truck {
@@ -77,6 +89,99 @@ export const deleteCompany = /* GraphQL */ `
       zipCode
       createdAt
       updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const createDriver = /* GraphQL */ `
+  mutation CreateDriver(
+    $input: CreateDriverInput!
+    $condition: ModelDriverConditionInput
+  ) {
+    createDriver(input: $input, condition: $condition) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      firstName
+      lastName
+      email
+      cdlNumber
+      createdAt
+      updatedAt
+      companyDriverDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const updateDriver = /* GraphQL */ `
+  mutation UpdateDriver(
+    $input: UpdateDriverInput!
+    $condition: ModelDriverConditionInput
+  ) {
+    updateDriver(input: $input, condition: $condition) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      firstName
+      lastName
+      email
+      cdlNumber
+      createdAt
+      updatedAt
+      companyDriverDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteDriver = /* GraphQL */ `
+  mutation DeleteDriver(
+    $input: DeleteDriverInput!
+    $condition: ModelDriverConditionInput
+  ) {
+    deleteDriver(input: $input, condition: $condition) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      firstName
+      lastName
+      email
+      cdlNumber
+      createdAt
+      updatedAt
+      companyDriverDotNumber
       owner
       __typename
     }
