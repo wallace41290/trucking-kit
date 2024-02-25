@@ -12,6 +12,10 @@ export const onCreateCompany = /* GraphQL */ `
       dotNumber
       state
       streetAddress
+      truck {
+        nextToken
+        __typename
+      }
       users {
         nextToken
         __typename
@@ -35,6 +39,10 @@ export const onUpdateCompany = /* GraphQL */ `
       dotNumber
       state
       streetAddress
+      truck {
+        nextToken
+        __typename
+      }
       users {
         nextToken
         __typename
@@ -58,6 +66,10 @@ export const onDeleteCompany = /* GraphQL */ `
       dotNumber
       state
       streetAddress
+      truck {
+        nextToken
+        __typename
+      }
       users {
         nextToken
         __typename
@@ -65,6 +77,99 @@ export const onDeleteCompany = /* GraphQL */ `
       zipCode
       createdAt
       updatedAt
+      owner
+      __typename
+    }
+  }
+`;
+export const onCreateTruck = /* GraphQL */ `
+  subscription OnCreateTruck(
+    $filter: ModelSubscriptionTruckFilterInput
+    $owner: String
+  ) {
+    onCreateTruck(filter: $filter, owner: $owner) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      make
+      tag
+      unitNumber
+      year
+      createdAt
+      updatedAt
+      companyTruckDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateTruck = /* GraphQL */ `
+  subscription OnUpdateTruck(
+    $filter: ModelSubscriptionTruckFilterInput
+    $owner: String
+  ) {
+    onUpdateTruck(filter: $filter, owner: $owner) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      make
+      tag
+      unitNumber
+      year
+      createdAt
+      updatedAt
+      companyTruckDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteTruck = /* GraphQL */ `
+  subscription OnDeleteTruck(
+    $filter: ModelSubscriptionTruckFilterInput
+    $owner: String
+  ) {
+    onDeleteTruck(filter: $filter, owner: $owner) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      make
+      tag
+      unitNumber
+      year
+      createdAt
+      updatedAt
+      companyTruckDotNumber
       owner
       __typename
     }

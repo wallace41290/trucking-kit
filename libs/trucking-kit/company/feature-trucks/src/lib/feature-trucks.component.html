@@ -1,10 +1,66 @@
-<p>feature-trucks works!</p>
 <div class="container">
-  <nav>
-    <a routerLink="truck-1" routerLinkActive="active">Truck 1</a>
-    <a routerLink="truck-2" routerLinkActive="active">Truck 2</a>
-    <a routerLink="truck-3" routerLinkActive="active">Truck 3</a>
-  </nav>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Unit Number</th>
+        <th>Year</th>
+        <th>Make</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (truck of trucks$(); track truck?.id) {
+      <tr>
+        <td>{{ truck.id }}</td>
+        <td>{{ truck.unitNumber }}</td>
+        <td>{{ truck.year }}</td>
+        <td>{{ truck.make }}</td>
+        <td>
+          <a routerLink="{{ truck.id }}" routerLinkActive="active">Edit</a>
+        </td>
+
+        <td><button (click)="onDelete(truck.id)">x</button></td>
+      </tr>
+      } @empty { @if(loadingTrucks$()){
+      <tr>
+        <td colspan="2">...</td>
+      </tr>
+      }@else {
+      <tr>
+        <td colSpan="2">No trucks yet. Add more now.</td>
+      </tr>
+      } }
+    </tbody>
+  </table>
+  <div class="form-body">
+    <form
+      autocomplete="off"
+      [formGroup]="createForm"
+      (ngSubmit)="onCreate(createForm.value)"
+    >
+      <div>
+        <label>Unit Number: </label>
+        <input type="text" formControlName="unitNumber" autocomplete="off" />
+      </div>
+      <div>
+        <label>Make: </label>
+        <input type="text" formControlName="make" autocomplete="off" />
+      </div>
+      <div>
+        <label>Year: </label>
+        <input type="text" formControlName="year" autocomplete="off" />
+      </div>
+      <button [disabled]="creatingTruck$()" type="submit">Submit</button>
+      @if(creatingTruck$()){
+      <div>...</div>
+      }
+    </form>
+  </div>
+  @if(error$()){
+  <p style="color: red">{{ error$() }}</p>
+  }
   <div class="content">
     <router-outlet></router-outlet>
   </div>

@@ -2,10 +2,30 @@ type Company @model @auth(rules: [{ allow: owner }]){
   city: String!
   companyName: String!
   dotNumber: String! @primaryKey
+  driver: [Driver] @hasMany
   state: String!
   streetAddress: String!
+  truck: [Truck] @hasMany
   users: [User] @hasMany
   zipCode: Int!
+}
+
+type Driver @model @auth(rules: [{ allow: owner }]) {
+  company: Company @belongsTo
+  id: ID! @primaryKey
+  firstName: String!
+  lastName: String!
+  email: String!
+  cdlNumber: String
+}
+
+type Truck @model @auth(rules: [{ allow: owner }]) {
+  company: Company @belongsTo
+  id: ID! @primaryKey
+  make: String!
+  tag: String
+  unitNumber: String!
+  year: Int
 }
 
 type User @model @auth(rules: [{ allow: owner }]) {

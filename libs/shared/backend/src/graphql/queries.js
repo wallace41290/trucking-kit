@@ -9,6 +9,10 @@ export const getCompany = /* GraphQL */ `
       dotNumber
       state
       streetAddress
+      truck {
+        nextToken
+        __typename
+      }
       users {
         nextToken
         __typename
@@ -45,6 +49,66 @@ export const listCompanies = /* GraphQL */ `
         zipCode
         createdAt
         updatedAt
+        owner
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getTruck = /* GraphQL */ `
+  query GetTruck($id: ID!) {
+    getTruck(id: $id) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      make
+      tag
+      unitNumber
+      year
+      createdAt
+      updatedAt
+      companyTruckDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const listTrucks = /* GraphQL */ `
+  query ListTrucks(
+    $id: ID
+    $filter: ModelTruckFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listTrucks(
+      id: $id
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        make
+        tag
+        unitNumber
+        year
+        createdAt
+        updatedAt
+        companyTruckDotNumber
         owner
         __typename
       }
