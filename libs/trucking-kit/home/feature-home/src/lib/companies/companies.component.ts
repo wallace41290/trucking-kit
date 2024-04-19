@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { inject } from '@angular/core';
 import { CompanyService } from '@trucking-kit/company/data-access';
-import { Company, RequestError, Service } from '@shared/models';
+import { Company, RequestError } from '@shared/models';
 
 @Component({
   selector: 'tk-companies',
