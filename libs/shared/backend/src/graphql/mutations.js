@@ -7,6 +7,7 @@ export const createCompany = /* GraphQL */ `
     $condition: ModelCompanyConditionInput
   ) {
     createCompany(input: $input, condition: $condition) {
+      activeServices
       city
       companyName
       dotNumber
@@ -38,6 +39,7 @@ export const updateCompany = /* GraphQL */ `
     $condition: ModelCompanyConditionInput
   ) {
     updateCompany(input: $input, condition: $condition) {
+      activeServices
       city
       companyName
       dotNumber
@@ -69,6 +71,7 @@ export const deleteCompany = /* GraphQL */ `
     $condition: ModelCompanyConditionInput
   ) {
     deleteCompany(input: $input, condition: $condition) {
+      activeServices
       city
       companyName
       dotNumber
@@ -101,6 +104,7 @@ export const createDriver = /* GraphQL */ `
   ) {
     createDriver(input: $input, condition: $condition) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -132,6 +136,7 @@ export const updateDriver = /* GraphQL */ `
   ) {
     updateDriver(input: $input, condition: $condition) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -163,6 +168,7 @@ export const deleteDriver = /* GraphQL */ `
   ) {
     deleteDriver(input: $input, condition: $condition) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -194,6 +200,7 @@ export const createTruck = /* GraphQL */ `
   ) {
     createTruck(input: $input, condition: $condition) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -225,6 +232,7 @@ export const updateTruck = /* GraphQL */ `
   ) {
     updateTruck(input: $input, condition: $condition) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -256,6 +264,7 @@ export const deleteTruck = /* GraphQL */ `
   ) {
     deleteTruck(input: $input, condition: $condition) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -287,6 +296,7 @@ export const createUser = /* GraphQL */ `
   ) {
     createUser(input: $input, condition: $condition) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -316,6 +326,7 @@ export const updateUser = /* GraphQL */ `
   ) {
     updateUser(input: $input, condition: $condition) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -345,6 +356,7 @@ export const deleteUser = /* GraphQL */ `
   ) {
     deleteUser(input: $input, condition: $condition) {
       company {
+        activeServices
         city
         companyName
         dotNumber

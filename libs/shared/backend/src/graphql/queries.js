@@ -4,6 +4,7 @@
 export const getCompany = /* GraphQL */ `
   query GetCompany($dotNumber: String!) {
     getCompany(dotNumber: $dotNumber) {
+      activeServices
       city
       companyName
       dotNumber
@@ -45,6 +46,7 @@ export const listCompanies = /* GraphQL */ `
       sortDirection: $sortDirection
     ) {
       items {
+        activeServices
         city
         companyName
         dotNumber
@@ -65,6 +67,7 @@ export const getDriver = /* GraphQL */ `
   query GetDriver($id: ID!) {
     getDriver(id: $id) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -125,6 +128,7 @@ export const getTruck = /* GraphQL */ `
   query GetTruck($id: ID!) {
     getTruck(id: $id) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -185,6 +189,7 @@ export const getUser = /* GraphQL */ `
   query GetUser($email: String!) {
     getUser(email: $email) {
       company {
+        activeServices
         city
         companyName
         dotNumber
