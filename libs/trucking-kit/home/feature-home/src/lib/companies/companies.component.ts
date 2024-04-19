@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { inject } from '@angular/core';
 import { CompanyService } from '@trucking-kit/company/data-access';
-import { Company, RequestError } from '@shared/models';
+import { Company, RequestError, Service } from '@shared/models';
 
 @Component({
   selector: 'tk-companies',
@@ -49,7 +49,8 @@ export class CompaniesComponent {
     this.error$.set('');
     this.creatingCompany$.set(true);
 
-    const newCompany = {
+    const newCompany: Company = {
+      activeServices: ['DRUG_AND_ALCOHOL'],
       companyName: company.companyName,
       city: 'Knoxville',
       state: 'TN',
@@ -99,7 +100,8 @@ export class CompaniesComponent {
     this.error$.set('');
     this.updatingCompany$.set(true);
 
-    const updatedCompany = {
+    const updatedCompany: Company = {
+      activeServices: ['DRUG_AND_ALCOHOL'],
       companyName: company.companyName,
       city: 'Knoxville',
       state: 'TN',
