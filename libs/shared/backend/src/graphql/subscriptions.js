@@ -16,6 +16,10 @@ export const onCreateCompany = /* GraphQL */ `
       }
       state
       streetAddress
+      task {
+        nextToken
+        __typename
+      }
       truck {
         nextToken
         __typename
@@ -47,6 +51,10 @@ export const onUpdateCompany = /* GraphQL */ `
       }
       state
       streetAddress
+      task {
+        nextToken
+        __typename
+      }
       truck {
         nextToken
         __typename
@@ -78,6 +86,10 @@ export const onDeleteCompany = /* GraphQL */ `
       }
       state
       streetAddress
+      task {
+        nextToken
+        __typename
+      }
       truck {
         nextToken
         __typename
@@ -182,6 +194,105 @@ export const onDeleteDriver = /* GraphQL */ `
       createdAt
       updatedAt
       companyDriverDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const onCreateTask = /* GraphQL */ `
+  subscription OnCreateTask(
+    $filter: ModelSubscriptionTaskFilterInput
+    $owner: String
+  ) {
+    onCreateTask(filter: $filter, owner: $owner) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      title
+      description
+      status
+      createdDate
+      dueDate
+      lastUpdatedDate
+      createdAt
+      updatedAt
+      companyTaskDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const onUpdateTask = /* GraphQL */ `
+  subscription OnUpdateTask(
+    $filter: ModelSubscriptionTaskFilterInput
+    $owner: String
+  ) {
+    onUpdateTask(filter: $filter, owner: $owner) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      title
+      description
+      status
+      createdDate
+      dueDate
+      lastUpdatedDate
+      createdAt
+      updatedAt
+      companyTaskDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const onDeleteTask = /* GraphQL */ `
+  subscription OnDeleteTask(
+    $filter: ModelSubscriptionTaskFilterInput
+    $owner: String
+  ) {
+    onDeleteTask(filter: $filter, owner: $owner) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      title
+      description
+      status
+      createdDate
+      dueDate
+      lastUpdatedDate
+      createdAt
+      updatedAt
+      companyTaskDotNumber
       owner
       __typename
     }

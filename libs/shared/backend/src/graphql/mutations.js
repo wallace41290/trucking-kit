@@ -16,6 +16,10 @@ export const createCompany = /* GraphQL */ `
       }
       state
       streetAddress
+      task {
+        nextToken
+        __typename
+      }
       truck {
         nextToken
         __typename
@@ -47,6 +51,10 @@ export const updateCompany = /* GraphQL */ `
       }
       state
       streetAddress
+      task {
+        nextToken
+        __typename
+      }
       truck {
         nextToken
         __typename
@@ -78,6 +86,10 @@ export const deleteCompany = /* GraphQL */ `
       }
       state
       streetAddress
+      task {
+        nextToken
+        __typename
+      }
       truck {
         nextToken
         __typename
@@ -182,6 +194,105 @@ export const deleteDriver = /* GraphQL */ `
       createdAt
       updatedAt
       companyDriverDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const createTask = /* GraphQL */ `
+  mutation CreateTask(
+    $input: CreateTaskInput!
+    $condition: ModelTaskConditionInput
+  ) {
+    createTask(input: $input, condition: $condition) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      title
+      description
+      status
+      createdDate
+      dueDate
+      lastUpdatedDate
+      createdAt
+      updatedAt
+      companyTaskDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const updateTask = /* GraphQL */ `
+  mutation UpdateTask(
+    $input: UpdateTaskInput!
+    $condition: ModelTaskConditionInput
+  ) {
+    updateTask(input: $input, condition: $condition) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      title
+      description
+      status
+      createdDate
+      dueDate
+      lastUpdatedDate
+      createdAt
+      updatedAt
+      companyTaskDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const deleteTask = /* GraphQL */ `
+  mutation DeleteTask(
+    $input: DeleteTaskInput!
+    $condition: ModelTaskConditionInput
+  ) {
+    deleteTask(input: $input, condition: $condition) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      title
+      description
+      status
+      createdDate
+      dueDate
+      lastUpdatedDate
+      createdAt
+      updatedAt
+      companyTaskDotNumber
       owner
       __typename
     }
