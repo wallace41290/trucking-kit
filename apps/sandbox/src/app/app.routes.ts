@@ -8,4 +8,11 @@ export const appRoutes: Route[] = [
         (mod) => mod.DestinationLinkComponent
       ),
   },
+  {
+    path: 'navigation-rail',
+    loadComponent: () =>
+      import('./containers/navigation-rail/navigation-rail.component').then(
+        (mod) => mod.NavigationRailComponent
+      ),
+  },
 ];

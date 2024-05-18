@@ -1,0 +1,44 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [opened]="opened" fixedInViewport>
+    <div class="rail-container">
+      <tk-icon-logo></tk-icon-logo>
+      <!-- Injected some how based on route? need service -->
+      <button mat-fab color="primary" aria-label="Example icon button ">
+        <mat-icon>bolt</mat-icon>
+      </button>
+      <div class="rail-destinations">
+        <!-- Passed in and fixed? -->
+        <button class="rail-destination-button" mat-button color="primary">
+          <span>
+            <mat-icon class="rail-destination-button-icon">home</mat-icon>
+            <span class="rail-destination-button-label">Home</span>
+          </span>
+        </button>
+        <button
+          mat-icon-button
+          color="accent"
+          aria-label="Example icon button with a menu icon"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          color="warn"
+          aria-label="Example icon button with a heart icon"
+        >
+          <mat-icon>favorite</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          disabled
+          aria-label="Example icon button with a open in new tab icon"
+        >
+          <mat-icon>open_in_new</mat-icon>
+        </button>
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

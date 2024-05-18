@@ -4,26 +4,19 @@
   "projectType": "application",
   "prefix": "sandbox",
   "sourceRoot": "apps/sandbox/src",
-  "tags": [],
+  "tags": ["scope:trucking-kit"],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/sandbox",
         "index": "apps/sandbox/src/index.html",
         "browser": "apps/sandbox/src/main.ts",
-        "polyfills": [
-          "zone.js"
-        ],
+        "polyfills": ["zone.js"],
         "tsConfig": "apps/sandbox/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/sandbox/src/favicon.ico",
-          "apps/sandbox/src/assets"
-        ],
+        "assets": ["apps/sandbox/src/favicon.ico", "apps/sandbox/src/assets"],
         "styles": [
           "@angular/material/prebuilt-themes/indigo-pink.css",
           "apps/sandbox/src/styles.scss"
