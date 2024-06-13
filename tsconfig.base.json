@@ -61,10 +61,10 @@
       "@trucking-kit/dashboard/feature-products": [
         "libs/trucking-kit/products/feature-products/src/index.ts"
       ],
-      "@trucking-kit/dashboard/feature-task": [
+      "@trucking-kit/tasks/feature-task": [
         "libs/trucking-kit/tasks/feature-task/src/index.ts"
       ],
-      "@trucking-kit/dashboard/feature-tasks": [
+      "@trucking-kit/tasks/feature-tasks": [
         "libs/trucking-kit/tasks/feature-tasks/src/index.ts"
       ],
       "@trucking-kit/home/feature-home": [
