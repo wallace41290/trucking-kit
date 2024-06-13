@@ -46,11 +46,23 @@ export class FeatureTasksComponent {
     this.error$.set('');
     this.creatingTask$.set(true);
 
+    const testCompany = {
+      name: 'Company',
+      city: 'Knoxville',
+      companyName: 'Long Haul Trucking LLC',
+      createdAt: '2024-01-30T01:49:58.592Z',
+      dotNumber: '1231233',
+      state: 'TN',
+      streetAddress: '123 First Ave',
+      zipCode: 27384,
+    };
+
     const newTask = {
       description: task.description,
       dueDate: task.dueDate,
       status: task.status,
       title: task.title,
+      company: testCompany,
     };
 
     this.taskService.createTask(newTask).subscribe({
