@@ -8,12 +8,13 @@ import {
 import { AuthenticatorService } from '@aws-amplify/ui-angular';
 import { ProfileStore } from '@trucking-kit/profile/data-access';
 import { CompaniesComponent } from './companies/companies.component';
+import { FeatureTasksComponent } from '@trucking-kit/tasks/feature-tasks';
 
 @Component({
   selector: 'tk-home',
   standalone: true,
   templateUrl: './home.component.html',
-  imports: [CompaniesComponent],
+  imports: [CompaniesComponent, FeatureTasksComponent],
   styleUrls: ['./home.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

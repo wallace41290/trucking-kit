@@ -50,7 +50,7 @@ export const appRoutes: Route[] = [
   {
     path: 'tasks',
     loadChildren: () =>
-      import('@trucking-kit/dashboard/feature-tasks').then(
+      import('@trucking-kit/tasks/feature-tasks').then(
         (m) => m.featureTasksRoutes
       ),
     canActivate: [authGuard],
