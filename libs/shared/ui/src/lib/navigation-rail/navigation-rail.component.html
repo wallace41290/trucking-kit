@@ -2,10 +2,16 @@
   <mat-sidenav #sidenav mode="side" [opened]="opened" fixedInViewport>
     <div class="rail-container">
       <tk-icon-logo></tk-icon-logo>
-      <!-- Injected some how based on route? need service -->
-      <button aria-label="Example icon button" mat-fab color="accent">
-        <mat-icon>bolt</mat-icon>
+      @if (railService.actionButton$ | async; as action) {
+      <button
+        mat-fab
+        [attr.aria-label]="action.ariaLabel"
+        [color]="action.color"
+        (click)="action.action()"
+      >
+        <mat-icon>{{ action.icon }}</mat-icon>
       </button>
+      }
       <div class="rail-destinations">
         @for (destination of destinations; track destination.route){
         <tk-destination-link

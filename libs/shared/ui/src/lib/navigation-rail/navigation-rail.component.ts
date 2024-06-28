@@ -3,6 +3,7 @@ import {
   Component,
   Input,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +14,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { TkLogoModule } from '../logo';
 import { TkDestinationLinkComponent } from '../destination-link';
 import { TkDestination } from './destination.model';
+import { NavigationRailService } from './navigation-rail.service';
 
 @Component({
   selector: 'tk-navigation-rail',
@@ -32,6 +34,7 @@ import { TkDestination } from './destination.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class TkNavigationRailComponent {
+  protected railService = inject(NavigationRailService);
   @Input()
   get opened() {
     return this._opened;
@@ -42,6 +45,4 @@ export class TkNavigationRailComponent {
   private _opened = false;
 
   @Input() destinations: TkDestination[] = [];
-
-  // TODO service for CTA
 }
