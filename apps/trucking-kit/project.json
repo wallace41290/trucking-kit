@@ -41,6 +41,7 @@
         },
         "styles": [
           "libs/shared/styles/src/reset.css",
+          "libs/shared/styles/src/global.css",
           "node_modules/@aws-amplify/ui-angular/theme.css",
           "apps/trucking-kit/src/scss/styles.scss",
           "apps/trucking-kit/src/scss/theme.scss"
