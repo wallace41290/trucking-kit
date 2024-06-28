@@ -1,36 +1,37 @@
-mat-sidenav {
-  width: 80px;
-  padding: 24px 12px;
-}
-
-tk-icon-logo {
-  width: 48px;
-  margin-bottom: 16px;
-}
-
-.rail-container,
-.rail-destinations {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.rail-destinations {
-  margin-top: 40px;
-}
-
-// TODO: move to own component
-.rail-destination-button {
-  .rail-destination-button-icon,
-  .rail-destination-button-label {
-    display: block;
+tk-navigation-rail {
+  .mat-sidenav {
+    width: 80px;
+    padding: 24px 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .mat-drawer-inner-container {
+      overflow: visible;
+    }
   }
-  .icon-button-bottom-label {
-    // display: block;
-    margin-top: 4px;
-    // TODO: fix these fixed values
-    // font-size: 12px;
-    // line-height: 16px;
+  .mat-drawer {
+    --mat-sidenav-container-background-color: none;
+  }
+  .mat-drawer-side {
+    --mat-sidenav-container-divider-color: none;
+    border-right-width: 0px;
+  }
+  .mat-mdc-fab {
+    --mdc-fab-container-elevation-shadow: none;
+  }
+  tk-icon-logo {
+    width: 48px;
+    margin-bottom: 16px;
+  }
+
+  .rail-container,
+  .rail-destinations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .rail-destinations {
+    margin-top: 40px;
   }
 }

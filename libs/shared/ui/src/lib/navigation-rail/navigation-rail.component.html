@@ -3,38 +3,17 @@
     <div class="rail-container">
       <tk-icon-logo></tk-icon-logo>
       <!-- Injected some how based on route? need service -->
-      <button mat-fab color="primary" aria-label="Example icon button ">
+      <button aria-label="Example icon button" mat-fab color="accent">
         <mat-icon>bolt</mat-icon>
       </button>
       <div class="rail-destinations">
-        <!-- Passed in and fixed? -->
-        <button class="rail-destination-button" mat-button color="primary">
-          <span>
-            <mat-icon class="rail-destination-button-icon">home</mat-icon>
-            <span class="rail-destination-button-label">Home</span>
-          </span>
-        </button>
-        <button
-          mat-icon-button
-          color="accent"
-          aria-label="Example icon button with a menu icon"
-        >
-          <mat-icon>menu</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          color="warn"
-          aria-label="Example icon button with a heart icon"
-        >
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          disabled
-          aria-label="Example icon button with a open in new tab icon"
-        >
-          <mat-icon>open_in_new</mat-icon>
-        </button>
+        @for (destination of destinations; track destination.route){
+        <tk-destination-link
+          [icon]="destination.icon"
+          [label]="destination.label"
+          [route]="destination.route"
+        ></tk-destination-link>
+        }
       </div>
     </div>
   </mat-sidenav>
