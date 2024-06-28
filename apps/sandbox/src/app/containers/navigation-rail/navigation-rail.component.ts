@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TkNavigationRailComponent } from '@shared/ui';
+import { TkDestination, TkNavigationRailComponent } from '@shared/ui';
 
 @Component({
   selector: 'sandbox-navigation-rail',
@@ -15,4 +15,22 @@ import { TkNavigationRailComponent } from '@shared/ui';
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class NavigationRailComponent {}
+export class NavigationRailComponent {
+  destinations: TkDestination[] = [
+    {
+      label: 'Home',
+      icon: 'home',
+      route: './',
+    },
+    {
+      label: 'About',
+      icon: 'info',
+      route: './about',
+    },
+    {
+      label: 'Contact',
+      icon: 'email',
+      route: './contact',
+    },
+  ];
+}

@@ -28,10 +28,20 @@ import { RouterModule } from '@angular/router';
 export class SandboxNavComponent {
   private breakpointObserver = inject(BreakpointObserver);
 
+  routeItems: RouteItem[] = [
+    { label: 'Destination Link', routerLink: 'destination-link' },
+    { label: 'Navigation Rail', routerLink: 'navigation-rail' },
+  ];
+
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
       map((result) => result.matches),
       shareReplay()
     );
+}
+
+interface RouteItem {
+  routerLink: string;
+  label: string;
 }

@@ -18,8 +18,10 @@
         "inlineStyleLanguage": "scss",
         "assets": ["apps/sandbox/src/favicon.ico", "apps/sandbox/src/assets"],
         "styles": [
-          "@angular/material/prebuilt-themes/indigo-pink.css",
-          "apps/sandbox/src/styles.scss"
+          "libs/shared/styles/src/reset.css",
+          "libs/shared/styles/src/global.css",
+          "apps/sandbox/src/styles.scss",
+          "apps/sandbox/src/theme.scss"
         ],
         "scripts": []
       },
