@@ -9,8 +9,11 @@
     let-user="user"
     let-signOut="signOut"
   >
-    <tk-navigation-rail [opened]="$isLoggedIn | async">
-      <tk-navbar (logout)="logout()"></tk-navbar>
+    <tk-navigation-rail
+      [opened]="$isLoggedIn | async"
+      [destinations]="destinations"
+      (logout)="logout()"
+    >
       <router-outlet></router-outlet>
     </tk-navigation-rail>
   </ng-template>
@@ -18,7 +21,7 @@
     <button
       mat-button
       color="primary"
-      class="footer-button"
+      class="app-footer-button"
       (click)="authenticator.toForgotPassword()"
     >
       Reset Password

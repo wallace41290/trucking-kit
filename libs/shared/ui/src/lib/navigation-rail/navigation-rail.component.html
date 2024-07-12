@@ -19,6 +19,13 @@
           [label]="destination.label"
           [route]="destination.route"
         ></tk-destination-link>
+        } @if(enableLogout){
+        <mat-divider></mat-divider>
+        <tk-destination-button
+          icon="exit_to_app"
+          label="Logout"
+          (handleClick)="logout.emit()"
+        ></tk-destination-button>
         }
       </div>
     </div>

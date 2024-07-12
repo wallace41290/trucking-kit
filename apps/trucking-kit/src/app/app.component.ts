@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './components';
 import { AsyncPipe } from '@angular/common';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import {
@@ -9,14 +8,17 @@ import {
 } from '@aws-amplify/ui-angular';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '@shared/auth/data-access';
-import { TkLogoModule, TkNavigationRailComponent } from '@shared/ui';
+import {
+  TkDestination,
+  TkLogoModule,
+  TkNavigationRailComponent,
+} from '@shared/ui';
 
 @Component({
   standalone: true,
   imports: [
     AmplifyAuthenticatorModule,
     AsyncPipe,
-    NavbarComponent,
     RouterModule,
     TkLogoModule,
     TkNavigationRailComponent,
@@ -26,12 +28,41 @@ import { TkLogoModule, TkNavigationRailComponent } from '@shared/ui';
   selector: 'tk-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   private readonly authService = inject(AuthService);
   authenticator = inject(AuthenticatorService);
 
   $isLoggedIn = this.authService.isAuthenticatedState$;
+
+  destinations: TkDestination[] = [
+    {
+      label: 'Home',
+      icon: 'home',
+      route: '/home',
+    },
+    {
+      label: 'Dashboard',
+      icon: 'dashboard',
+      route: '/dashboard',
+    },
+    {
+      label: 'Company',
+      icon: 'domain',
+      route: '/company',
+    },
+    {
+      label: 'Products',
+      icon: 'category',
+      route: '/products',
+    },
+    {
+      label: 'Profile',
+      icon: 'account_circle',
+      route: '/profile-edit',
+    },
+  ];
 
   constructor(private matIconReg: MatIconRegistry) {
     this.matIconReg.setDefaultFontSetClass('material-symbols-outlined');

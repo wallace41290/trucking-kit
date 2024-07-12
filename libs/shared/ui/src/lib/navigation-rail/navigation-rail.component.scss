@@ -1,6 +1,6 @@
 tk-navigation-rail {
   .mat-sidenav {
-    width: 80px;
+    width: 96px;
     padding: 24px 12px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -33,5 +33,8 @@ tk-navigation-rail {
 
   .rail-destinations {
     margin-top: 40px;
+    .mat-divider {
+      width: 100%;
+    }
   }
 }

@@ -20,6 +20,7 @@ $trucking-kit-theme: mat.define-light-theme(
   )
 );
 
+@include mat.typography-hierarchy(typography.$config);
 @include mat.all-component-themes($trucking-kit-theme);
 @include shared-ui.all-component-themes($trucking-kit-theme);
 
