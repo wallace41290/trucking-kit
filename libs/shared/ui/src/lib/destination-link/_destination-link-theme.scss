@@ -1,0 +1,35 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  .destination-link {
+    color: mat.get-theme-color($theme, foreground, text);
+
+    &.active:hover .destination-link-icon {
+      color: mat.get-theme-color($theme, primary, default-contrast);
+      &:before {
+        background: mat.get-theme-color($theme, primary, default);
+      }
+    }
+    &:not(.active):hover .destination-link-icon {
+      background: mat.get-theme-color($theme, background, hover);
+    }
+  }
+
+  .destination-link-icon:before {
+    background: mat.get-theme-color($theme, primary, 200);
+  }
+}
+
+@mixin typography($theme) {
+}
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include color($theme);
+  }
+
+  @if mat.theme-has($theme, typography) {
+    @include typography($theme);
+  }
+}

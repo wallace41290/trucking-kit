@@ -34,6 +34,11 @@
             "input": "libs/shared/assets/src/lottie-icons",
             "glob": "truck-yellow-grey.json",
             "output": "assets/lottie-icons"
+          },
+          {
+            "input": "libs/shared/assets/src/textures",
+            "glob": "**/*",
+            "output": "assets/textures"
           }
         ],
         "stylePreprocessorOptions": {
@@ -41,6 +46,7 @@
         },
         "styles": [
           "libs/shared/styles/src/reset.css",
+          "libs/shared/styles/src/global.css",
           "node_modules/@aws-amplify/ui-angular/theme.css",
           "apps/trucking-kit/src/scss/styles.scss",
           "apps/trucking-kit/src/scss/theme.scss"

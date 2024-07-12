@@ -1,0 +1,36 @@
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" [opened]="opened" fixedInViewport>
+    <div class="rail-container">
+      <tk-icon-logo></tk-icon-logo>
+      @if (railService.actionButton$ | async; as action) {
+      <button
+        mat-fab
+        [matTooltip]="action.tooltip"
+        [color]="action.color"
+        (click)="action.action()"
+      >
+        <mat-icon>{{ action.icon }}</mat-icon>
+      </button>
+      }
+      <div class="rail-destinations">
+        @for (destination of destinations; track destination.route){
+        <tk-destination-link
+          [icon]="destination.icon"
+          [label]="destination.label"
+          [route]="destination.route"
+        ></tk-destination-link>
+        } @if(enableLogout){
+        <mat-divider></mat-divider>
+        <tk-destination-button
+          icon="exit_to_app"
+          label="Logout"
+          (handleClick)="logout.emit()"
+        ></tk-destination-button>
+        }
+      </div>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

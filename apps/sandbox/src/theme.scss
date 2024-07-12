@@ -1,0 +1,25 @@
+@use '@angular/material' as mat;
+@use './palette';
+@use './typography';
+@use '../../../libs/shared/ui/src/index' as shared-ui;
+
+@include mat.core();
+
+$trucking-kit-primary: mat.define-palette(palette.$primary);
+$trucking-kit-accent: mat.define-palette(palette.$accent);
+$trucking-kit-warn: mat.define-palette(palette.$warn);
+
+$trucking-kit-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $trucking-kit-primary,
+      accent: $trucking-kit-accent,
+      warn: $trucking-kit-warn,
+    ),
+    typography: typography.$config,
+  )
+);
+
+@include mat.typography-hierarchy(typography.$config);
+@include mat.all-component-themes($trucking-kit-theme);
+@include shared-ui.all-component-themes($trucking-kit-theme);

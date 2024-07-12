@@ -1,0 +1,40 @@
+tk-navigation-rail {
+  .mat-sidenav {
+    width: 96px;
+    padding: 24px 12px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .mat-drawer-inner-container {
+      overflow: visible;
+    }
+  }
+  .mat-drawer {
+    --mat-sidenav-container-background-color: none;
+  }
+  .mat-drawer-side {
+    --mat-sidenav-container-divider-color: none;
+    border-right-width: 0px;
+  }
+  .mat-mdc-fab {
+    --mdc-fab-container-elevation-shadow: none;
+  }
+  tk-icon-logo {
+    width: 48px;
+    margin-bottom: 16px;
+  }
+
+  .rail-container,
+  .rail-destinations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .rail-destinations {
+    margin-top: 40px;
+    .mat-divider {
+      width: 100%;
+    }
+  }
+}
