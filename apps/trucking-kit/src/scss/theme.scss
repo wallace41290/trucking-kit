@@ -41,19 +41,20 @@ $trucking-kit-theme: mat.define-light-theme(
 }
 
 amplify-authenticator > [data-amplify-authenticator] {
-  background-image: linear-gradient(
-    280deg,
-    hsl(200deg 48% 32%) 0%,
-    hsl(199deg 40% 37%) 4%,
-    hsl(198deg 34% 42%) 8%,
-    hsl(198deg 29% 48%) 12%,
-    hsl(197deg 28% 53%) 16%,
-    hsl(195deg 30% 58%) 21%,
-    hsl(194deg 33% 63%) 27%,
-    hsl(193deg 37% 69%) 33%,
-    hsl(191deg 42% 74%) 41%,
-    hsl(190deg 51% 80%) 52%,
-    hsl(188deg 66% 85%) 67%,
-    hsl(187deg 100% 91%) 100%
-  );
+  background-image: url('/assets/textures/noise-light.png'),
+    linear-gradient(
+      280deg,
+      hsl(200deg 48% 32%) 0%,
+      hsl(199deg 40% 37%) 4%,
+      hsl(198deg 34% 42%) 8%,
+      hsl(198deg 29% 48%) 12%,
+      hsl(197deg 28% 53%) 16%,
+      hsl(195deg 30% 58%) 21%,
+      hsl(194deg 33% 63%) 27%,
+      hsl(193deg 37% 69%) 33%,
+      hsl(191deg 42% 74%) 41%,
+      hsl(190deg 51% 80%) 52%,
+      hsl(188deg 66% 85%) 67%,
+      hsl(187deg 100% 91%) 100%
+    );
 }

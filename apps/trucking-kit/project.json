@@ -34,6 +34,11 @@
             "input": "libs/shared/assets/src/lottie-icons",
             "glob": "truck-yellow-grey.json",
             "output": "assets/lottie-icons"
+          },
+          {
+            "input": "libs/shared/assets/src/textures",
+            "glob": "**/*",
+            "output": "assets/textures"
           }
         ],
         "stylePreprocessorOptions": {
