@@ -5,9 +5,9 @@ import { BehaviorSubject } from 'rxjs';
 /**
  * A configuration for setting the primary action button of the rail.
  */
-export interface NavigationButtonConfig {
+export interface TkNavigationButtonConfig {
   icon: string;
-  ariaLabel: string;
+  tooltip: string;
   action: () => void;
   color?: ThemePalette;
 }
@@ -16,9 +16,9 @@ export interface NavigationButtonConfig {
  * A service for interacting with the NavigationRail
  */
 @Injectable({ providedIn: 'root' })
-export class NavigationRailService {
+export class TkNavigationRailService {
   private _actionButton = new BehaviorSubject<
-    NavigationButtonConfig | undefined
+    TkNavigationButtonConfig | undefined
   >(undefined);
   public actionButton$ = this._actionButton.asObservable();
 
@@ -31,7 +31,7 @@ export class NavigationRailService {
    * Sets the primary action of the rail.
    * @param config A configuration of properties used by the FAB.
    */
-  setAction(config: NavigationButtonConfig | undefined) {
+  setAction(config: TkNavigationButtonConfig | undefined) {
     this._actionButton.next(config);
   }
 }

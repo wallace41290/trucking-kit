@@ -14,7 +14,7 @@ import { BooleanInput, coerceBooleanProperty } from '@angular/cdk/coercion';
 import { TkLogoModule } from '../logo';
 import { TkDestinationLinkComponent } from '../destination-link';
 import { TkDestination } from './destination.model';
-import { NavigationRailService } from './navigation-rail.service';
+import { TkNavigationRailService } from './navigation-rail.service';
 
 @Component({
   selector: 'tk-navigation-rail',
@@ -34,7 +34,6 @@ import { NavigationRailService } from './navigation-rail.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class TkNavigationRailComponent {
-  protected railService = inject(NavigationRailService);
   @Input()
   get opened() {
     return this._opened;
@@ -45,4 +44,6 @@ export class TkNavigationRailComponent {
   private _opened = false;
 
   @Input() destinations: TkDestination[] = [];
+
+  protected railService = inject(TkNavigationRailService);
 }

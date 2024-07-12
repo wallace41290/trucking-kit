@@ -5,7 +5,7 @@
       @if (railService.actionButton$ | async; as action) {
       <button
         mat-fab
-        [attr.aria-label]="action.ariaLabel"
+        [matTooltip]="action.tooltip"
         [color]="action.color"
         (click)="action.action()"
       >
