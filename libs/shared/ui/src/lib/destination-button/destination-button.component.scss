@@ -1,48 +1,38 @@
-.destination-link {
+button {
+  all: unset;
+}
+
+.destination-button {
+  cursor: not-allowed; // for when it is disabled
   display: block;
   text-decoration: none;
   width: 80px;
   padding: 2px;
 
-  &.active,
-  &.active:focus {
-    .destination-link-label.mat-caption {
-      font-weight: 600;
-    }
-    .destination-link-icon:before {
-      opacity: 1;
-      transform: scaleX(1);
-    }
-  }
-
-  &:hover,
-  &:focus,
-  &:hover:focus {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    .destination-link-icon mat-icon {
-      transform: scale(1.15);
-    }
-    .destination-link-label {
-      font-weight: 500;
-    }
-  }
-
-  &:active,
-  &:hover:active {
-    .destination-link-icon mat-icon {
-      transform: scale(1);
+  &:not([disabled]) {
+    cursor: pointer;
+    &:hover,
+    &:focus,
+    &:hover:focus {
+      border: none;
+      outline: none;
+      box-shadow: none;
+      .destination-button-icon mat-icon {
+        transform: scale(1.15);
+      }
+      .destination-button-label {
+        font-weight: 500;
+      }
     }
   }
 }
 
-.destination-link-label {
+.destination-button-label {
   margin-bottom: 4px;
   text-align: center;
 }
 
-.destination-link-icon {
+.destination-button-icon {
   display: flex;
   position: relative;
   align-items: center;

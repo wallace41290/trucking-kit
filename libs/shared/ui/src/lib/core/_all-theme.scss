@@ -1,7 +1,9 @@
 @use '../logo/logo-theme';
+@use '../destination-button/destination-button-theme';
 @use '../destination-link/destination-link-theme';
 
 @mixin all-component-themes($theme) {
   @include logo-theme.theme($theme);
+  @include destination-button-theme.theme($theme);
   @include destination-link-theme.theme($theme);
 }
