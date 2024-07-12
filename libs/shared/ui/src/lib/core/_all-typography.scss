@@ -1,9 +1,11 @@
 @use '../logo/logo-theme';
 @use '../destination-button/destination-button-theme';
 @use '../destination-link/destination-link-theme';
+@use '../navigation-rail/navigation-rail-theme';
 
 @mixin all-component-typographies($theme) {
   @include logo-theme.typography($theme);
   @include destination-button-theme.typography($theme);
   @include destination-link-theme.typography($theme);
+  @include navigation-rail-theme.typography($theme);
 }
