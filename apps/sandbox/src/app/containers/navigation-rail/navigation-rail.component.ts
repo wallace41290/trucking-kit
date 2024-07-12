@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TkDestination, TkNavigationRailComponent } from '@shared/ui';
-import { TkNavigationRailService } from 'libs/shared/ui/src/lib/navigation-rail/navigation-rail.service';
+import { TkNavigationRailService } from '@shared/ui';
 
 @Component({
   selector: 'sandbox-navigation-rail',
