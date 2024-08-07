@@ -1,19 +1,14 @@
 import { Company } from '@shared/models';
 
 export type CompanyState = {
-  companies: Company[];
-  creating: boolean;
-  fetching: boolean;
+  company?: Company;
   loading: boolean;
   updating: boolean;
-  removing?: string;
-  dotNumber?: string;
+  removing: boolean;
 };
 
 export const companyInitialState: CompanyState = {
-  companies: [],
-  creating: false,
-  fetching: false,
   loading: false,
   updating: false,
+  removing: false,
 };
