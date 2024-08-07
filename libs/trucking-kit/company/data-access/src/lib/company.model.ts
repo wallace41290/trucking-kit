@@ -7,7 +7,7 @@ export type CompanyState = {
   loading: boolean;
   updating: boolean;
   removing?: string;
-  selected?: Company;
+  dotNumber?: string;
 };
 
 export const companyInitialState: CompanyState = {

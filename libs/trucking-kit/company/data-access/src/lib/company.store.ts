@@ -8,14 +8,30 @@ export class CompanyStore {
   protected state$ = signal<CompanyState>(companyInitialState);
   protected service = inject(CompanyService);
 
+  /** List of all available companies. */
   $companies = computed(() => this.state$().companies);
-  $company = computed(() => this.state$().selected);
+  /** ID of the company currently viewing/editing */
+  $dotNumber = computed(() => this.state$().dotNumber);
+  /** Whether a new company is being created. */
   $creating = computed(() => this.state$().creating);
+  /** Whether currently fetching all companies. */
   $fetching = computed(() => this.state$().fetching);
+  /** Whether loading the desired company. */
   $loading = computed(() => this.state$().loading);
+  /** Whether removing the desired company. */
   $removing = computed(() => this.state$().removing);
+  /** Whether updating the desired company. */
   $updating = computed(() => this.state$().updating);
 
+  /** The currently selected company for view/edit. */
+  $company = computed(() =>
+    this.$companies().find((c) => c.dotNumber === this.$dotNumber())
+  );
+
+  /**
+   * Creates a new company.
+   * @param company The required information to create a company.
+   */
   create(company: Company) {
     this.state$.update((s) => ({ ...s, creating: true }));
     this.service.createCompany(company).subscribe({
@@ -29,6 +45,10 @@ export class CompanyStore {
     });
   }
 
+  /**
+   * Deletes the company associated with the given dotNumber.
+   * @param dotNumber ID of the company to delete.
+   */
   delete(dotNumber: string) {
     this.state$.update((s) => ({ ...s, removing: dotNumber }));
     this.service.deleteCompany(dotNumber).subscribe({
@@ -42,6 +62,9 @@ export class CompanyStore {
     });
   }
 
+  /**
+   * Retrieves all the available companies.
+   */
   fetchAll() {
     this.state$.update((s) => ({ ...s, fetching: true }));
     this.service.fetchCompanies().subscribe({
@@ -55,28 +78,45 @@ export class CompanyStore {
     });
   }
 
+  /**
+   * Sets the given dotNumber as selected, and retrieves the associated company if not yet stored.
+   * @param dotNumber
+   */
   get(dotNumber: string) {
-    this.state$.update((s) => ({ ...s, loading: true, selected: undefined }));
-    this.service.getCompany(dotNumber).subscribe({
-      next: (res) =>
-        this.state$.update((s) => ({
-          ...s,
-          loading: false,
-          selected: res.data.getCompany,
-        })),
-      error: this.errorHandler((s) => ({ ...s, loading: false })),
-    });
+    const index = this.$companies().findIndex((c) => c.dotNumber === dotNumber);
+    if (index > -1) {
+      this.state$.update((s) => ({ ...s, dotNumber }));
+    } else {
+      this.state$.update((s) => ({
+        ...s,
+        loading: true,
+        dotNumber: undefined,
+      }));
+      this.service.getCompany(dotNumber).subscribe({
+        next: (res) =>
+          this.state$.update((s) => ({
+            ...s,
+            loading: false,
+            dotNumber: res.data.getCompany.dotNumber,
+            companies: [...s.companies, res.data.getCompany],
+          })),
+        error: this.errorHandler((s) => ({ ...s, loading: false })),
+      });
+    }
   }
 
+  /**
+   * Updates the associated company with the provided changes.
+   * @param changes Properties to change on the company, as well as the dotNumber associated with it.
+   */
   update(changes: Partial<Company> & Required<Pick<Company, 'dotNumber'>>) {
     this.state$.update((s) => ({ ...s, updating: true }));
-    const company = this.state$().selected ?? ({} as Company);
+    const company = this.$company() ?? ({} as Company);
     this.service.updateCompany({ ...company, ...changes }).subscribe({
       next: (res) => {
         const updated = res.data.updateCompany;
         this.state$.update((s) => ({
           ...s,
-          selected: updated,
           companies: s.companies.map((c) =>
             c.dotNumber === updated.dotNumber ? updated : c
           ),
@@ -86,10 +126,15 @@ export class CompanyStore {
     });
   }
 
+  /**
+   * General function for handling api failures.
+   * Updates the state with the given function.
+   * @param updateFn
+   * @returns
+   */
   protected errorHandler(
     updateFn?: (s: CompanyState) => CompanyState
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  ): (err: any) => void {
+  ): (err: unknown) => void {
     return (err) => {
       console.error(err);
       if (updateFn) {
