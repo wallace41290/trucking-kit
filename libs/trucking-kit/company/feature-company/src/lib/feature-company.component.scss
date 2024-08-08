@@ -1,3 +1,42 @@
+.page-heading {
+  margin-top: 24px;
+}
+
+.page-heading-name {
+}
+
+.company-details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 32px;
+}
+.company-details-list__item {
+}
+.company-details-list__item-title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  span {
+    font-weight: 800;
+  }
+}
+.company-details-list__item-icon {
+  vertical-align: middle;
+  margin-right: 4px;
+}
+.company-details-list__item-value {
+  margin: 0;
+}
+
+mat-list {
+  display: flex;
+  mat-list-item {
+    width: auto;
+  }
+}
+
 nav {
   display: flex;
   border: 1px solid black;
