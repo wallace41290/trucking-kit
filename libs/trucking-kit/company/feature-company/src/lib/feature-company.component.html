@@ -1,7 +1,15 @@
-<h2>Company</h2>
+<h2>{{ store.$company()?.companyName ?? 'Company' }}</h2>
+
+<mat-divider></mat-divider>
+
 <nav>
-  <a routerLink="./">Overview</a>
-  <a routerLink="trucks">My Trucks</a>
-  <a routerLink="drivers">My Drivers</a>
+  <a
+    routerLink="./"
+    routerLinkActive="active-link"
+    [routerLinkActiveOptions]="{ exact: true }"
+    >Overview</a
+  >
+  <a routerLink="trucks" routerLinkActive="active-link">My Trucks</a>
+  <a routerLink="drivers" routerLinkActive="active-link">My Drivers</a>
 </nav>
 <router-outlet></router-outlet>

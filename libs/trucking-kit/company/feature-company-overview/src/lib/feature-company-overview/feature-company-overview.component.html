@@ -1,1 +1,19 @@
-<p>feature-company-overview works!</p>
+<div class="container">
+  @if (store.$loading()) {
+  <mat-spinner diameter="192" class="content-loader"></mat-spinner>
+  } @else if (store.$company()) {
+  <form #form="ngForm" (ngSubmit)="update(form)">
+    @for (field of store.$company() | keyvalue; track field.key) {
+    <mat-form-field>
+      <mat-label>{{ field.key }}</mat-label>
+      <input matInput [name]="field.key" [ngModel]="field.value" />
+    </mat-form-field>
+    }
+    <button mat-raised-button [disabled]="form.invalid || form.pristine">
+      SAVE
+    </button>
+  </form>
+  } @else {
+  <p>No Company Found</p>
+  }
+</div>
