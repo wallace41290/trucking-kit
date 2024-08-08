@@ -5,6 +5,7 @@ type Company @model @auth(rules: [{ allow: owner }]){
   driver: [Driver] @hasMany
   state: String!
   streetAddress: String!
+  task: [Task] @hasMany
   truck: [Truck] @hasMany
   users: [User] @hasMany
   zipCode: Int!
@@ -17,6 +18,17 @@ type Driver @model @auth(rules: [{ allow: owner }]) {
   lastName: String!
   email: String!
   cdlNumber: String
+}
+
+type Task @model @auth(rules: [{ allow: owner }]) {
+  company: Company @belongsTo
+  id: ID! @primaryKey
+  title: String!
+  description: String
+  status: String!
+  createdDate: AWSDateTime!
+  dueDate: AWSDateTime
+  lastUpdatedDate: AWSDateTime
 }
 
 type Truck @model @auth(rules: [{ allow: owner }]) {

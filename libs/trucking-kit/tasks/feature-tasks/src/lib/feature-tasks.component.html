@@ -1,0 +1,71 @@
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Company</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (task of tasks$(); track task?.id) {
+      <tr>
+        <td>{{ task.id }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.company }}</td>
+        <td>{{ task.dueDate }}</td>
+        <td>{{ task.status }}</td>
+        <td>
+          <a routerLink="{{ task.id }}" routerLinkActive="active">Edit</a>
+        </td>
+
+        <td><button (click)="onDelete(task.id)">x</button></td>
+      </tr>
+      } @empty { @if(loadingTasks$()){
+      <tr>
+        <td colspan="2">...</td>
+      </tr>
+      }@else {
+      <tr>
+        <td colSpan="2">No tasks yet. Add more now.</td>
+      </tr>
+      } }
+    </tbody>
+  </table>
+  <div class="form-body">
+    <form
+      autocomplete="off"
+      [formGroup]="createForm"
+      (ngSubmit)="onCreate(createForm.value)"
+    >
+      <div>
+        <label>Title: </label>
+        <input type="text" formControlName="title" autocomplete="off" />
+      </div>
+      <div>
+        <label>Description: </label>
+        <input type="text" formControlName="description" autocomplete="off" />
+      </div>
+      <div>
+        <label>Due Date: </label>
+        <input type="date" formControlName="dueDate" autocomplete="off" />
+      </div>
+      <button [disabled]="creatingTask$()" type="submit">Submit</button>
+      @if(creatingTask$()){
+      <div>...</div>
+      }
+    </form>
+  </div>
+  @if(error$()){
+  <p style="color: red">{{ error$() }}</p>
+  }
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -77,7 +77,16 @@
       "@trucking-kit/shared/models": [
         "libs/trucking-kit/shared/models/src/index.ts"
       ],
-      "@trucking-kit/shared/ui": ["libs/trucking-kit/shared/ui/src/index.ts"]
+      "@trucking-kit/shared/ui": ["libs/trucking-kit/shared/ui/src/index.ts"],
+      "@trucking-kit/tasks/data-access": [
+        "libs/trucking-kit/tasks/data-access/src/index.ts"
+      ],
+      "@trucking-kit/tasks/feature-task": [
+        "libs/trucking-kit/tasks/feature-task/src/index.ts"
+      ],
+      "@trucking-kit/tasks/feature-tasks": [
+        "libs/trucking-kit/tasks/feature-tasks/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

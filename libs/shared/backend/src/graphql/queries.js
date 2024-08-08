@@ -13,6 +13,10 @@ export const getCompany = /* GraphQL */ `
       }
       state
       streetAddress
+      task {
+        nextToken
+        __typename
+      }
       truck {
         nextToken
         __typename
@@ -113,6 +117,70 @@ export const listDrivers = /* GraphQL */ `
         createdAt
         updatedAt
         companyDriverDotNumber
+        owner
+        __typename
+      }
+      nextToken
+      __typename
+    }
+  }
+`;
+export const getTask = /* GraphQL */ `
+  query GetTask($id: ID!) {
+    getTask(id: $id) {
+      company {
+        city
+        companyName
+        dotNumber
+        state
+        streetAddress
+        zipCode
+        createdAt
+        updatedAt
+        owner
+        __typename
+      }
+      id
+      title
+      description
+      status
+      createdDate
+      dueDate
+      lastUpdatedDate
+      createdAt
+      updatedAt
+      companyTaskDotNumber
+      owner
+      __typename
+    }
+  }
+`;
+export const listTasks = /* GraphQL */ `
+  query ListTasks(
+    $id: ID
+    $filter: ModelTaskFilterInput
+    $limit: Int
+    $nextToken: String
+    $sortDirection: ModelSortDirection
+  ) {
+    listTasks(
+      id: $id
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      sortDirection: $sortDirection
+    ) {
+      items {
+        id
+        title
+        description
+        status
+        createdDate
+        dueDate
+        lastUpdatedDate
+        createdAt
+        updatedAt
+        companyTaskDotNumber
         owner
         __typename
       }

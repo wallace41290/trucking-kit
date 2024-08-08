@@ -48,6 +48,14 @@ export const appRoutes: Route[] = [
     canActivate: [authGuard],
   },
   {
+    path: 'tasks',
+    loadChildren: () =>
+      import('@trucking-kit/tasks/feature-tasks').then(
+        (m) => m.featureTasksRoutes
+      ),
+    canActivate: [authGuard],
+  },
+  {
     path: '**',
     component: NotFoundPageComponent,
     data: { title: 'Not found' },

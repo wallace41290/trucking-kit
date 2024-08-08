@@ -1,0 +1,37 @@
+<br />
+<p>Viewing Task ID: {{ id }}</p>
+<div class="form-body">
+  <form
+    autocomplete="off"
+    [formGroup]="updateForm"
+    (ngSubmit)="onUpdate(updateForm.value)"
+  >
+    <div>
+      <label>Title: </label>
+      <input type="text" formControlName="title" autocomplete="off" />
+    </div>
+    <div>
+      <label>Description: </label>
+      <input type="text" formControlName="description" autocomplete="off" />
+    </div>
+    <div>
+      <label>Status: </label>
+      <input type="text" formControlName="status" autocomplete="off" />
+    </div>
+    <div>
+      <label>Company: </label>
+      <input type="text" formControlName="company" autocomplete="off" />
+    </div>
+    <div>
+      <label>Due Date: </label>
+      <input type="date" formControlName="dueDate" autocomplete="off" />
+    </div>
+    <button [disabled]="updatingTask$()" type="submit">Submit</button>
+    @if(updatingTask$()){
+    <div>...</div>
+    }
+  </form>
+</div>
+@if(error$()){
+<p style="color: red">{{ error$() }}</p>
+}
