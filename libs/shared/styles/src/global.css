@@ -1,3 +1,5 @@
 html > body {
   --mdc-fab-container-shape: 16px;
+  --mdc-elevated-card-container-shape: 12px;
+  --mdc-elevated-card-container-elevation: none;
 }
