@@ -3,9 +3,6 @@
 
 @mixin color($theme) {
   tk-navigation-rail {
-    .mat-sidenav {
-      background: mat.get-theme-color($theme, primary, 50);
-    }
   }
 }
 
