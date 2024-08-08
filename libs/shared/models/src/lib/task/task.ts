@@ -1,14 +1,14 @@
 import { Company } from '../company';
 
-export type TaskStatus = 'Assigned' | 'Done';
+export type TaskStatus = 'New' | 'Assigned' | 'Done';
 
 export type Task = {
   company?: Company;
   createdDate?: Date;
-  description: string;
-  dueDate: Date;
+  description?: string;
+  dueDate?: Date;
   id?: string;
   lastUpdatedDate?: Date;
-  status: TaskStatus;
-  title: string;
+  status?: string;
+  title?: string;
 };

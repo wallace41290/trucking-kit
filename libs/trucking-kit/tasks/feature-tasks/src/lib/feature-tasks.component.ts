@@ -46,23 +46,12 @@ export class FeatureTasksComponent {
     this.error$.set('');
     this.creatingTask$.set(true);
 
-    const testCompany = {
-      name: 'Company',
-      city: 'Knoxville',
-      companyName: 'Long Haul Trucking LLC',
-      createdAt: '2024-01-30T01:49:58.592Z',
-      dotNumber: '1231233',
-      state: 'TN',
-      streetAddress: '123 First Ave',
-      zipCode: 27384,
-    };
-
     const newTask = {
       description: task.description,
-      dueDate: task.dueDate,
-      status: task.status,
+      dueDate: new Date(),
+      createdDate: new Date(),
+      status: 'New',
       title: task.title,
-      company: testCompany,
     };
 
     this.taskService.createTask(newTask).subscribe({
@@ -91,7 +80,7 @@ export class FeatureTasksComponent {
           console.log('Tasks Component - GraphQL response', results);
         },
         error: (e) => {
-          console.error('error deleting truck', e);
+          console.error('error deleting task', e);
           if (this.isRequestError(e) && e.errors.length) {
             this.error$.set(e.errors[0].message);
           }

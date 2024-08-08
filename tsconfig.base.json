@@ -61,20 +61,11 @@
       "@trucking-kit/dashboard/feature-products": [
         "libs/trucking-kit/products/feature-products/src/index.ts"
       ],
-      "@trucking-kit/tasks/feature-task": [
-        "libs/trucking-kit/tasks/feature-task/src/index.ts"
-      ],
-      "@trucking-kit/tasks/feature-tasks": [
-        "libs/trucking-kit/tasks/feature-tasks/src/index.ts"
-      ],
       "@trucking-kit/home/feature-home": [
         "libs/trucking-kit/home/feature-home/src/index.ts"
       ],
       "@trucking-kit/products/data-access": [
         "libs/trucking-kit/products/data-access/src/index.ts"
-      ],
-      "@trucking-kit/tasks/data-access": [
-        "libs/trucking-kit/tasks/data-access/src/index.ts"
       ],
       "@trucking-kit/profile/data-access": [
         "libs/trucking-kit/profile/data-access/src/index.ts"
@@ -86,7 +77,16 @@
       "@trucking-kit/shared/models": [
         "libs/trucking-kit/shared/models/src/index.ts"
       ],
-      "@trucking-kit/shared/ui": ["libs/trucking-kit/shared/ui/src/index.ts"]
+      "@trucking-kit/shared/ui": ["libs/trucking-kit/shared/ui/src/index.ts"],
+      "@trucking-kit/tasks/data-access": [
+        "libs/trucking-kit/tasks/data-access/src/index.ts"
+      ],
+      "@trucking-kit/tasks/feature-task": [
+        "libs/trucking-kit/tasks/feature-task/src/index.ts"
+      ],
+      "@trucking-kit/tasks/feature-tasks": [
+        "libs/trucking-kit/tasks/feature-tasks/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
