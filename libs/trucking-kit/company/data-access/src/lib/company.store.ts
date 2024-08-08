@@ -29,6 +29,20 @@ export class CompanyStore {
     });
   }
 
+  /** Fetches all companies associated with the user & sets the 1st as being actively viewed. */
+  fetch() {
+    this.state$.update((s) => ({ ...s, loading: true }));
+    this.service.fetchCompanies().subscribe({
+      next: (res) =>
+        this.state$.update((s) => ({
+          ...s,
+          loading: false,
+          company: res.data.listCompanies.items[0],
+        })),
+      error: this.errorHandler((s) => ({ ...s, loading: false })),
+    });
+  }
+
   /**
    * Retrieves the company with the associated dotNumber.
    * @param dotNumber
@@ -48,6 +62,10 @@ export class CompanyStore {
         })),
       error: this.errorHandler((s) => ({ ...s, loading: false })),
     });
+  }
+
+  set(company: Company) {
+    this.state$.update((s) => ({ ...s, company }));
   }
 
   /**
