@@ -2,6 +2,7 @@
   "name": "@shared/auth/data-access",
   "version": "0.0.1",
   "peerDependencies": {
+    "aws-amplify": "^6.0.9",
     "@angular/common": "^17.0.0",
     "@angular/core": "^17.0.0",
     "@angular/router": "^17.0.0",

@@ -1,7 +1,3 @@
-@if($isLoggedIn | async){
-<tk-navbar (logout)="logout()"></tk-navbar>
-}
-
 <amplify-authenticator>
   <ng-template amplifySlot="header">
     <div style="padding: var(--amplify-space-large); text-align: center">
@@ -13,13 +9,19 @@
     let-user="user"
     let-signOut="signOut"
   >
-    <router-outlet></router-outlet>
+    <tk-navigation-rail
+      [opened]="$isLoggedIn | async"
+      [destinations]="destinations"
+      (logout)="logout()"
+    >
+      <router-outlet></router-outlet>
+    </tk-navigation-rail>
   </ng-template>
   <ng-template amplifySlot="sign-in-footer">
     <button
       mat-button
       color="primary"
-      class="footer-button"
+      class="app-footer-button"
       (click)="authenticator.toForgotPassword()"
     >
       Reset Password

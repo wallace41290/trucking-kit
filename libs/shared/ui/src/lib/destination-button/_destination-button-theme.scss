@@ -1,0 +1,29 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  .destination-button {
+    color: mat.get-theme-color($theme, foreground, text);
+
+    &:not([disabled]):hover .destination-button-icon {
+      background: mat.get-theme-color($theme, background, hover);
+    }
+  }
+
+  .destination-button-icon:before {
+    background: mat.get-theme-color($theme, primary, 200);
+  }
+}
+
+@mixin typography($theme) {
+}
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include color($theme);
+  }
+
+  @if mat.theme-has($theme, typography) {
+    @include typography($theme);
+  }
+}

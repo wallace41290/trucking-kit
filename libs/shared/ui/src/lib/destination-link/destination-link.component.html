@@ -1,0 +1,11 @@
+<a
+  #trigger
+  class="destination-link"
+  routerLinkActive="active"
+  [routerLink]="route"
+>
+  <span class="destination-link-icon" matRipple [matRippleTrigger]="trigger">
+    <mat-icon>{{ icon }}</mat-icon>
+  </span>
+  <div class="destination-link-label mat-caption">{{ label }}</div>
+</a>

@@ -1,0 +1,11 @@
+<button
+  #trigger
+  class="destination-button"
+  [disabled]="disabled"
+  (click)="handleClick.emit($event)"
+>
+  <span class="destination-button-icon" matRipple [matRippleTrigger]="trigger">
+    <mat-icon>{{ icon }}</mat-icon>
+  </span>
+  <div class="destination-button-label mat-caption">{{ label }}</div>
+</button>

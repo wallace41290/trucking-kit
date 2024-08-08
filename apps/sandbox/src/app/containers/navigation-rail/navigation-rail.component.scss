@@ -1,0 +1,13 @@
+sandbox-navigation-rail {
+  display: block;
+  height: calc(100% - 64px);
+}
+
+tk-navigation-rail {
+  mat-sidenav-container {
+    height: 100%;
+  }
+  .mat-sidenav-fixed {
+    position: absolute;
+  }
+}

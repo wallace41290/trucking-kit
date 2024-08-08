@@ -1,5 +1,17 @@
-.footer-button {
+.app-footer-button.mdc-button {
   display: block;
   margin: auto;
   margin-bottom: 16px;
+}
+
+tk-navigation-rail {
+  mat-sidenav-container {
+    height: 100%;
+  }
+  .mat-sidenav-fixed {
+    position: absolute;
+  }
+  mat-sidenav-content {
+    padding: 8px 32px;
+  }
 }
