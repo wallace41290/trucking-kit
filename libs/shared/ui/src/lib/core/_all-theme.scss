@@ -1,11 +1,13 @@
-@use '../logo/logo-theme';
 @use '../destination-button/destination-button-theme';
 @use '../destination-link/destination-link-theme';
+@use '../info-pill/info-pill-theme';
+@use '../logo/logo-theme';
 @use '../navigation-rail/navigation-rail-theme';
 
 @mixin all-component-themes($theme) {
-  @include logo-theme.theme($theme);
   @include destination-button-theme.theme($theme);
   @include destination-link-theme.theme($theme);
+  @include info-pill-theme.theme($theme);
+  @include logo-theme.theme($theme);
   @include navigation-rail-theme.theme($theme);
 }
