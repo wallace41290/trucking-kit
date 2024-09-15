@@ -86,3 +86,14 @@ amplify-authenticator > [data-amplify-authenticator] {
       hsl(187deg 100% 91%) 100%
     );
 }
+
+.mat-background-primary-50,
+.mat-background-primary-50.mat-mdc-card {
+  background-color: mat.get-theme-color($trucking-kit-theme, primary, 50);
+  color: mat.get-theme-color($trucking-kit-theme, primary, 50-contrast);
+}
+.mat-background-primary-100,
+.mat-background-primary-100.mat-mdc-card {
+  background-color: mat.get-theme-color($trucking-kit-theme, primary, 100);
+  color: mat.get-theme-color($trucking-kit-theme, primary, 100-contrast);
+}
