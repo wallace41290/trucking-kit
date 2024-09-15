@@ -1,28 +1,27 @@
-<mat-card class="page-heading">
+<mat-card class="page-heading mat-background-primary-100">
   <mat-card-content>
     <h2 class="page-heading-name">[Company Name Goes here]</h2>
-    <ul class="company-details-list">
-      <li class="company-details-list__item">
-        <h3 class="company-details-list__item-title">
-          <mat-icon class="company-details-list__item-icon" inline
-            >label</mat-icon
-          ><span class="mat-caption">DOT Number</span>
-        </h3>
-        <p class="company-details-list__item-value mat-caption">[123456789]</p>
-      </li>
-      <li class="company-details-list__item">
-        <h3 class="company-details-list__item-title">
-          <mat-icon class="company-details-list__item-icon" inline
-            >pin_drop</mat-icon
-          ><span class="mat-caption">Address</span>
-        </h3>
-        <p class="company-details-list__item-value mat-caption">
-          [123 Main Street City, State 12345]
-        </p>
-      </li>
-    </ul>
   </mat-card-content>
 </mat-card>
+<section class="company-details-list">
+  <tk-info-pill>
+    <h3 class="company-details-list__item-title">
+      <mat-icon class="company-details-list__item-icon" inline>label</mat-icon
+      ><span>DOT Number</span>
+    </h3>
+    <p class="company-details-list__item-value">[123456789]</p>
+  </tk-info-pill>
+  <tk-info-pill>
+    <h3 class="company-details-list__item-title">
+      <mat-icon class="company-details-list__item-icon" inline
+        >pin_drop</mat-icon
+      ><span>Address</span>
+    </h3>
+    <p class="company-details-list__item-value">
+      [123 Main Street City, State 12345]
+    </p>
+  </tk-info-pill>
+</section>
 <!-- use mat tabs, put in oval card, make selector background color not underline -->
 <nav>
   <a routerLink="./">Overview</a>

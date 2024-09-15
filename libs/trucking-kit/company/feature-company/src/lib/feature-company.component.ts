@@ -3,11 +3,18 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { TkInfoPillComponent } from '@shared/ui';
 
 @Component({
   selector: 'tk-feature-company',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatIconModule, RouterModule],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    MatIconModule,
+    RouterModule,
+    TkInfoPillComponent,
+  ],
   templateUrl: './feature-company.component.html',
   styleUrl: './feature-company.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

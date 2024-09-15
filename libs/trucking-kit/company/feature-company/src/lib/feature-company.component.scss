@@ -3,38 +3,36 @@
 }
 
 .page-heading-name {
+  padding: 16px;
 }
 
 .company-details-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  margin: 24px 0;
   display: flex;
-  gap: 32px;
+  flex-wrap: wrap;
+  gap: 24px;
 }
-.company-details-list__item {
+
+.company-details-list__item-icon {
+  vertical-align: middle;
+  margin-right: 4px;
 }
+
 .company-details-list__item-title {
   margin: 0;
   display: flex;
   align-items: center;
   span {
     font-weight: 800;
+    font-size: 0.85rem;
+    line-height: 1.666;
   }
-}
-.company-details-list__item-icon {
-  vertical-align: middle;
-  margin-right: 4px;
-}
-.company-details-list__item-value {
-  margin: 0;
 }
 
-mat-list {
-  display: flex;
-  mat-list-item {
-    width: auto;
-  }
+.company-details-list__item-value {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.666;
 }
 
 nav {
