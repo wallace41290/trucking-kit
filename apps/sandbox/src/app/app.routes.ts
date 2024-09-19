@@ -22,4 +22,11 @@ export const appRoutes: Route[] = [
         (mod) => mod.NavigationRailComponent
       ),
   },
+  {
+    path: 'pill-tabs',
+    loadComponent: () =>
+      import('./containers/pill-tabs/pill-tabs.component').then(
+        (mod) => mod.PillTabsComponent
+      ),
+  },
 ];

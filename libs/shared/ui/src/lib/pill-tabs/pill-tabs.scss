@@ -1,0 +1,26 @@
+.tk-pill-tabs {
+  border-radius: 40px;
+
+  .mat-mdc-tab-links {
+    padding: 4px;
+  }
+
+  .mat-mdc-tab-header,
+  .mat-mdc-tab-link:not(.mdc-tab--stacked) {
+    --mdc-secondary-navigation-tab-container-height: 64px;
+  }
+
+  .mdc-tab {
+    transition: background-color 0.8s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .mdc-tab,
+  .mat-mdc-tab-ripple,
+  .mat-mdc-tab-link .mdc-tab__ripple::before {
+    border-radius: 40px;
+  }
+
+  .mdc-tab .mdc-tab-indicator {
+    display: none;
+  }
+}

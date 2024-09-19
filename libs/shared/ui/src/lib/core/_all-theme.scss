@@ -3,6 +3,7 @@
 @use '../info-pill/info-pill-theme';
 @use '../logo/logo-theme';
 @use '../navigation-rail/navigation-rail-theme';
+@use '../pill-tabs/pill-tabs-theme';
 
 @mixin all-component-themes($theme) {
   @include destination-button-theme.theme($theme);
@@ -10,4 +11,5 @@
   @include info-pill-theme.theme($theme);
   @include logo-theme.theme($theme);
   @include navigation-rail-theme.theme($theme);
+  @include pill-tabs-theme.theme($theme);
 }

@@ -2,3 +2,5 @@
 @forward './lib/core/all-theme' show all-component-themes;
 @forward './lib/core/all-color' show all-component-colors;
 @forward './lib/core/all-typography' show all-component-typographies;
+
+@import './lib/pill-tabs/pill-tabs';

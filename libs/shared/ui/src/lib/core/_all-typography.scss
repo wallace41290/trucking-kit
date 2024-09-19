@@ -3,6 +3,7 @@
 @use '../info-pill/info-pill-theme';
 @use '../logo/logo-theme';
 @use '../navigation-rail/navigation-rail-theme';
+@use '../pill-tabs/pill-tabs-theme';
 
 @mixin all-component-typographies($theme) {
   @include destination-button-theme.typography($theme);
@@ -10,4 +11,5 @@
   @include info-pill-theme.typography($theme);
   @include logo-theme.typography($theme);
   @include navigation-rail-theme.typography($theme);
+  @include pill-tabs-theme.typography($theme);
 }
