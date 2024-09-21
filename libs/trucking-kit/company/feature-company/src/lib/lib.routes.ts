@@ -7,13 +7,6 @@ export const featureCompanyRoutes: Route[] = [
     component: FeatureCompanyComponent,
     children: [
       {
-        path: '',
-        loadChildren: () =>
-          import('@trucking-kit/company/feature-company-overview').then(
-            (m) => m.featureCompanyOverviewRoutes
-          ),
-      },
-      {
         path: 'drivers',
         loadChildren: () =>
           import('@trucking-kit/company/feature-drivers').then(
@@ -27,6 +20,7 @@ export const featureCompanyRoutes: Route[] = [
             (m) => m.featureTrucksRoutes
           ),
       },
+      { path: '', redirectTo: 'trucks', pathMatch: 'full' },
     ],
   },
 ];
