@@ -10,12 +10,12 @@
     }
 
     .mdc-tab.mdc-tab--active {
-      background-color: mat.get-theme-color($theme, primary, 300);
+      background-color: mat.get-theme-color($theme, primary, 200);
     }
     .mat-mdc-tab-link.mdc-tab--active:hover .mdc-tab__text-label,
     .mat-mdc-tab-link.mdc-tab--active:focus .mdc-tab__text-label,
     .mat-mdc-tab-link.mdc-tab--active .mdc-tab__text-label {
-      color: mat.get-theme-color($theme, primary, 300-contrast);
+      color: mat.get-theme-color($theme, primary, 200-contrast);
     }
   }
 }
