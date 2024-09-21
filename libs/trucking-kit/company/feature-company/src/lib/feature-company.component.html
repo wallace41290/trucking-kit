@@ -22,10 +22,20 @@
     </p>
   </tk-info-pill>
 </section>
-<!-- use mat tabs, put in oval card, make selector background color not underline -->
-<nav>
-  <a routerLink="./">Overview</a>
-  <a routerLink="trucks">My Trucks</a>
-  <a routerLink="drivers">My Drivers</a>
+
+<nav mat-tab-nav-bar tkPillTabs [tabPanel]="tabPanel">
+  @for (route of routes; track route.path) {
+  <a
+    mat-tab-link
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="rla.isActive"
+    [routerLink]="route.path"
+  >
+    {{ route.label }}
+  </a>
+  }
 </nav>
-<router-outlet></router-outlet>
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

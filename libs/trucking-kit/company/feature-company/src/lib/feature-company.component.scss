@@ -7,7 +7,7 @@
 }
 
 .company-details-list {
-  margin: 24px 0;
+  margin: 12px 0;
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
@@ -35,14 +35,11 @@
   line-height: 1.666;
 }
 
-nav {
-  display: flex;
-  border: 1px solid black;
-  padding: 8px;
-  a {
-    padding: 4px 8px;
-    &:not(:first-child) {
-      border-left: 1px solid black;
-    }
-  }
+.tk-pill-tabs .mdc-tab {
+  max-width: 250px;
+}
+
+mat-tab-nav-panel {
+  display: block;
+  margin-top: 24px;
 }

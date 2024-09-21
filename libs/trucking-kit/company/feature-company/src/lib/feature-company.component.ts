@@ -3,7 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
-import { TkInfoPillComponent } from '@shared/ui';
+import { MatTabsModule } from '@angular/material/tabs';
+import { TkInfoPillComponent, TkPillTabsDirective } from '@shared/ui';
+import { Route } from '@shared/models';
 
 @Component({
   selector: 'tk-feature-company',
@@ -12,26 +14,20 @@ import { TkInfoPillComponent } from '@shared/ui';
     CommonModule,
     MatCardModule,
     MatIconModule,
+    MatTabsModule,
     RouterModule,
     TkInfoPillComponent,
+    TkPillTabsDirective,
   ],
   templateUrl: './feature-company.component.html',
   styleUrl: './feature-company.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FeatureCompanyComponent {
-  /**
-   * Layout
-   * - heading
-   * - tabs/left nav
-   * - content
-   *    - tables (drivers & trucks)
-   *
-   * Tabs
-   * - info, drivers, trucks
-   *
-   * heading
-   * - style in box
-   *
-   */
+  routes: Route[] = [
+    { label: 'Trucks', path: 'trucks' },
+    { label: 'Drivers', path: 'drivers' },
+  ];
+
+  // TODO: pull in and insert company details
 }
