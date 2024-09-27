@@ -7,6 +7,7 @@ export const onCreateCompany = /* GraphQL */ `
     $owner: String
   ) {
     onCreateCompany(filter: $filter, owner: $owner) {
+      activeServices
       city
       companyName
       dotNumber
@@ -38,6 +39,7 @@ export const onUpdateCompany = /* GraphQL */ `
     $owner: String
   ) {
     onUpdateCompany(filter: $filter, owner: $owner) {
+      activeServices
       city
       companyName
       dotNumber
@@ -69,6 +71,7 @@ export const onDeleteCompany = /* GraphQL */ `
     $owner: String
   ) {
     onDeleteCompany(filter: $filter, owner: $owner) {
+      activeServices
       city
       companyName
       dotNumber
@@ -101,6 +104,7 @@ export const onCreateDriver = /* GraphQL */ `
   ) {
     onCreateDriver(filter: $filter, owner: $owner) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -132,6 +136,7 @@ export const onUpdateDriver = /* GraphQL */ `
   ) {
     onUpdateDriver(filter: $filter, owner: $owner) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -163,6 +168,7 @@ export const onDeleteDriver = /* GraphQL */ `
   ) {
     onDeleteDriver(filter: $filter, owner: $owner) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -194,6 +200,7 @@ export const onCreateTruck = /* GraphQL */ `
   ) {
     onCreateTruck(filter: $filter, owner: $owner) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -225,6 +232,7 @@ export const onUpdateTruck = /* GraphQL */ `
   ) {
     onUpdateTruck(filter: $filter, owner: $owner) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -256,6 +264,7 @@ export const onDeleteTruck = /* GraphQL */ `
   ) {
     onDeleteTruck(filter: $filter, owner: $owner) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -287,6 +296,7 @@ export const onCreateUser = /* GraphQL */ `
   ) {
     onCreateUser(filter: $filter, owner: $owner) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -316,6 +326,7 @@ export const onUpdateUser = /* GraphQL */ `
   ) {
     onUpdateUser(filter: $filter, owner: $owner) {
       company {
+        activeServices
         city
         companyName
         dotNumber
@@ -345,6 +356,7 @@ export const onDeleteUser = /* GraphQL */ `
   ) {
     onDeleteUser(filter: $filter, owner: $owner) {
       company {
+        activeServices
         city
         companyName
         dotNumber
