@@ -6,7 +6,7 @@ export default {
   coverageDirectory:
     '../../../../coverage/libs/trucking-kit/company/feature-company',
   transform: {
-    '^.+\\.(ts|mjs|js|html)$': [
+    '^.+\\.(ts|mjs|js|html|svg)$': [
       'jest-preset-angular',
       {
         tsconfig: '<rootDir>/tsconfig.spec.json',

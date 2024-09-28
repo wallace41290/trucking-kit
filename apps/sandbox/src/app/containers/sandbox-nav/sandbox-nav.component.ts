@@ -32,6 +32,7 @@ export class SandboxNavComponent {
     { label: 'Destination Button', routerLink: 'destination-button' },
     { label: 'Destination Link', routerLink: 'destination-link' },
     { label: 'Navigation Rail', routerLink: 'navigation-rail' },
+    { label: 'Pill Tabs', routerLink: 'pill-tabs' },
   ];
 
   isHandset$: Observable<boolean> = this.breakpointObserver

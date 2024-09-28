@@ -1,11 +1,15 @@
-@use '../logo/logo-theme';
 @use '../destination-button/destination-button-theme';
 @use '../destination-link/destination-link-theme';
+@use '../info-pill/info-pill-theme';
+@use '../logo/logo-theme';
 @use '../navigation-rail/navigation-rail-theme';
+@use '../pill-tabs/pill-tabs-theme';
 
 @mixin all-component-colors($theme) {
-  @include logo-theme.color($theme);
   @include destination-button-theme.color($theme);
   @include destination-link-theme.color($theme);
+  @include info-pill-theme.color($theme);
+  @include logo-theme.color($theme);
   @include navigation-rail-theme.color($theme);
+  @include pill-tabs-theme.color($theme);
 }

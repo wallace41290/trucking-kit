@@ -3,6 +3,29 @@
 @use './typography';
 @use '../../../../libs/shared/ui/src/index' as shared-ui;
 
+@function mat-set-background($theme, $backgroundColor) {
+  $palette-color: map-get($theme, color);
+  $background: map-get($palette-color, background);
+  $background: map_merge(
+    $background,
+    (
+      background: $backgroundColor,
+    )
+  );
+  $palette-color: map_merge(
+    $palette-color,
+    (
+      background: $background,
+    )
+  );
+  @return map_merge(
+    $theme,
+    (
+      color: $palette-color,
+    )
+  );
+}
+
 @include mat.core();
 
 $trucking-kit-primary: mat.define-palette(palette.$primary);
@@ -18,6 +41,10 @@ $trucking-kit-theme: mat.define-light-theme(
     ),
     typography: typography.$config,
   )
+);
+$trucking-kit-theme: mat-set-background(
+  $trucking-kit-theme,
+  mat.get-theme-color($trucking-kit-theme, primary, 50)
 );
 
 @include mat.typography-hierarchy(typography.$config);
@@ -58,4 +85,15 @@ amplify-authenticator > [data-amplify-authenticator] {
       hsl(188deg 66% 85%) 67%,
       hsl(187deg 100% 91%) 100%
     );
+}
+
+.mat-background-primary-50,
+.mat-background-primary-50.mat-mdc-card {
+  background-color: mat.get-theme-color($trucking-kit-theme, primary, 50);
+  color: mat.get-theme-color($trucking-kit-theme, primary, 50-contrast);
+}
+.mat-background-primary-100,
+.mat-background-primary-100.mat-mdc-card {
+  background-color: mat.get-theme-color($trucking-kit-theme, primary, 100);
+  color: mat.get-theme-color($trucking-kit-theme, primary, 100-contrast);
 }

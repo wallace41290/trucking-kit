@@ -1,7 +1,41 @@
-<h2>Company</h2>
-<nav>
-  <a routerLink="./">Overview</a>
-  <a routerLink="trucks">My Trucks</a>
-  <a routerLink="drivers">My Drivers</a>
+<mat-card class="page-heading mat-background-primary-100">
+  <mat-card-content>
+    <h2 class="page-heading-name">[Company Name Goes here]</h2>
+  </mat-card-content>
+</mat-card>
+<section class="company-details-list">
+  <tk-info-pill>
+    <h3 class="company-details-list__item-title">
+      <mat-icon class="company-details-list__item-icon" inline>label</mat-icon
+      ><span>DOT Number</span>
+    </h3>
+    <p class="company-details-list__item-value">[123456789]</p>
+  </tk-info-pill>
+  <tk-info-pill>
+    <h3 class="company-details-list__item-title">
+      <mat-icon class="company-details-list__item-icon" inline
+        >pin_drop</mat-icon
+      ><span>Address</span>
+    </h3>
+    <p class="company-details-list__item-value">
+      [123 Main Street City, State 12345]
+    </p>
+  </tk-info-pill>
+</section>
+
+<nav mat-tab-nav-bar tkPillTabs [tabPanel]="tabPanel">
+  @for (route of routes; track route.path) {
+  <a
+    mat-tab-link
+    routerLinkActive
+    #rla="routerLinkActive"
+    [active]="rla.isActive"
+    [routerLink]="route.path"
+  >
+    {{ route.label }}
+  </a>
+  }
 </nav>
-<router-outlet></router-outlet>
+<mat-tab-nav-panel #tabPanel>
+  <router-outlet></router-outlet>
+</mat-tab-nav-panel>

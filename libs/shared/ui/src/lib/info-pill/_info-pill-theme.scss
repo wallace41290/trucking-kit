@@ -2,7 +2,9 @@
 @use '@angular/material' as mat;
 
 @mixin color($theme) {
-  tk-navigation-rail {
+  tk-info-pill {
+    border-color: mat.get-theme-color($theme, primary, 100);
+    color: mat.get-theme-color($theme, foreground, text);
   }
 }
 
